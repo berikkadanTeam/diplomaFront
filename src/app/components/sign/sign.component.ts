@@ -28,9 +28,9 @@ export class SignComponent implements OnInit {
     this.service.getToken(this.user.username, this.user.password).then(res => {
       if (res) {
         localStorage.setItem('token', res.auth_token);
-        this.service.getUserInfo().then(r => {
+        this.service.getUserInfo(res.id).then(r => {
           localStorage.setItem('user', JSON.stringify(r));
-          return this.router.navigate(['']);
+           return this.router.navigate(['']);
         });
       }
     });
@@ -45,6 +45,8 @@ export class SignComponent implements OnInit {
   }
 
   signUp() {
-    this.service.signUp(this.user);
+    this.service.signUp(this.user).then(r => {
+      return this.router.navigate(['']);
+    });
   }
 }

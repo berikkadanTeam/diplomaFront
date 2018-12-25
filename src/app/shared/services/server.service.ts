@@ -1,4 +1,4 @@
-import { UserData } from 'src/app/shared/models/models';
+import { UserData, Restaurants } from 'src/app/shared/models/models';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
@@ -39,8 +39,8 @@ export class ServerService extends BaseService {
     }).toPromise().then(res => res);
   }
 
-  getUserInfo() {
-    const url = 'dashboard/home';
+  getUserInfo(id) {
+    const url =  `Users/GetUserInfo?UserId=${id}`;
     return this.get(this.api + url, {});
   }
   getCity() {
@@ -51,5 +51,30 @@ export class ServerService extends BaseService {
     const url = 'Restaurants/GetCountries';
     return this.get(this.api + url, {});
   }
+
+  // tslint:disable-next-line:max-line-length
+  setRestaurant(restaurant: Restaurants) {
+    const uri = 'Restaurants/SetRestaurant';
+    const workDay = JSON.stringify(restaurant.WorkDay);
+    const formData: FormData = new FormData();
+    formData.append('Name', restaurant.Name);
+    formData.append('Addres', restaurant.Addres);
+    formData.append('Number', restaurant.Number.toString());
+    formData.append('Kitchen', restaurant.Kitchen);
+    formData.append('Delivery', restaurant.Delivery.toString());
+    formData.append('AvgCheck', restaurant.AvgCheck.toString());
+    formData.append('Seats', restaurant.Seats.toString());
+    formData.append('Description', restaurant.Description);
+    formData.append('cityId', restaurant.cityId.toString());
+    formData.append('WorkDay', workDay);
+    formData.append('FileToUpload', restaurant.avatar, restaurant.avatar.name);
+    return this.post(this.api + uri, formData);
+  }
+
+  getRestaurants() {
+    const url = 'Restaurants/GetRestaurants';
+    return this.get(this.api + url, {});
+  }
+
 
 }

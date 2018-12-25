@@ -10,8 +10,26 @@ export interface UserData {
 }
 
 export interface Restaurants {
-  title: string;
+  Name: string;
+  Addres: string;
+  Number: number;
+  Kitchen: string;
+  Delivery: boolean;
+  AvgCheck: number;
+  Seats: number;
+  Description: string;
+  cityId: number;
+  WorkDay: WorkDay[];
+  avatar: File;
+  src?: string;
 }
+
+export interface WorkDay {
+  DayName: string;
+  StartTime: string;
+  EndTime: string;
+}
+
 export class Cities {
   Id: number;
   cityTitle: string;

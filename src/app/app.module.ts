@@ -13,10 +13,10 @@ import { HomeComponent } from './components/home/home.component';
 import { AuthInterceptor } from './components/sign/auth-interceptor';
 import { SignComponent } from './components/sign/sign.component';
 import { HeaderComponent } from './components/header/header.component';
-import { BookingComponent } from './components/booking/booking.component';
 import { ContentComponent } from './components/content/content.component';
 import { DeliveryComponent } from './components/delivery/delivery.component';
 import { AddRestaurantComponent } from './components/add-restaurant/add-restaurant.component';
+import { BookingComponent } from './components/booking/booking.component';
 
 @NgModule({
   declarations: [
@@ -25,10 +25,10 @@ import { AddRestaurantComponent } from './components/add-restaurant/add-restaura
     HomeComponent,
     SignComponent,
     HeaderComponent,
-    BookingComponent,
     ContentComponent,
     DeliveryComponent,
-    AddRestaurantComponent
+    AddRestaurantComponent,
+    BookingComponent
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,40 @@
 <div class="home">
-    <div class="home-bg">
-        <img class="bg" src="https://pbs.twimg.com/profile_banners/3048504566/1505207271/1500x500" alt="">
+  <div class="home-bg">
+    <div class="bg" style="background-image:url(/assets/home-bg.png)"></div>
+  </div>
+</div>
+
+<div class="restaurants">
+  <div class="restaurant-header">
+    <h3>
+      Рестораны
+    </h3>
+  </div>
+  <div class="restaurant" *ngFor="let restaurant of restaurants">
+    <div class="restaurant-left">
+      <div class="image">
+        <img class="bg" [src]="'https://localhost:5001' + '/files/' + restaurant.fileName" alt="" height="200"
+          width="200">
+      </div>
+      <div class="item">
+        <h4>Название ресторана: {{restaurant.name}}</h4>
+        <span>Описание: {{restaurant.description}}</span>
+        <div class="item-address">Адрес: {{restaurant.addres}}</div>
+      </div>
     </div>
+    <div class="restaurant-right">
+      <div>
+        <div>19,200</div>
+        <div>посетителей</div>
+      </div>
+      <div>
+        <div>19,200</div>
+        <div>отзывов
+        </div>
+      </div>
+      <div class="btn">
+        <button [routerLink]="['/booking']" >Забронировать</button>
+      </div>
+    </div>
+  </div>
 </div>

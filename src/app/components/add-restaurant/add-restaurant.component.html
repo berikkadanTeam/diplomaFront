@@ -2,16 +2,37 @@
   <h1>Добавить ресторан</h1>
   <div>
     <div>Название ресторана</div>
-    <input type="text" />
+    <input type="text" [(ngModel)]="restaurant.Name" />
+  </div>
+  <div>
+    <div>Адрес</div>
+    <input type="text" [(ngModel)]="restaurant.Addres" />
   </div>
   <div>
     <div>Описание</div>
-    <textarea name="" id="" cols="30" rows="10"></textarea>
+    <textarea name="" id="" cols="30" rows="10" [(ngModel)]="restaurant.Description"></textarea>
+  </div>
+
+  <div>
+    <div>Номер</div>
+    <input type="number" [(ngModel)]="restaurant.Number" placeholder="-"/>
+  </div>
+  <div>
+    <div>Кухня</div>
+    <textarea name="" id="" cols="30" rows="10" [(ngModel)]="restaurant.Kitchen"></textarea>
   </div>
   <div>
     <div>Доставка</div>
-    <p><input name="" type="radio" value="" /> Есть</p>
-    <p><input name="" type="radio" value="" /> Нет</p>
+    <p><input name="selector" [(ngModel)]="restaurant.Delivery" type="radio" [value]="true"/> Есть</p>
+    <p><input name="selector" [(ngModel)]="restaurant.Delivery" type="radio" [value]="false"> Нет</p>
+  </div>
+  <div>
+    <div>Средний чек</div>
+    <input type="number" [(ngModel)]="restaurant.AvgCheck" placeholder="-"/>
+  </div>
+  <div>
+    <div>Мест</div>
+    <input type="number" [(ngModel)]="restaurant.Seats" placeholder="-"/>
   </div>
   <div>
     <select name="">
@@ -19,33 +40,23 @@
         {{ country.countryTitle }}
       </option>
     </select>
-    <select name="">
-      <option *ngFor="let city of cities" value="location.cityTitle">
+    <select name="" [(ngModel)]="restaurant.cityId">
+      <option *ngFor="let city of cities" [ngValue]="city.Id" [selected]="city.Id">
         {{ city.cityTitle }}
       </option>
     </select>
   </div>
-  <div><input type="file" /></div>
-  <div>
+  <div><input type="file" id="file" (change)="uploadAvatar($event.target.files)"></div>
+  <div *ngFor="let workDays of restaurant.WorkDay">
     <div>
-      <div>Понедельник</div>
-      <div>Понедельник</div>
-      <div>Понедельник</div>
-      <div>Понедельник</div>
-      <div>Понедельник</div>
-      <div>Понедельник</div>
-      <div>Понедельник</div>
+      <div>{{workDays.DayName}}</div>
     </div>
-    <select name="" id="">
-      <option value="">1</option>
-      <option value="">1</option>
-      <option value="">1</option>
-    </select>
-    <select name="" id="">
-      <option value="">1</option>
-      <option value="">1</option>
-      <option value="">1</option>
-    </select>
-    <input type="checkbox" />
+    <input type="time" [(ngModel)]="workDays.StartTime" >
+    <input type="time" [(ngModel)]="workDays.EndTime" >
   </div>
+  <div> <input type="checkbox" /></div>
+  <div>
+    <button (click)="setRestaurant()">Send</button>
+  </div>
+
 </div>
