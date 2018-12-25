@@ -1,0 +1,28 @@
+<div class="pre-header">
+</div>
+<div class="header">
+  <div>LOGO</div>
+  <div>
+    <nav>
+      <a [routerLink]="['']">Главная</a>
+      <a [routerLink]="['/booking']">Забронировать столик</a>
+      <a [routerLink]="['/delivery']">Доставка</a>
+    </nav>
+  </div>
+  <div style="display: flex;">
+    <a [routerLink]="['/sign']" *ngIf="user === null">
+      <button class="btn-header">
+        Войти/Регистрация
+      </button>
+    </a>
+    <a [routerLink]="['/add-restaurant']" *ngIf="user !== null">
+      Добавить ресторан
+    </a>
+    <a *ngIf="user !== null">
+      {{user.firstName}}
+    </a>
+    <div class="logout" (click)="logout()" *ngIf="user !== null">
+      Выйти
+    </div>
+  </div>
+</div>

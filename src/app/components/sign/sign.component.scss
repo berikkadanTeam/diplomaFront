@@ -1,0 +1,173 @@
+@import '~roboto-fontface/css/roboto/roboto-fontface.css';
+.sign {
+  box-sizing: border-box;
+
+  .sign-in {
+    display: flex;
+    flex-wrap: wrap;
+    .left {
+      height: 100vh;
+      width: 40%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      @media screen and (max-width: 767px) {
+        width: 100%;
+      }
+      .title{
+        position: relative;
+        width: 100%;
+        text-align: center;
+        h1{
+          margin-bottom: 100px;
+        }
+        .innner{
+          margin-bottom: 30px;
+        }
+      }
+      .form-group {
+        position: relative;
+        margin-bottom: 15px;
+        width: 40%;
+        text-align: center;
+        input:-webkit-autofill,
+        input:-webkit-autofill:hover,
+        input:-webkit-autofill:focus,
+        input:-webkit-autofill:active {
+          transition: background-color 5000s ease-in-out 0s;
+        }
+        input{
+          width: 100%;
+          line-height: 35px;
+          border-radius: 100px;
+          text-align: center;
+          font-size: 14px;
+          font-weight: 600;
+        }
+        .btn {
+          color: #ffffff;
+          border: 1px solid #1da1f2;
+          background: #1da1f2;
+          width: 90%;
+          line-height: 35px;
+          font-size: 14px;
+          font-weight: 600;
+          border-radius: 100px;
+        }
+      }
+      .regist{
+        .regist-in{
+          cursor: pointer;
+          color: #1da1f2;
+        }
+      }
+    }
+    .right {
+      height: 100vh;
+      width: 60%;
+      position: relative;
+      height: 100vh;
+      z-index: 0;
+
+      @media screen and (max-width: 767px) {
+        width: 100%;
+      }
+
+      .signin-bg {
+        background: url("/assets/signin.jpg") no-repeat center;
+        background-size: cover;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -5;
+      }
+    }
+  }
+  .sign-up {
+    display: flex;
+    flex-wrap: wrap;
+    .left {
+      height: 100vh;
+      width: 40%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      @media screen and (max-width: 767px) {
+        width: 100%;
+      }
+      .title{
+        position: relative;
+        width: 100%;
+        text-align: center;
+        h1{
+          margin-bottom: 100px;
+        }
+        .innner{
+          margin-bottom: 30px;
+        }
+      }
+      .form-group {
+        position: relative;
+        margin-bottom: 15px;
+        width: 40%;
+        text-align: center;
+        input:-webkit-autofill,
+        input:-webkit-autofill:hover,
+        input:-webkit-autofill:focus,
+        input:-webkit-autofill:active {
+          transition: background-color 5000s ease-in-out 0s;
+        }
+        input{
+          width: 100%;
+          line-height: 35px;
+          border-radius: 100px;
+          text-align: center;
+        }
+        .btn {
+          color: #ffffff;
+          border: 1px solid #1da1f2;
+          background: #1da1f2;
+          width: 90%;
+          line-height: 35px;
+          font-size: 14px;
+          font-weight: 600;
+          border-radius: 100px;
+        }
+      }
+      .regist{
+        .regist-in{
+          cursor: pointer;
+          color: #1da1f2;
+        }
+      }
+    }
+    .right {
+      height: 100vh;
+      width: 60%;
+      position: relative;
+      height: 100vh;
+      z-index: 0;
+
+      @media screen and (max-width: 767px) {
+        width: 100%;
+      }
+
+      .signin-bg {
+        background: url("/assets/signin.jpg") no-repeat center;
+        background-size: cover;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -5;
+      }
+    }
+  }
+}

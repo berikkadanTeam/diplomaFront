@@ -1,0 +1,57 @@
+<div class="sign">
+  <div class="sign-in" *ngIf="!signInUp">
+    <div class="left">
+      <div class="title">
+        <h1>Войдите в Bookme</h1>
+        <div class="innner">Введите электронный адрес и пароль</div>
+      </div>
+      <div class="form-group">
+        <input type="text" placeholder="Введите email" [(ngModel)]="user.username" />
+      </div>
+      <div class="form-group">
+        <input type="password" placeholder="Введите пароль" [(ngModel)]="user.password" />
+      </div>
+      <div class="form-group" (click)="auth()">
+        <button class="btn">Войти</button>
+      </div>
+      <div class="regist">
+        <div class="regist-in" (click)="sign()">Зарегистрироваться</div>
+      </div>
+    </div>
+    <div class="right">
+      <div class="signin-bg"></div>
+    </div>
+  </div>
+  <div class="sign-up" *ngIf="signInUp">
+    <div class="right">
+      <div class="signin-bg"></div>
+    </div>
+    <div class="left">
+      <div class="title">
+        <h1>Зарегистрируйтесь в Bookme</h1>
+        <div class="innner">Введите свои данные</div>
+      </div>
+      <div class="form-group">
+        <input type="text" placeholder="Введите email" [(ngModel)]="user.username" />
+      </div>
+      <div class="form-group">
+        <input type="password" placeholder="Введите пароль" [(ngModel)]="user.password" />
+      </div>
+      <div class="form-group">
+        <input type="text" placeholder="Введите имя" [(ngModel)]="user.firstName" />
+      </div>
+      <div class="form-group">
+        <input type="text" placeholder="Введите фамилию" [(ngModel)]="user.lastName" />
+      </div>
+      <div class="form-group">
+        <input type="text" placeholder="Место расположения" [(ngModel)]="user.location" />
+      </div>
+      <div class="form-group">
+        <button class="btn" (click)="signUp()">Зарегистрироваться</button>
+      </div>
+      <div class="regist">
+          <div class="regist-in" (click)="sign()">Войти</div>
+      </div>
+    </div>
+  </div>
+</div>
