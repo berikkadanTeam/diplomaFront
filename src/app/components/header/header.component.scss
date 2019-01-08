@@ -1,36 +1,27 @@
 .header {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  margin: 0 50px;
-  height: 50px;
+  justify-content: space-around;
   align-items: center;
-  border-bottom: 1px solid #e6ecf0;
+  flex-wrap: wrap;
+  border-bottom: 1px solid #66757f;
+  padding: 5px 0;
 
-  nav {
+  .menu {
     a {
-      padding: 10px 50px;
+      padding: 0 20px;
       color: #66757f;
       text-decoration: none;
     }
   }
 
-  .btn-header {
-    background-color: #48aae6;
-    color: #ffffff;
-    border: 1px solid #1da1f2;
-    border-radius: 100px;
-    cursor: pointer;
-    font-size: 14px;
-    font-weight: bold;
-    line-height: 20px;
-    padding: 6px 16px;
-    position: relative;
-    text-align: center;
-    white-space: nowrap;
-    &:hover {
-        background-color: #1b95e0;
-        border-color: #1b95e0;
-    }
+  .sign-btns {
+    display: flex;
+    align-items: center;
+  }
+
+  .li {
+    padding-right: 10px;
+    padding-left: 10px;
+
   }
 }

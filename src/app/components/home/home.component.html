@@ -4,37 +4,47 @@
   </div>
 </div>
 
-<div class="restaurants">
-  <div class="restaurant-header">
-    <h3>
-      Рестораны
-    </h3>
-  </div>
-  <div class="restaurant" *ngFor="let restaurant of restaurants">
-    <div class="restaurant-left">
-      <div class="image">
-        <img class="bg" [src]="'http://5.23.55.101' + '/Files/' + restaurant.fileName" alt="" height="200"
-          width="200">
-      </div>
-      <div class="item">
-        <h4>Название ресторана: {{restaurant.name}}</h4>
-        <span>Описание: {{restaurant.description}}</span>
-        <div class="item-address">Адрес: {{restaurant.addres}}</div>
-      </div>
+<div class="main">
+  <div class="main-left">
+    <div class="restaurant-header">
+      <h3>
+        Рестораны
+      </h3>
     </div>
-    <div class="restaurant-right">
-      <div>
-        <div>19,200</div>
-        <div>посетителей</div>
-      </div>
-      <div>
-        <div>19,200</div>
-        <div>отзывов
+    <div class="restaurants">
+      <div class="restaurant" *ngFor="let restaurant of restaurants">
+        <div class="image">
+          <img class="bg" [src]="'https://localhost:44343/' + '/files/' + restaurant.fileName" alt="" height="150px"
+            width="250px">
+        </div>
+        <div class="item">
+          <h4>Название ресторана: {{restaurant.name}}</h4>
+          <span>Описание: {{restaurant.description}}</span>
+          <div class="item-address">Адрес: {{restaurant.addres}}</div>
+        </div>
+        <div class="item-1">
+          <div class="info">
+            <div>{{restaurant.avgCheck}}</div>
+            <div>Средний чек</div>
+          </div>
+          <div class="info">
+            <div>{{restaurant.seats}}</div>
+            <div>Посадочных мест
+            </div>
+          </div>
+          <div div class="info">
+            <button class="btn-b" [routerLink]="['/booking']">Забронировать</button>
+          </div>
         </div>
       </div>
-      <div class="btn">
-        <button [routerLink]="['/booking']" >Забронировать</button>
-      </div>
+    </div>
+  </div>
+  <div class="main-right">
+    <div class="news-header">
+      <h3>Акции и новости</h3>
+    </div>
+    <div>
+        <h4></h4>
     </div>
   </div>
 </div>

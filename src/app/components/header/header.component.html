@@ -1,30 +1,26 @@
 <div class="pre-header">
 </div>
 <div class="header">
-  <div>LOGO</div>
-  <div>
-    <nav>
-      <a [routerLink]="['']">Главная</a>
-      <a [routerLink]="['/booking']">Забронировать столик</a>
-      <a [routerLink]="['/delivery']">Доставка</a>
-    </nav>
+  <div class="logo">
+    <img src="/assets/logo.png" alt="" height="40px" width="40px">
+  </div>
+  <div class="menu">
+    <a class="li" class="" [routerLink]="['']">Главная</a>
+    <a class="li" [routerLink]="['/booking']">Забронировать</a>
+    <a class="li" [routerLink]="['/delivery']">Доставка</a>
   </div>
   <div class="sign-btns">
-    <a [routerLink]="['/sign']" *ngIf="user === null">
-      <button class="btn-header">
-        Войти/Регистрация
-      </button>
-    </a>
-    <a [routerLink]="['/add-restaurant']" *ngIf="user !== null">
-      <button class="btn-header">
-        Добавить ресторан
-      </button>
-    </a>
-    <a *ngIf="user !== null">
+    <button class="btn-b li" [routerLink]="['/sign']" *ngIf="user === null">
+      Войти/Регистрация
+    </button>
+    <button class="btn-b li" [routerLink]="['/add-restaurant']" *ngIf="user !== null">
+      Добавить ресторан
+    </button>
+    <div  class="li" *ngIf="user !== null">
       {{user.firstName}}
-    </a>
-    <div class="logout" (click)="logout()" *ngIf="user !== null">
-      Выйти
     </div>
+    <a class="logout li" (click)="logout()" *ngIf="user !== null">
+      Выйти
+    </a>
   </div>
 </div>

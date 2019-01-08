@@ -3,13 +3,34 @@
 html,
 body {
   height: 100%;
+  width: 100%;
 }
 
 * {
   padding: 0;
   margin: 0;
 }
-body {
-    font-family: 'Roboto';
 
+body {
+  font-family: 'Roboto';
+
+  .btn-b {
+    background-color: #48aae6;
+    color: #ffffff;
+    border: 1px solid #1da1f2;
+    border-radius: 100px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 20px;
+    padding: 6px 16px;
+    position: relative;
+    text-align: center;
+    white-space: nowrap;
+
+    &:hover {
+      background-color: #1b95e0;
+      border-color: #1b95e0;
+    }
   }
+}
