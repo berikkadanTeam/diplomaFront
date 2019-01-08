@@ -9,14 +9,16 @@
       <a [routerLink]="['/delivery']">Доставка</a>
     </nav>
   </div>
-  <div style="display: flex;">
+  <div class="sign-btns">
     <a [routerLink]="['/sign']" *ngIf="user === null">
       <button class="btn-header">
         Войти/Регистрация
       </button>
     </a>
     <a [routerLink]="['/add-restaurant']" *ngIf="user !== null">
-      Добавить ресторан
+      <button class="btn-header">
+        Добавить ресторан
+      </button>
     </a>
     <a *ngIf="user !== null">
       {{user.firstName}}
