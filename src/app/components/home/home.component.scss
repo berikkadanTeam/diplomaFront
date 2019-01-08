@@ -6,9 +6,6 @@
   &-left {
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
     width: 60%;
-    @media screen and (max-width: 767px) {
-        width: 100%;
-      }
 
     .restaurant-header {
       margin-bottom: 50px
@@ -17,15 +14,23 @@
     .restaurants {
       .restaurant {
         display: flex;
-        .image {
-        }
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 50px;
+        padding: 20px;
+
+        .image {}
 
         .item {
+          width: 40%;
         }
 
         .item-1 {
-          .info {
-           }
+          display: flex;
+          width: 20%;
+
+          .info {}
 
         }
       }
@@ -38,14 +43,54 @@
     width: 35%;
     margin-right: 25px;
     position: relative;
-    @media screen and (max-width: 767px) {
-        width: 100%;
-      }
+
     .news-header {
       border-bottom: 1px solid #66757f;
       padding: 25px;
 
     }
 
+  }
+}
+
+
+@media only screen and (max-width: 600px) {
+  .main {
+    &-left {
+      width: 100%;
+
+      .restaurants {
+        .restaurant {
+          justify-content: center;
+
+          
+        .item {
+            width: 250px;
+          }
+  
+          .item-1 {
+            display: flex;
+            width: 250px;
+  
+            .info {}
+  
+          }
+          .block-btn {
+            .btn-b {
+              width: 250px;
+            }
+          }
+
+
+        }
+      }
+
+    }
+
+
+
+    &-right {
+      width: 100%
+    }
   }
 }
