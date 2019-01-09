@@ -8,23 +8,30 @@
     <div class="name">Адрес</div>
     <input type="text" [(ngModel)]="restaurant.Addres" />
   </div>
-  <div class="form-control">
+  <div class="">
     <div class="name">Описание</div>
-    <textarea name="" id="" cols="60" rows="10" [(ngModel)]="restaurant.Description"></textarea>
+    <textarea name="" id="" cols="45" rows="10" [(ngModel)]="restaurant.Description"></textarea>
   </div>
 
   <div class="form-control">
     <div class="name">Номер</div>
     <input type="number" [(ngModel)]="restaurant.Number" placeholder="-" />
   </div>
-  <div class="form-control">
+  <div class="">
     <div class="name">Кухня</div>
-    <textarea name="" id="" cols="60" rows="10" [(ngModel)]="restaurant.Kitchen"></textarea>
+    <textarea name="" id="" cols="45" rows="10" [(ngModel)]="restaurant.Kitchen"></textarea>
   </div>
-  <div>
+  <div class="delivery">
     <div class="name">Доставка</div>
-    <p><input name="selector" [(ngModel)]="restaurant.Delivery" type="radio" [value]="true" /> Есть</p>
-    <p><input name="selector" [(ngModel)]="restaurant.Delivery" type="radio" [value]="false"> Нет</p>
+    <div class="radio">
+      <input id="radio-1" name="selector" [(ngModel)]="restaurant.Delivery" type="radio" [value]="true">
+      <label for="radio-1" class="radio-label">Есть</label>
+    </div>
+  
+    <div class="radio">
+      <input id="radio-2" name="selector" [(ngModel)]="restaurant.Delivery" type="radio" [value]="false" >
+      <label  for="radio-2" class="radio-label">Нет</label>
+    </div>
   </div>
   <div class="form-control">
     <div class="name">Средний чек</div>
@@ -46,7 +53,9 @@
       </option>
     </select>
   </div>
-  <div><input type="file" id="file" (change)="uploadAvatar($event.target.files)"></div>
+  <div class="form-file">
+    <input  class="foo" type="file" id="file" (change)="uploadAvatar($event.target.files)">
+  </div>
   <div  class="form-control-time" *ngFor="let workDays of restaurant.WorkDay">
     <div>
       <div>{{workDays.DayName}}</div>

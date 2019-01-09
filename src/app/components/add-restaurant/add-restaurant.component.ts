@@ -30,7 +30,7 @@ export class AddRestaurantComponent implements OnInit {
       Addres: '',
       Number: 0,
       Kitchen: '',
-      Delivery: false,
+      Delivery: true,
       AvgCheck: 0,
       Seats: 0,
       Description: '',
