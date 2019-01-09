@@ -1,3 +1,4 @@
+import { DeliveryComponent } from './components/delivery/delivery.component';
 import { BookingComponent } from './components/booking/booking.component';
 import { AddRestaurantComponent } from './components/add-restaurant/add-restaurant.component';
 import { HomeComponent } from './components/home/home.component';
@@ -18,6 +19,9 @@ const routes: Routes = [
   },
   {
     path: 'booking', component: BookingComponent
+  },
+  {
+    path: 'delivery', component: DeliveryComponent
   },
 ];
 

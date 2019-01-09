@@ -14,12 +14,12 @@
     <div class="restaurants">
       <div class="restaurant" *ngFor="let restaurant of restaurants">
         <div class="image">
-          <img class="bg" [src]="'https://localhost:44343/' + '/files/' + restaurant.fileName" alt="" height="150px"
+          <img class="bg" [src]="'https://localhost:5001/' + '/files/' + restaurant.fileName" alt="" height="150px"
             width="250px">
         </div>
         <div class="item">
           <h4>Название ресторана: {{restaurant.name}}</h4>
-          <span>Описание: {{restaurant.description}}</span>
+          <div class="description">Описание: {{restaurant.description}}</div>
           <div class="item-address">Адрес: {{restaurant.addres}}</div>
         </div>
         <div class="item-1">
@@ -35,6 +35,7 @@
         </div>
         <div class="block-btn">
           <button class="btn-b" [routerLink]="['/booking']">Забронировать</button>
+          <button class="btn-b" [routerLink]="['/delivery']">Доставка</button>
         </div>
       </div>
     </div>
