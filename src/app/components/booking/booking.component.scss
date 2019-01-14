@@ -36,21 +36,26 @@
   .booking-process {
     .booking-info {
       display: flex;
+
       .book {
         width: 50%;
 
-        .form-control {
-          width: 250px;
-          margin-bottom: 10px;
+        .book-in {
+          padding: 50px;
 
-          .name {
+          .form-control {
+            width: 250px;
+            margin-bottom: 10px;
+
+            .name {
+              margin-bottom: 10px;
+            }
+          }
+
+          .form-file {
+            width: 250px;
             margin-bottom: 10px;
           }
-        }
-
-        .form-file {
-          width: 250px;
-          margin-bottom: 10px;
         }
       }
 
@@ -58,15 +63,14 @@
         width: 50%;
 
         .area {
-          border: 1px solid #BADA55;
+          border: 1px solid #48aae6;
           height: 400px;
 
           .box {
-            background: #BADA55;
-            border: 1px solid black;
+            background: #48aae6;
             padding: 10px 20px;
             display: inline-block;
-
+            color: white;
             &.dragging {
               background: coral;
             }
