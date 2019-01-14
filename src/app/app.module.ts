@@ -17,6 +17,8 @@ import { ContentComponent } from './components/content/content.component';
 import { DeliveryComponent } from './components/delivery/delivery.component';
 import { AddRestaurantComponent } from './components/add-restaurant/add-restaurant.component';
 import { BookingComponent } from './components/booking/booking.component';
+import { DraggableModule } from './shared/directives/draggable/draggable.module';
+
 
 @NgModule({
   declarations: [
@@ -28,7 +30,7 @@ import { BookingComponent } from './components/booking/booking.component';
     ContentComponent,
     DeliveryComponent,
     AddRestaurantComponent,
-    BookingComponent
+    BookingComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,6 +41,7 @@ import { BookingComponent } from './components/booking/booking.component';
     ReactiveFormsModule,
     Ng2SearchPipeModule,
     HttpClientModule,
+    DraggableModule
   ],
   providers: [
     ServerService,

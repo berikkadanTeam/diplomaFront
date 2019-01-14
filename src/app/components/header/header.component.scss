@@ -6,6 +6,11 @@
   border-bottom: 1px solid #66757f;
   padding: 5px 0;
 
+  .logo{
+    img{
+      cursor: pointer;
+    }
+  }
   .menu {
     a {
       padding: 0 20px;

@@ -12,16 +12,16 @@ const routes: Routes = [
     path: '', component: MainComponent, children: [
       { path: '', component: HomeComponent },
       { path: 'add-restaurant', component: AddRestaurantComponent },
+      {
+        path: 'booking', component: BookingComponent
+      },
+      {
+        path: 'delivery', component: DeliveryComponent
+      },
     ]
   },
   {
     path: 'sign', component: SignComponent
-  },
-  {
-    path: 'booking', component: BookingComponent
-  },
-  {
-    path: 'delivery', component: DeliveryComponent
   },
 ];
 
