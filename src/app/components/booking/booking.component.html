@@ -38,7 +38,6 @@
             <div class="name">Выберите день и время</div>
             <input type="date" name="calendar">
             <input type="time">
-            <input type="time">
           </div>
           <div class="form-textarea">
             <div class="name">Пожелания</div>
@@ -64,10 +63,18 @@
           <div class="box" (emitPosition)="onChanged($event, i)" appMovable *ngFor="let trapped of trappedBoxes; let i = index"
             [xx]="trapped.x" [yy]="trapped.y">{{trapped.name}}</div>
         </div>
+        <div>
+          <div *ngFor="let add of addObjects">
+            <div>{{add.name}}</div>
+            <div *ngFor="let object of add.objects">
+              <div [ngStyle]="{'font-size':'14px', 'font-family':'Segoe Print'}">{{object.name}}</div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    <div>
-      <button class="btn-b">Подтвердить</button>
+    <div class="accept-btn">
+      <button class="btn-b" (click)="acceptBooking()">Подтвердить</button>
     </div>
   </div>
 </div>

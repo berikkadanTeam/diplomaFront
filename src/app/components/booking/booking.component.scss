@@ -4,6 +4,7 @@
   .restaurant {
     display: flex;
     justify-content: space-around;
+    margin-bottom: 100px;
 
     .slide {
       width: 50%;
@@ -43,18 +44,42 @@
         .book-in {
           padding: 50px;
 
+          h2 {
+            margin-bottom: 30px;
+          }
+
           .form-control {
             width: 250px;
-            margin-bottom: 10px;
+            margin-bottom: 30px;
 
             .name {
-              margin-bottom: 10px;
+              margin-bottom: 20px;
             }
           }
 
           .form-file {
             width: 250px;
-            margin-bottom: 10px;
+            margin-bottom: 30px;
+
+            .name {
+              margin-bottom: 20px;
+            }
+          }
+
+          .form-control-time {
+            margin-bottom: 30px;
+
+            .name {
+              margin-bottom: 20px;
+            }
+          }
+
+          .form-textarea {
+            margin-bottom: 30px;
+
+            .name {
+              margin-bottom: 20px;
+            }
           }
         }
       }
@@ -64,17 +89,61 @@
 
         .area {
           border: 1px solid #48aae6;
-          height: 400px;
-
+          height: 700px;
+          width: 700px;
           .box {
             background: #48aae6;
-            padding: 10px 20px;
+            // padding: 10px 20px;
             display: inline-block;
             color: white;
+
             &.dragging {
               background: coral;
             }
           }
+        }
+      }
+    }
+
+    .accept-btn {
+      display: flex;
+      justify-content: center;
+    }
+  }
+}
+
+
+@media only screen and (max-width: 1024px) {
+  .booking {
+
+    .restaurant {
+      flex-direction: column;
+
+      .slide {
+        width: 100%;
+
+        .restaurantImg {
+
+
+          .slideBtn {}
+        }
+      }
+
+      .info {
+        width: 100%;
+      }
+    }
+
+    .booking-process {
+      .booking-info {
+        flex-direction: column;
+
+        .book {
+          width: 100%;
+        }
+
+        .plan {
+          width: 100%;
         }
       }
     }

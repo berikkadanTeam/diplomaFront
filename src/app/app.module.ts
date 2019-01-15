@@ -18,6 +18,7 @@ import { DeliveryComponent } from './components/delivery/delivery.component';
 import { AddRestaurantComponent } from './components/add-restaurant/add-restaurant.component';
 import { BookingComponent } from './components/booking/booking.component';
 import { DraggableModule } from './shared/directives/draggable/draggable.module';
+import { FooterComponent } from './components/footer/footer.component';
 
 
 @NgModule({
@@ -31,6 +32,7 @@ import { DraggableModule } from './shared/directives/draggable/draggable.module'
     DeliveryComponent,
     AddRestaurantComponent,
     BookingComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,

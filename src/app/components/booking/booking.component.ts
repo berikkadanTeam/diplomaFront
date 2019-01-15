@@ -5,6 +5,17 @@ interface Position {
   x: number;
   y: number;
 }
+interface AddTypes {
+  name: string;
+  objects: AddObject [];
+}
+interface AddObject {
+  name: string;
+  width: number;
+  height: number;
+  countPerson: number;
+  tableNumber: number;
+}
 @Component({
   selector: 'app-booking',
   templateUrl: './booking.component.html',
@@ -21,20 +32,36 @@ export class BookingComponent implements OnInit {
   trappedBoxes: Position [] = [
     {
           name: '8 мест',
-          x: 678,
-          y: 66
+          x: 100,
+          y: 5
         },
         {
           name: '5 мест',
-          x: 129,
-          y: 66
+          x: 100,
+          y: 40
         }
-      ];
+  ];
 
+  addObjects: AddTypes [] = [];
   constructor() { }
 
   ngOnInit() {
-
+    this.addObjects = [
+      {name: 'Горизонтальные', objects: [
+        {  name: 'Стол для 2',
+          width: 50,
+          height: 25,
+          countPerson: 2,
+          tableNumber: 1}
+      ]},
+      {name: 'Вертикальные', objects: [
+        {  name: 'Стол для 2',
+          width: 25,
+          height: 50,
+          countPerson: 2,
+          tableNumber: 1}
+      ]}
+    ];
   }
 
 
@@ -59,6 +86,16 @@ export class BookingComponent implements OnInit {
     }
   }
   onChanged(increased, index) {
+
+  }
+  addObject() {
+    this.trappedBoxes.push( {
+      name: 'stol',
+      x: 0,
+      y: 0
+    });
+  }
+  acceptBooking() {
 
   }
 
