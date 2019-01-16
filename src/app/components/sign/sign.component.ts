@@ -46,6 +46,7 @@ export class SignComponent implements OnInit {
 
   signUp() {
     this.service.signUp(this.user).then(r => {
+      console.log(r);
       return this.router.navigate(['']);
     });
   }

@@ -2,30 +2,46 @@
   <div class="restaurant">
     <div class="slide">
       <div class="restaurantImg" *ngFor="let image of images; let i = index">
-        <button class="slideBtn" *ngIf="image.isShow === true" (click)="prev(i)">
-          < </button> <img *ngIf="image.isShow === true" src="{{image.path}}" alt="" width="600px" height="400px">
-            <button class="slideBtn" *ngIf="image.isShow === true" (click)="next(i + 1)"> > </button>
+        <button
+          class="slideBtn"
+          *ngIf="image.isShow === true"
+          (click)="prev(i)"
+        >
+          <
+        </button>
+        <img
+          *ngIf="image.isShow === true"
+          src="{{ image.path }}"
+          alt=""
+          width="600px"
+          height="400px"
+        />
+        <button
+          class="slideBtn"
+          *ngIf="image.isShow === true"
+          (click)="next(i + 1)"
+        >
+          >
+        </button>
       </div>
     </div>
     <div class="info">
       <h1>Ресторан Shurpa</h1>
       <div>
-        Описание: Ресторан Shurpa - это классические блюда азиатской и европейской кухни, а также вкусные чаи от лучших
-        Барменов города Алматы; Кухня на гриле (блюда из мяса будут готовить по особо вкусным рецептам). Уютное и
-        атмосферное заведение, куда непременно захочется вернуться вновь!
+        Описание: Ресторан Shurpa - это классические блюда азиатской и
+        европейской кухни, а также вкусные чаи от лучших Барменов города Алматы;
+        Кухня на гриле (блюда из мяса будут готовить по особо вкусным рецептам).
+        Уютное и атмосферное заведение, куда непременно захочется вернуться
+        вновь!
       </div>
-      <div>
-        Address: улица Кунаева 66
-      </div>
+      <div>Address: улица Кунаева 66</div>
     </div>
   </div>
   <div class="booking-process">
     <div class="booking-info">
       <div class="book">
         <div class="book-in">
-          <h2>
-            Забронировать
-          </h2>
+          <h2>Забронировать</h2>
           <div class="form-control">
             <div class="name">Номер</div>
             <input type="number" />
@@ -36,8 +52,7 @@
           </div>
           <div class="form-control-time">
             <div class="name">Выберите день и время</div>
-            <input type="date" name="calendar">
-            <input type="time">
+            <input type="date" name="calendar" /> <input type="time" />
           </div>
           <div class="form-textarea">
             <div class="name">Пожелания</div>
@@ -46,12 +61,17 @@
           <div class="">
             <div class="name">Предзаказ</div>
             <div class="radio">
-              <input id="radio-1" name="selector" type="radio" [value]="true">
+              <input id="radio-1" name="selector" type="radio" [value]="true" />
               <label for="radio-1" class="radio-label">Открыть меню</label>
             </div>
 
             <div class="radio">
-              <input id="radio-2" name="selector" type="radio" [value]="false">
+              <input
+                id="radio-2"
+                name="selector"
+                type="radio"
+                [value]="false"
+              />
               <label for="radio-2" class="radio-label">Не открытвать</label>
             </div>
           </div>
@@ -60,14 +80,28 @@
 
       <div class="plan">
         <div class="area" appMovableArea>
-          <div class="box" (emitPosition)="onChanged($event, i)" appMovable *ngFor="let trapped of trappedBoxes; let i = index"
-            [xx]="trapped.x" [yy]="trapped.y">{{trapped.name}}</div>
+          <div
+            class="box"
+            (emitPosition)="onChanged($event, i)"
+            appMovable
+            *ngFor="let trapped of trappedBoxes; let i = index"
+            [xx]="trapped.x"
+            [yy]="trapped.y"
+            [ngStyle]="{
+              width: trapped.width + 'px',
+              height: trapped.height + 'px'
+            }"
+          (click)="selectedTable(trapped.tableNumber)">
+            <div>{{ trapped.name }}</div>
+            <div>#{{ trapped.tableNumber }}</div>
+
+          </div>
         </div>
         <div>
           <div *ngFor="let add of addObjects">
-            <div>{{add.name}}</div>
+            <div>{{ add.name }}</div>
             <div *ngFor="let object of add.objects">
-              <div [ngStyle]="{'font-size':'14px', 'font-family':'Segoe Print'}">{{object.name}}</div>
+              <button (click)="addObject(object)">{{ object.name }}</button>
             </div>
           </div>
         </div>

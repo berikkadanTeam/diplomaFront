@@ -4,6 +4,10 @@ interface Position {
   name: string;
   x: number;
   y: number;
+  width: number;
+  height: number;
+  countPerson: number;
+  tableNumber: number;
 }
 interface AddTypes {
   name: string;
@@ -29,18 +33,7 @@ export class BookingComponent implements OnInit {
     // tslint:disable-next-line:max-line-length
     {path: 'https://www.gettyimages.ie/gi-resources/images/Homepage/Hero/UK/CMS_Creative_164657191_Kingfisher.jpg', isShow: false}
   ];
-  trappedBoxes: Position [] = [
-    {
-          name: '8 мест',
-          x: 100,
-          y: 5
-        },
-        {
-          name: '5 мест',
-          x: 100,
-          y: 40
-        }
-  ];
+  trappedBoxes: Position [] = [];
 
   addObjects: AddTypes [] = [];
   constructor() { }
@@ -49,17 +42,27 @@ export class BookingComponent implements OnInit {
     this.addObjects = [
       {name: 'Горизонтальные', objects: [
         {  name: 'Стол для 2',
-          width: 50,
-          height: 25,
+          width: 100,
+          height: 40,
           countPerson: 2,
-          tableNumber: 1}
+          tableNumber: 1},
+          {  name: 'Стол для 4',
+          width: 100,
+          height: 40,
+          countPerson: 4,
+          tableNumber: 2}
       ]},
       {name: 'Вертикальные', objects: [
         {  name: 'Стол для 2',
-          width: 25,
-          height: 50,
+          width: 40,
+          height: 100,
           countPerson: 2,
-          tableNumber: 1}
+          tableNumber: 1},
+          {  name: 'Стол для 4',
+          width: 40,
+          height: 100,
+          countPerson: 4,
+          tableNumber: 2},
       ]}
     ];
   }
@@ -88,15 +91,22 @@ export class BookingComponent implements OnInit {
   onChanged(increased, index) {
 
   }
-  addObject() {
+  addObject(object: AddObject) {
     this.trappedBoxes.push( {
-      name: 'stol',
+      name: object.name,
       x: 0,
-      y: 0
+      y: 0,
+      width: object.width,
+      height: object.height,
+      countPerson: object.countPerson,
+      tableNumber: object.tableNumber
     });
   }
   acceptBooking() {
 
+  }
+  selectedTable(tableNumber) {
+    console.log(tableNumber);
   }
 
 }
