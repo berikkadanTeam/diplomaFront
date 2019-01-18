@@ -1,25 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { interval } from 'rxjs';
-interface Position {
-  name: string;
-  x: number;
-  y: number;
-  width: number;
-  height: number;
-  countPerson: number;
-  tableNumber: number;
-}
-interface AddTypes {
-  name: string;
-  objects: AddObject [];
-}
-interface AddObject {
-  name: string;
-  width: number;
-  height: number;
-  countPerson: number;
-  tableNumber: number;
-}
+import { Positions } from 'src/app/shared/models/models';
+
 @Component({
   selector: 'app-booking',
   templateUrl: './booking.component.html',
@@ -33,38 +14,11 @@ export class BookingComponent implements OnInit {
     // tslint:disable-next-line:max-line-length
     {path: 'https://www.gettyimages.ie/gi-resources/images/Homepage/Hero/UK/CMS_Creative_164657191_Kingfisher.jpg', isShow: false}
   ];
-  trappedBoxes: Position [] = [];
+  trappedBoxes: Positions [] = [];
 
-  addObjects: AddTypes [] = [];
   constructor() { }
 
   ngOnInit() {
-    this.addObjects = [
-      {name: 'Горизонтальные', objects: [
-        {  name: 'Стол для 2',
-          width: 100,
-          height: 40,
-          countPerson: 2,
-          tableNumber: 1},
-          {  name: 'Стол для 4',
-          width: 100,
-          height: 40,
-          countPerson: 4,
-          tableNumber: 2}
-      ]},
-      {name: 'Вертикальные', objects: [
-        {  name: 'Стол для 2',
-          width: 40,
-          height: 100,
-          countPerson: 2,
-          tableNumber: 1},
-          {  name: 'Стол для 4',
-          width: 40,
-          height: 100,
-          countPerson: 4,
-          tableNumber: 2},
-      ]}
-    ];
   }
 
 
@@ -91,17 +45,7 @@ export class BookingComponent implements OnInit {
   onChanged(increased, index) {
 
   }
-  addObject(object: AddObject) {
-    this.trappedBoxes.push( {
-      name: object.name,
-      x: 0,
-      y: 0,
-      width: object.width,
-      height: object.height,
-      countPerson: object.countPerson,
-      tableNumber: object.tableNumber
-    });
-  }
+
   acceptBooking() {
 
   }
