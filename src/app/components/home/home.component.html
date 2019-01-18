@@ -33,7 +33,7 @@
           </div>
         </div>
         <div class="block-btn">
-          <button class="btn-b" [routerLink]="['/booking']">Забронировать</button>
+          <button class="btn-b" [routerLink]="['/restaurant', restaurant.id, 'booking']" routerLinkActive="active">Забронировать</button>
           <button class="btn-b" [routerLink]="['/delivery']">Доставка</button>
         </div>
       </div>

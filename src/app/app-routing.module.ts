@@ -13,10 +13,10 @@ const routes: Routes = [
       { path: '', component: HomeComponent },
       { path: 'add-restaurant', component: AddRestaurantComponent },
       {
-        path: 'booking', component: BookingComponent
-      },
-      {
-        path: 'delivery', component: DeliveryComponent
+        path: 'restaurant/:id', children: [
+          {path: 'booking', component: BookingComponent},
+          { path: 'delivery', component: DeliveryComponent},
+        ]
       },
     ]
   },
@@ -26,7 +26,9 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { useHash: true })],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
+
+

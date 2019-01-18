@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { interval } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
 interface Position {
   name: string;
   x: number;
@@ -36,9 +37,12 @@ export class BookingComponent implements OnInit {
   trappedBoxes: Position [] = [];
 
   addObjects: AddTypes [] = [];
-  constructor() { }
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.route.params.subscribe(params => {
+      console.log(params);
+    });
     this.addObjects = [
       {name: 'Горизонтальные', objects: [
         {  name: 'Стол для 2',
