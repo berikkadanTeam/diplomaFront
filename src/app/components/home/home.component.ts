@@ -14,11 +14,7 @@ export class HomeComponent implements OnInit {
   restaurants;
 
   api = environment.apiUrl;
-<<<<<<< HEAD
-  constructor(private service: ServerService, private route: ActivatedRoute ) { }
-=======
   constructor(private service: ServerService, private route: ActivatedRoute, ) { }
->>>>>>> cc48323ec340abdae0174e56fdd52efe64e31db4
 
   ngOnInit() {
     this.service.getRestaurants().then(res => {
