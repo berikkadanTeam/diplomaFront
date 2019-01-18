@@ -39,3 +39,24 @@ export class Countries {
   Id: number;
   countryTitle: string;
 }
+
+export interface Positions {
+  name: string;
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+  countPerson: number;
+  tableNumber: number;
+}
+export interface AddTypes {
+  name: string;
+  objects: AddObject [];
+}
+export interface AddObject {
+  name: string;
+  width: number;
+  height: number;
+  countPerson: number;
+  tableNumber: number;
+}

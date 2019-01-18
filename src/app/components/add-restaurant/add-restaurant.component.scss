@@ -1,21 +1,41 @@
-.add-res {
-  margin-left: 150px;
-  .form-control {
-    width: 250px;
-    margin-bottom: 10px;
 
-    .name {
+.add{
+  .add-res {
+    margin-left: 150px;
+    .form-control {
+      width: 250px;
+      margin-bottom: 10px;
+  
+      .name {
+        margin-bottom: 10px;
+      }
+    }
+  
+    .form-file {
+      width: 250px;
       margin-bottom: 10px;
     }
+    h1 {
+      margin-top: 20px;
+      margin-bottom: 30px;
+    }
   }
-
-  .form-file {
-    width: 250px;
-    margin-bottom: 10px;
-  }
-  h1 {
-    margin-top: 20px;
-    margin-bottom: 30px;
+  .plan {
+    .area {
+      border: 1px solid #48aae6;
+      height: 700px;
+      width: 700px;
+      .box {
+        background: #48aae6;
+        display: inline-block;
+        color: white;
+        text-align: center;
+  
+        &.dragging {
+          background: coral;
+        }
+      }
+    }
   }
 }
 

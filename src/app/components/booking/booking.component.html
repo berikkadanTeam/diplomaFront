@@ -97,14 +97,6 @@
 
           </div>
         </div>
-        <div>
-          <div *ngFor="let add of addObjects">
-            <div>{{ add.name }}</div>
-            <div *ngFor="let object of add.objects">
-              <button (click)="addObject(object)">{{ object.name }}</button>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
     <div class="accept-btn">

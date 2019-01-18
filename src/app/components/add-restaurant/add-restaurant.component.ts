@@ -1,4 +1,4 @@
-import { Restaurants } from './../../shared/models/models';
+import { Restaurants, Positions, AddTypes, AddObject } from './../../shared/models/models';
 import { Component, OnInit } from '@angular/core';
 import { ServerService } from 'src/app/shared/services/server.service';
 import { Cities, Countries } from 'src/app/shared/models/models';
@@ -14,6 +14,9 @@ export class AddRestaurantComponent implements OnInit {
   cities: Cities [] = [];
   countries: Countries [] = [];
   restaurant: Restaurants = null;
+  trappedBoxes: Positions [] = [];
+
+  addObjects: AddTypes [] = [];
   constructor(private service: ServerService,
     private router: Router) { }
 
@@ -46,6 +49,32 @@ export class AddRestaurantComponent implements OnInit {
       ],
       avatar: null
     };
+    this.addObjects = [
+      {name: 'Горизонтальные', objects: [
+        {  name: 'Стол для 2',
+          width: 100,
+          height: 40,
+          countPerson: 2,
+          tableNumber: 1},
+          {  name: 'Стол для 4',
+          width: 100,
+          height: 40,
+          countPerson: 4,
+          tableNumber: 2}
+      ]},
+      {name: 'Вертикальные', objects: [
+        {  name: 'Стол для 2',
+          width: 40,
+          height: 100,
+          countPerson: 2,
+          tableNumber: 1},
+          {  name: 'Стол для 4',
+          width: 40,
+          height: 100,
+          countPerson: 4,
+          tableNumber: 2},
+      ]}
+    ];
   }
   uploadAvatar(event: FileList) {
     this.restaurant.avatar = null;
@@ -54,6 +83,21 @@ export class AddRestaurantComponent implements OnInit {
   setRestaurant() {
     this.service.setRestaurant(this.restaurant).then(r => {
       return this.router.navigate(['']);
+    });
+  }
+  onChanged(increased, index) {
+
+  }
+
+  addObject(object: AddObject) {
+    this.trappedBoxes.push( {
+      name: object.name,
+      x: 0,
+      y: 0,
+      width: object.width,
+      height: object.height,
+      countPerson: object.countPerson,
+      tableNumber: object.tableNumber
     });
   }
 

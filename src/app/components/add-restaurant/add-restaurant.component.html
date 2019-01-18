@@ -1,69 +1,102 @@
-<div class="add-res">
-  <h1>Добавить ресторан</h1>
-  <div class="form-control">
-    <div class="name">Название ресторана</div>
-    <input type="text" [(ngModel)]="restaurant.Name" />
-  </div>
-  <div class="form-control">
-    <div class="name">Адрес</div>
-    <input type="text" [(ngModel)]="restaurant.Addres" />
-  </div>
-  <div class="form-textarea">
-    <div class="name">Описание</div>
-    <textarea name="" id="" cols="45" rows="10" [(ngModel)]="restaurant.Description"></textarea>
-  </div>
-
-  <div class="form-control">
-    <div class="name">Номер</div>
-    <input type="number" [(ngModel)]="restaurant.Number" placeholder="-" />
-  </div>
-  <div class="form-textarea">
-    <div class="name">Кухня</div>
-    <textarea name="" id="" cols="45" rows="10" [(ngModel)]="restaurant.Kitchen"></textarea>
-  </div>
-  <div class="delivery">
-    <div class="name">Доставка</div>
-    <div class="radio">
-      <input id="radio-1" name="selector" [(ngModel)]="restaurant.Delivery" type="radio" [value]="true">
-      <label for="radio-1" class="radio-label">Есть</label>
+<div class="add">
+  <div class="add-res">
+    <h1>Добавить ресторан</h1>
+    <div class="form-control">
+      <div class="name">Название ресторана</div>
+      <input type="text" [(ngModel)]="restaurant.Name" />
+    </div>
+    <div class="form-control">
+      <div class="name">Адрес</div>
+      <input type="text" [(ngModel)]="restaurant.Addres" />
+    </div>
+    <div class="form-textarea">
+      <div class="name">Описание</div>
+      <textarea name="" id="" cols="45" rows="10" [(ngModel)]="restaurant.Description"></textarea>
     </div>
   
-    <div class="radio">
-      <input id="radio-2" name="selector" [(ngModel)]="restaurant.Delivery" type="radio" [value]="false" >
-      <label  for="radio-2" class="radio-label">Нет</label>
+    <div class="form-control">
+      <div class="name">Номер</div>
+      <input type="number" [(ngModel)]="restaurant.Number" placeholder="-" />
     </div>
-  </div>
-  <div class="form-control">
-    <div class="name">Средний чек</div>
-    <input type="number" [(ngModel)]="restaurant.AvgCheck" placeholder="-" />
-  </div>
-  <div class="form-control">
-    <div class="name">Мест</div>
-    <input type="number" [(ngModel)]="restaurant.Seats" placeholder="-" />
-  </div>
-  <div class="form-control">
-    <select name="">
-      <option *ngFor="let country of countries" value="location.cityTitle">
-        {{ country.countryTitle }}
-      </option>
-    </select>
-    <select name="" [(ngModel)]="restaurant.cityId">
-      <option *ngFor="let city of cities" [ngValue]="city.Id" [selected]="city.Id">
-        {{ city.cityTitle }}
-      </option>
-    </select>
-  </div>
-  <div class="form-file">
-    <input  class="foo" type="file" id="file" (change)="uploadAvatar($event.target.files)">
-  </div>
-  <div  class="form-control-time" *ngFor="let workDays of restaurant.WorkDay">
+    <div class="form-textarea">
+      <div class="name">Кухня</div>
+      <textarea name="" id="" cols="45" rows="10" [(ngModel)]="restaurant.Kitchen"></textarea>
+    </div>
+    <div class="delivery">
+      <div class="name">Доставка</div>
+      <div class="radio">
+        <input id="radio-1" name="selector" [(ngModel)]="restaurant.Delivery" type="radio" [value]="true">
+        <label for="radio-1" class="radio-label">Есть</label>
+      </div>
+    
+      <div class="radio">
+        <input id="radio-2" name="selector" [(ngModel)]="restaurant.Delivery" type="radio" [value]="false" >
+        <label  for="radio-2" class="radio-label">Нет</label>
+      </div>
+    </div>
+    <div class="form-control">
+      <div class="name">Средний чек</div>
+      <input type="number" [(ngModel)]="restaurant.AvgCheck" placeholder="-" />
+    </div>
+    <div class="form-control">
+      <div class="name">Мест</div>
+      <input type="number" [(ngModel)]="restaurant.Seats" placeholder="-" />
+    </div>
+    <div class="form-control">
+      <select name="">
+        <option *ngFor="let country of countries" value="location.cityTitle">
+          {{ country.countryTitle }}
+        </option>
+      </select>
+      <select name="" [(ngModel)]="restaurant.cityId">
+        <option *ngFor="let city of cities" [ngValue]="city.Id" [selected]="city.Id">
+          {{ city.cityTitle }}
+        </option>
+      </select>
+    </div>
+    <div class="form-file">
+      <input  class="foo" type="file" id="file" (change)="uploadAvatar($event.target.files)">
+    </div>
+    <div  class="form-control-time" *ngFor="let workDays of restaurant.WorkDay">
+      <div>
+        <div>{{workDays.DayName}}</div>
+      </div>
+      <input type="time" [(ngModel)]="workDays.StartTime">
+      <input type="time" [(ngModel)]="workDays.EndTime">
+    </div>
     <div>
-      <div>{{workDays.DayName}}</div>
+      <button class="btn-b" (click)="setRestaurant()">Добавить</button>
     </div>
-    <input type="time" [(ngModel)]="workDays.StartTime">
-    <input type="time" [(ngModel)]="workDays.EndTime">
   </div>
-  <div>
-    <button class="btn-b" (click)="setRestaurant()">Добавить</button>
+  <div class="plan">
+    <div class="plan">
+      <div class="area" appMovableArea>
+        <div
+          class="box"
+          (emitPosition)="onChanged($event, i)"
+          appMovable
+          *ngFor="let trapped of trappedBoxes; let i = index"
+          [xx]="trapped.x"
+          [yy]="trapped.y"
+          [ngStyle]="{
+            width: trapped.width + 'px',
+            height: trapped.height + 'px'
+          }"
+       >
+          <div>{{ trapped.name }}</div>
+          <div>#{{ trapped.tableNumber }}</div>
+
+        </div>
+      </div>
+      <div>
+        <div *ngFor="let add of addObjects">
+          <div>{{ add.name }}</div>
+          <div *ngFor="let object of add.objects">
+            <button (click)="addObject(object)">{{ object.name }}</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
+  
 </div>
