@@ -78,5 +78,10 @@ export class ServerService extends BaseService {
     return this.get(this.api + url, {});
   }
 
+  getRestaurantTables(id: string) {
+    const url =  `Restaurants/GetTables?restarauntId=${id}`;
+    return this.get(this.api + url, {});
+  }
+
 
 }

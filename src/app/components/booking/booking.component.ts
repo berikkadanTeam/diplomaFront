@@ -1,5 +1,7 @@
+import { ServerService } from 'src/app/shared/services/server.service';
 import { Component, OnInit } from '@angular/core';
-import { Positions } from 'src/app/shared/models/models';
+import { Positions, AddObject } from 'src/app/shared/models/models';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-booking',
@@ -14,11 +16,18 @@ export class BookingComponent implements OnInit {
     // tslint:disable-next-line:max-line-length
     {path: 'https://www.gettyimages.ie/gi-resources/images/Homepage/Hero/UK/CMS_Creative_164657191_Kingfisher.jpg', isShow: false}
   ];
-  trappedBoxes: Positions [] = [];
-
-  constructor() { }
+  trappedBoxes: AddObject [] = [];
+  restaurantId: string;
+  constructor(private route: ActivatedRoute, private server: ServerService) { }
 
   ngOnInit() {
+    this.route.params.subscribe(params => {
+      this.restaurantId = params.id;
+    });
+    this.server.getRestaurantTables(this.restaurantId).then(res => {
+      this.trappedBoxes = res;
+      // console.log(res)
+    });
   }
 
 

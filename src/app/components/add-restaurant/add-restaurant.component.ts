@@ -14,7 +14,6 @@ export class AddRestaurantComponent implements OnInit {
   cities: Cities [] = [];
   countries: Countries [] = [];
   restaurant: Restaurants = null;
-  trappedBoxes: Positions [] = [];
 
   addObjects: AddTypes [] = [];
   constructor(private service: ServerService,
@@ -56,24 +55,24 @@ export class AddRestaurantComponent implements OnInit {
           width: 100,
           height: 40,
           countPerson: 2,
-          tableNumber: 1},
+          numberOfTable: 1},
           {  name: 'Стол для 4',
           width: 100,
           height: 40,
           countPerson: 4,
-          tableNumber: 2}
+          numberOfTable: 2}
       ]},
       {name: 'Вертикальные', objects: [
         {  name: 'Стол для 2',
           width: 40,
           height: 100,
           countPerson: 2,
-          tableNumber: 1},
+          numberOfTable: 1},
           {  name: 'Стол для 4',
           width: 40,
           height: 100,
           countPerson: 4,
-          tableNumber: 2},
+          numberOfTable: 2},
       ]}
     ];
   }

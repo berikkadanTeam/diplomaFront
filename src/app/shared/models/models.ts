@@ -56,7 +56,7 @@ export interface Positions {
   width: number;
   height: number;
   countPerson: number;
-  tableNumber: number;
+  numberOfTable: number;
 }
 export interface AddTypes {
   name: string;
@@ -66,6 +66,8 @@ export interface AddObject {
   name: string;
   width: number;
   height: number;
+  translateX?: number;
+  translateY?: number;
   countPerson: number;
-  tableNumber: number;
+  numberOfTable: number;
 }

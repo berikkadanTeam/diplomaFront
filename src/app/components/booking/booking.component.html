@@ -85,15 +85,15 @@
             (emitPosition)="onChanged($event, i)"
             appMovable
             *ngFor="let trapped of trappedBoxes; let i = index"
-            [xx]="trapped.x"
-            [yy]="trapped.y"
+            [xx]="trapped.translateX"
+            [yy]="trapped.translateY"
             [ngStyle]="{
               width: trapped.width + 'px',
               height: trapped.height + 'px'
             }"
-          (click)="selectedTable(trapped.tableNumber)">
-            <div>{{ trapped.name }}</div>
-            <div>#{{ trapped.tableNumber }}</div>
+          (click)="selectedTable(trapped.numberOfTable)">
+            <div>Стол для {{ trapped.countPerson }}</div>
+            <div>#{{ trapped.numberOfTable }}</div>
 
           </div>
         </div>
