@@ -22,8 +22,17 @@ export interface Restaurants {
   WorkDay: WorkDay[];
   avatar: File;
   src?: string;
+  tables?: Tables[];
 }
-
+export interface Tables {
+  // id?: number;
+  countPerson: number;
+  restaurantId?: string;
+  translateX: number;
+  translateY: number;
+  width: number;
+  height: number;
+}
 export interface WorkDay {
   DayName: string;
   StartTime: string;
@@ -51,7 +60,7 @@ export interface Positions {
 }
 export interface AddTypes {
   name: string;
-  objects: AddObject [];
+  objects: AddObject[];
 }
 export interface AddObject {
   name: string;

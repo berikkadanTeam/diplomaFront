@@ -47,7 +47,8 @@ export class AddRestaurantComponent implements OnInit {
         {DayName: 'Суббота', StartTime: '00:00', EndTime: '00:00'},
         {DayName: 'Воскресенье', StartTime: '00:00', EndTime: '00:00'},
       ],
-      avatar: null
+      avatar: null,
+      tables: []
     };
     this.addObjects = [
       {name: 'Горизонтальные', objects: [
@@ -86,18 +87,17 @@ export class AddRestaurantComponent implements OnInit {
     });
   }
   onChanged(increased, index) {
-
+    this.restaurant.tables[index].translateX = increased.x;
+    this.restaurant.tables[index].translateY = increased.y;
   }
 
   addObject(object: AddObject) {
-    this.trappedBoxes.push( {
-      name: object.name,
-      x: 0,
-      y: 0,
-      width: object.width,
-      height: object.height,
+    this.restaurant.tables.push( {
       countPerson: object.countPerson,
-      tableNumber: object.tableNumber
+      translateX: 0,
+      translateY: 0,
+      width: object.width,
+      height: object.height
     });
   }
 

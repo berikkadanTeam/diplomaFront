@@ -75,16 +75,15 @@
           class="box"
           (emitPosition)="onChanged($event, i)"
           appMovable
-          *ngFor="let trapped of trappedBoxes; let i = index"
-          [xx]="trapped.x"
-          [yy]="trapped.y"
+          *ngFor="let table of restaurant.tables; let i = index"
+          [xx]="table.translateX"
+          [yy]="table.translateY"
           [ngStyle]="{
-            width: trapped.width + 'px',
-            height: trapped.height + 'px'
+            width: table.width + 'px',
+            height: table.height + 'px'
           }"
        >
-          <div>{{ trapped.name }}</div>
-          <div>#{{ trapped.tableNumber }}</div>
+          <div>{{ table.countPerson }}</div>
 
         </div>
       </div>
