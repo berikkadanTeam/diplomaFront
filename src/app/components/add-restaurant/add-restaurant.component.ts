@@ -1,4 +1,4 @@
-import { Restaurants, Positions, AddTypes, AddObject } from './../../shared/models/models';
+import { Restaurants, Positions } from './../../shared/models/models';
 import { Component, OnInit } from '@angular/core';
 import { ServerService } from 'src/app/shared/services/server.service';
 import { Cities, Countries } from 'src/app/shared/models/models';
@@ -15,7 +15,7 @@ export class AddRestaurantComponent implements OnInit {
   countries: Countries [] = [];
   restaurant: Restaurants = null;
 
-  addObjects: AddTypes [] = [];
+  addObjects;
   constructor(private service: ServerService,
     private router: Router) { }
 
@@ -28,16 +28,16 @@ export class AddRestaurantComponent implements OnInit {
     });
 
     this.restaurant = {
-      Name: '',
-      Addres: '',
-      Number: 0,
-      Kitchen: '',
-      Delivery: true,
-      AvgCheck: 0,
-      Seats: 0,
-      Description: '',
+      name: '',
+      addres: '',
+      number: 0,
+      kitchen: '',
+      delivery: true,
+      avgCheck: 0,
+      seats: 0,
+      description: '',
       cityId: 0,
-      WorkDay: [
+      workDay: [
         {DayName: 'Понедельник', StartTime: '00:00', EndTime: '00:00'},
         {DayName: 'Вторник', StartTime: '00:00', EndTime: '00:00'},
         {DayName: 'Среда', StartTime: '00:00', EndTime: '00:00'},
@@ -90,7 +90,7 @@ export class AddRestaurantComponent implements OnInit {
     this.restaurant.tables[index].translateY = increased.y;
   }
 
-  addObject(object: AddObject) {
+  addObject(object) {
     this.restaurant.tables.push( {
       countPerson: object.countPerson,
       translateX: 0,

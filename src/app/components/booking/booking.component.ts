@@ -1,6 +1,6 @@
 import { ServerService } from 'src/app/shared/services/server.service';
 import { Component, OnInit } from '@angular/core';
-import { Positions, AddObject } from 'src/app/shared/models/models';
+import { Positions, Restaurants, BookingTable, Tables } from 'src/app/shared/models/models';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -16,17 +16,42 @@ export class BookingComponent implements OnInit {
     // tslint:disable-next-line:max-line-length
     {path: 'https://www.gettyimages.ie/gi-resources/images/Homepage/Hero/UK/CMS_Creative_164657191_Kingfisher.jpg', isShow: false}
   ];
-  trappedBoxes: AddObject [] = [];
+  restaurant: Restaurants;
   restaurantId: string;
+  bookingTable: BookingTable;
+  selectedTable: string;
   constructor(private route: ActivatedRoute, private server: ServerService) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.restaurantId = params.id;
     });
+
+    this.restaurant = {
+      name: '',
+      addres: '',
+      number: 0,
+      kitchen: '',
+      delivery: true,
+      avgCheck: 0,
+      seats: 0,
+      description: '',
+      cityId: 0,
+      workDay: [],
+      avatar: null,
+      tables: []
+    };
+    this.bookingTable = {
+      id: '',
+      date: '',
+      time: '',
+      comments: '',
+      tableId: '',
+      userId: null
+    };
     this.server.getRestaurantTables(this.restaurantId).then(res => {
-      this.trappedBoxes = res;
-      // console.log(res)
+      this.restaurant = res;
+      console.log(res);
     });
   }
 
@@ -56,10 +81,22 @@ export class BookingComponent implements OnInit {
   }
 
   acceptBooking() {
-
+    this.bookingTable.tableId = this.selectedTable;
+    this.server.setBookingTable(this.bookingTable).then(r => {
+      alert(r.status);
+    });
+    console.log(this.bookingTable);
   }
-  selectedTable(tableNumber) {
-    console.log(tableNumber);
+  selectTable(table: Tables) {
+    this.restaurant.tables.map(r => {
+      if (r !== table) {
+        r.isSelected = false;
+      }
+    });
+    table.isSelected = !table.isSelected;
+
+    this.selectedTable = table.id;
+
   }
 
 }

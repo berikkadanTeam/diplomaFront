@@ -26,15 +26,11 @@
       </div>
     </div>
     <div class="info">
-      <h1>Ресторан Shurpa</h1>
+      <h1>Ресторан "{{restaurant.name}}"</h1>
       <div>
-        Описание: Ресторан Shurpa - это классические блюда азиатской и
-        европейской кухни, а также вкусные чаи от лучших Барменов города Алматы;
-        Кухня на гриле (блюда из мяса будут готовить по особо вкусным рецептам).
-        Уютное и атмосферное заведение, куда непременно захочется вернуться
-        вновь!
+        Описание: {{restaurant.description}}
       </div>
-      <div>Address: улица Кунаева 66</div>
+      <div>Адрес: {{restaurant.addres}}</div>
     </div>
   </div>
   <div class="booking-process">
@@ -42,21 +38,21 @@
       <div class="book">
         <div class="book-in">
           <h2>Забронировать</h2>
-          <div class="form-control">
+          <!-- <div class="form-control">
             <div class="name">Номер</div>
-            <input type="number" />
-          </div>
-          <div class="form-control">
+            <input type="number"  [(ngModel)]="" />
+          </div> -->
+          <!-- <div class="form-control">
             <div class="name">Количество человек</div>
-            <input type="number" />
-          </div>
+            <input type="number" [(ngModel)]="bookingTa"/>
+          </div> -->
           <div class="form-control-time">
             <div class="name">Выберите день и время</div>
-            <input type="date" name="calendar" /> <input type="time" />
+            <input type="date" name="calendar" [(ngModel)]="bookingTable.date"/> <input type="time" [(ngModel)]="bookingTable.time"/>
           </div>
           <div class="form-textarea">
             <div class="name">Пожелания</div>
-            <textarea name="" id="" cols="45" rows="10"></textarea>
+            <textarea name="" id="" cols="45" rows="10" [(ngModel)]="bookingTable.comments"></textarea>
           </div>
           <div class="">
             <div class="name">Предзаказ</div>
@@ -84,14 +80,14 @@
             class="box"
             (emitPosition)="onChanged($event, i)"
             appMovable
-            *ngFor="let trapped of trappedBoxes; let i = index"
+            *ngFor="let trapped of restaurant.tables; let i = index"
             [xx]="trapped.translateX"
             [yy]="trapped.translateY"
             [ngStyle]="{
               width: trapped.width + 'px',
               height: trapped.height + 'px'
             }"
-          (click)="selectedTable(trapped.numberOfTable)">
+          (click)="selectTable(trapped)" [ngClass]="trapped.isSelected === true || trapped.reservTable === true? 'reserved':'' " >
             <div>Стол для {{ trapped.countPerson }}</div>
             <div>#{{ trapped.numberOfTable }}</div>
 

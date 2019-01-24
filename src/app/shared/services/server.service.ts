@@ -1,4 +1,5 @@
-import { UserData, Restaurants } from 'src/app/shared/models/models';
+import { BookingTable } from './../models/models';
+import { UserData, Restaurants, Tables } from 'src/app/shared/models/models';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
@@ -55,16 +56,16 @@ export class ServerService extends BaseService {
   // tslint:disable-next-line:max-line-length
   setRestaurant(restaurant: Restaurants) {
     const uri = 'Restaurants/SetRestaurant';
-    const workDay = JSON.stringify(restaurant.WorkDay);
+    const workDay = JSON.stringify(restaurant.workDay);
     const formData: FormData = new FormData();
-    formData.append('Name', restaurant.Name);
-    formData.append('Addres', restaurant.Addres);
-    formData.append('Number', restaurant.Number.toString());
-    formData.append('Kitchen', restaurant.Kitchen);
-    formData.append('Delivery', restaurant.Delivery.toString());
-    formData.append('AvgCheck', restaurant.AvgCheck.toString());
-    formData.append('Seats', restaurant.Seats.toString());
-    formData.append('Description', restaurant.Description);
+    formData.append('Name', restaurant.name);
+    formData.append('Addres', restaurant.addres);
+    formData.append('Number', restaurant.number.toString());
+    formData.append('Kitchen', restaurant.kitchen);
+    formData.append('Delivery', restaurant.delivery.toString());
+    formData.append('AvgCheck', restaurant.avgCheck.toString());
+    formData.append('Seats', restaurant.seats.toString());
+    formData.append('Description', restaurant.description);
     formData.append('cityId', restaurant.cityId.toString());
     formData.append('WorkDay', workDay);
     formData.append('FileToUpload', restaurant.avatar, restaurant.avatar.name);
@@ -79,9 +80,19 @@ export class ServerService extends BaseService {
   }
 
   getRestaurantTables(id: string) {
-    const url =  `Restaurants/GetTables?restarauntId=${id}`;
+    const url =  `Restaurants/GetRestaurant?restarauntId=${id}`;
     return this.get(this.api + url, {});
   }
 
+  setBookingTable(table: BookingTable) {
+    const uri = 'Restaurants/Booking';
+    const formData: FormData = new FormData();
+    formData.append('date', table.date);
+    formData.append('time', table.time);
+    formData.append('comments', table.comments);
+    formData.append('tableId', table.tableId);
+    formData.append('userId', table.userId);
 
+    return this.post(this.api + uri, formData);
+  }
 }

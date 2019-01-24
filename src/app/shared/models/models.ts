@@ -1,5 +1,6 @@
 import * as moment from 'moment';
 import _date = moment.unitOfTime._date;
+import { Time } from '@angular/common';
 
 export interface UserData {
   username: string;
@@ -10,28 +11,31 @@ export interface UserData {
 }
 
 export interface Restaurants {
-  Name: string;
-  Addres: string;
-  Number: number;
-  Kitchen: string;
-  Delivery: boolean;
-  AvgCheck: number;
-  Seats: number;
-  Description: string;
+  name: string;
+  addres: string;
+  number: number;
+  kitchen: string;
+  delivery: boolean;
+  avgCheck: number;
+  seats: number;
+  description: string;
   cityId: number;
-  WorkDay: WorkDay[];
+  workDay: WorkDay[];
   avatar: File;
   src?: string;
-  tables?: Tables[];
+  tables: Tables[];
 }
 export interface Tables {
-  // id?: number;
+  id?: string;
   countPerson: number;
   restaurantId?: string;
   translateX: number;
   translateY: number;
   width: number;
   height: number;
+  numberOfTable?: number;
+  reservTable?: boolean;
+  isSelected?: boolean;
 }
 export interface WorkDay {
   DayName: string;
@@ -58,16 +62,12 @@ export interface Positions {
   countPerson: number;
   numberOfTable: number;
 }
-export interface AddTypes {
-  name: string;
-  objects: AddObject[];
-}
-export interface AddObject {
-  name: string;
-  width: number;
-  height: number;
-  translateX?: number;
-  translateY?: number;
-  countPerson: number;
-  numberOfTable: number;
+
+export interface BookingTable {
+  id?: string;
+  date: any;
+  time: any;
+  comments: string;
+  tableId: string;
+  userId?: string;
 }

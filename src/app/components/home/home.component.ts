@@ -11,7 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
-  restaurants;
+  restaurants: Restaurants;
 
   api = environment.apiUrl;
   constructor(private service: ServerService, private route: ActivatedRoute, ) { }
