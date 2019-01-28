@@ -19,7 +19,7 @@ import { AddRestaurantComponent } from './components/add-restaurant/add-restaura
 import { BookingComponent } from './components/booking/booking.component';
 import { DraggableModule } from './shared/directives/draggable/draggable.module';
 import { FooterComponent } from './components/footer/footer.component';
-
+import { ResizableModule } from 'angular-resizable-element';
 
 @NgModule({
   declarations: [
@@ -43,7 +43,8 @@ import { FooterComponent } from './components/footer/footer.component';
     ReactiveFormsModule,
     Ng2SearchPipeModule,
     HttpClientModule,
-    DraggableModule
+    DraggableModule,
+    ResizableModule
   ],
   providers: [
     ServerService,

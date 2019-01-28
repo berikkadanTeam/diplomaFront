@@ -2,27 +2,11 @@
   <div class="restaurant">
     <div class="slide">
       <div class="restaurantImg" *ngFor="let image of images; let i = index">
-        <button
-          class="slideBtn"
-          *ngIf="image.isShow === true"
-          (click)="prev(i)"
-        >
-          <
-        </button>
-        <img
-          *ngIf="image.isShow === true"
-          src="{{ image.path }}"
-          alt=""
-          width="600px"
-          height="400px"
-        />
-        <button
-          class="slideBtn"
-          *ngIf="image.isShow === true"
-          (click)="next(i + 1)"
-        >
-          >
-        </button>
+        <button class="slideBtn" *ngIf="image.isShow === true" (click)="prev(i)">
+          < </button> <img *ngIf="image.isShow === true" src="{{ image.path }}" alt="" width="600px" height="400px" />
+          <button class="slideBtn" *ngIf="image.isShow === true" (click)="next(i + 1)">
+            >
+          </button>
       </div>
     </div>
     <div class="info">
@@ -35,59 +19,15 @@
   </div>
   <div class="booking-process">
     <div class="booking-info">
-      <div class="book">
-        <div class="book-in">
-          <h2>Забронировать</h2>
-          <!-- <div class="form-control">
-            <div class="name">Номер</div>
-            <input type="number"  [(ngModel)]="" />
-          </div> -->
-          <!-- <div class="form-control">
-            <div class="name">Количество человек</div>
-            <input type="number" [(ngModel)]="bookingTa"/>
-          </div> -->
-          <div class="form-control-time">
-            <div class="name">Выберите день и время</div>
-            <input type="date" name="calendar" [(ngModel)]="bookingTable.date"/> <input type="time" [(ngModel)]="bookingTable.time"/>
-          </div>
-          <div class="form-textarea">
-            <div class="name">Пожелания</div>
-            <textarea name="" id="" cols="45" rows="10" [(ngModel)]="bookingTable.comments"></textarea>
-          </div>
-          <div class="">
-            <div class="name">Предзаказ</div>
-            <div class="radio">
-              <input id="radio-1" name="selector" type="radio" [value]="true" />
-              <label for="radio-1" class="radio-label">Открыть меню</label>
-            </div>
-
-            <div class="radio">
-              <input
-                id="radio-2"
-                name="selector"
-                type="radio"
-                [value]="false"
-              />
-              <label for="radio-2" class="radio-label">Не открытвать</label>
-            </div>
-          </div>
-        </div>
-      </div>
-
       <div class="plan">
-        <div class="area" appMovableArea>
-          <div
-            class="box"
-            (emitPosition)="onChanged($event, i)"
-            appMovable
-            *ngFor="let trapped of restaurant.tables; let i = index"
-            [xx]="trapped.translateX"
-            [yy]="trapped.translateY"
-            [ngStyle]="{
-              width: trapped.width + 'px',
-              height: trapped.height + 'px'
-            }"
-          (click)="selectTable(trapped)" [ngClass]="trapped.isSelected === true || trapped.reservTable === true? 'reserved':'' " >
+        <h2>Забронировать</h2>
+        <div class="area" appMovableArea >
+          <div class="box" (emitPosition)="onChanged($event, i)" appMovable *ngFor="let trapped of restaurant.tables; let i = index"
+            [xx]="trapped.translateX" [yy]="trapped.translateY" [ngStyle]="{
+                  width: trapped.width + 'px',
+                  height: trapped.height + 'px'
+                }"
+            (click)="selectTable(trapped)" [ngClass]="trapped.isSelected === true || trapped.reservTable === true? 'reserved':'' ">
             <div>Стол для {{ trapped.countPerson }}</div>
             <div>#{{ trapped.numberOfTable }}</div>
 
@@ -95,6 +35,41 @@
         </div>
       </div>
     </div>
+    <div class="book">
+      <div class="book-in">
+
+        <!-- <div class="form-control">
+            <div class="name">Номер</div>
+            <input type="number"  [(ngModel)]="" />
+          </div> -->
+        <!-- <div class="form-control">
+            <div class="name">Количество человек</div>
+            <input type="number" [(ngModel)]="bookingTa"/>
+          </div> -->
+        <div class="form-control-time">
+          <div class="name">Выберите день и время</div>
+          <input type="date" name="calendar" [(ngModel)]="bookingTable.date" /> <input type="time" [(ngModel)]="bookingTable.time" />
+        </div>
+        <div class="form-textarea">
+          <div class="name">Пожелания</div>
+          <textarea name="" id="" cols="45" rows="10" [(ngModel)]="bookingTable.comments"></textarea>
+        </div>
+        <div class="">
+          <div class="name">Предзаказ</div>
+          <div class="radio">
+            <input id="radio-1" name="selector" type="radio" [value]="true" />
+            <label for="radio-1" class="radio-label">Открыть меню</label>
+          </div>
+
+          <div class="radio">
+            <input id="radio-2" name="selector" type="radio" [value]="false" />
+            <label for="radio-2" class="radio-label">Не открытвать</label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
     <div class="accept-btn">
       <button class="btn-b" (click)="acceptBooking()">Подтвердить</button>
     </div>

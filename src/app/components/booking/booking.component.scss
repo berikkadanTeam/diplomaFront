@@ -37,7 +37,7 @@
   .booking-process {
     .booking-info {
       display: flex;
-
+      flex-direction: column;
       .book {
         width: 50%;
 
@@ -152,3 +152,4 @@
     }
   }
 }
+

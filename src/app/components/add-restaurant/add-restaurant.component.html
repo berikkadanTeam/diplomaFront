@@ -13,7 +13,7 @@
       <div class="name">Описание</div>
       <textarea name="" id="" cols="45" rows="10" [(ngModel)]="restaurant.description"></textarea>
     </div>
-  
+
     <div class="form-control">
       <div class="name">Номер</div>
       <input type="number" [(ngModel)]="restaurant.number" placeholder="-" />
@@ -28,10 +28,10 @@
         <input id="radio-1" name="selector" [(ngModel)]="restaurant.delivery" type="radio" [value]="true">
         <label for="radio-1" class="radio-label">Есть</label>
       </div>
-    
+
       <div class="radio">
-        <input id="radio-2" name="selector" [(ngModel)]="restaurant.delivery" type="radio" [value]="false" >
-        <label  for="radio-2" class="radio-label">Нет</label>
+        <input id="radio-2" name="selector" [(ngModel)]="restaurant.delivery" type="radio" [value]="false">
+        <label for="radio-2" class="radio-label">Нет</label>
       </div>
     </div>
     <div class="form-control">
@@ -55,9 +55,9 @@
       </select>
     </div>
     <div class="form-file">
-      <input  class="foo" type="file" id="file" (change)="uploadAvatar($event.target.files)">
+      <input class="foo" type="file" id="file" (change)="uploadAvatar($event.target.files)">
     </div>
-    <div  class="form-control-time" *ngFor="let workDays of restaurant.workDay">
+    <div class="form-control-time" *ngFor="let workDays of restaurant.workDay">
       <div>
         <div>{{workDays.DayName}}</div>
       </div>
@@ -70,19 +70,14 @@
   </div>
   <div class="plan">
     <div class="plan">
-      <div class="area" appMovableArea>
-        <div
-          class="box"
-          (emitPosition)="onChanged($event, i)"
-          appMovable
-          *ngFor="let table of restaurant.tables; let i = index"
-          [xx]="table.translateX"
-          [yy]="table.translateY"
-          [ngStyle]="{
+      <div class="area" [ngStyle]="style" mwlResizable [validateResize]="validate" [resizeEdges]="{bottom: true, right: true, top: true, left: true}"
+        [enableGhostResize]="true" [resizeSnapGrid]="{left: 50, right: 50}" (resizeEnd)="onResizeEnd($event)"
+        appMovableArea>
+        <div class="box" (emitPosition)="onChanged($event, i)" appMovable *ngFor="let table of restaurant.tables; let i = index"
+          [xx]="table.translateX" [yy]="table.translateY" [ngStyle]="{
             width: table.width + 'px',
             height: table.height + 'px'
-          }"
-       >
+          }">
           <div>{{ table.countPerson }}</div>
 
         </div>
@@ -97,5 +92,5 @@
       </div>
     </div>
   </div>
-  
+
 </div>
