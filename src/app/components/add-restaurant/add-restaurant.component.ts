@@ -87,6 +87,7 @@ export class AddRestaurantComponent implements OnInit {
     });
   }
   onChanged(increased, index) {
+    console.log(increased);
     this.restaurant.tables[index].translateX = increased.x;
     this.restaurant.tables[index].translateY = increased.y;
   }
@@ -115,7 +116,6 @@ export class AddRestaurantComponent implements OnInit {
   }
 
   onResizeEnd(event: ResizeEvent): void {
-    console.log(event)
     this.style = {
       left: `${event.rectangle.left}px`,
       top: `${event.rectangle.top}px`,

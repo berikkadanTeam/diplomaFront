@@ -18,7 +18,7 @@ export class SignComponent implements OnInit {
   };
 
   signInUp = false;
-
+  error = '';
   constructor(private service: ServerService,
     private router: Router) { }
 
@@ -33,7 +33,10 @@ export class SignComponent implements OnInit {
            return this.router.navigate(['']);
         });
       }
-    });
+    },
+    (err => {
+      this.error = err.error.err[0];
+    }));
   }
 
   sign() {
@@ -46,8 +49,10 @@ export class SignComponent implements OnInit {
 
   signUp() {
     this.service.signUp(this.user).then(r => {
-      console.log(r);
-      return this.router.navigate(['']);
-    });
+      this.signInUp = false;
+    },
+    (err => {
+      console.log(err);
+    }));
   }
 }
