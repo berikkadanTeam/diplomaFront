@@ -29,6 +29,7 @@ export class AddRestaurantComponent implements OnInit {
     });
 
     this.restaurant = {
+      id: '',
       name: '',
       addres: '',
       number: 0,

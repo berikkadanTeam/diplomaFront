@@ -20,6 +20,7 @@ import { BookingComponent } from './components/booking/booking.component';
 import { DraggableModule } from './shared/directives/draggable/draggable.module';
 import { FooterComponent } from './components/footer/footer.component';
 import { ResizableModule } from 'angular-resizable-element';
+import { RestaurantAreaComponent } from './components/restaurant-area/restaurant-area.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { ResizableModule } from 'angular-resizable-element';
     AddRestaurantComponent,
     BookingComponent,
     FooterComponent,
+    RestaurantAreaComponent,
   ],
   imports: [
     BrowserModule,

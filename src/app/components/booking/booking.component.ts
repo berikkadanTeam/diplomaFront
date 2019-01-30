@@ -20,6 +20,7 @@ export class BookingComponent implements OnInit {
   restaurantId: string;
   bookingTable: BookingTable;
   selectedTable: string;
+  public style: object = {};
   constructor(private route: ActivatedRoute, private server: ServerService) { }
 
   ngOnInit() {
@@ -28,6 +29,7 @@ export class BookingComponent implements OnInit {
     });
 
     this.restaurant = {
+      id: '',
       name: '',
       addres: '',
       number: 0,
@@ -51,6 +53,12 @@ export class BookingComponent implements OnInit {
     };
     this.server.getRestaurantTables(this.restaurantId).then(res => {
       this.restaurant = res;
+      this.style = {
+        left: `${this.restaurant.area.left}px`,
+        top: `${this.restaurant.area.top}px`,
+        width: `${this.restaurant.area.width}px`,
+        height: `${this.restaurant.area.height}px`
+      };
       console.log(res);
     });
   }

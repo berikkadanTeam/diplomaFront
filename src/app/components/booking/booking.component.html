@@ -15,13 +15,14 @@
         Описание: {{restaurant.description}}
       </div>
       <div>Адрес: {{restaurant.addres}}</div>
+      <button [routerLink]="['/restaurant', restaurant.id, 'restaurantArea']">AA</button>
     </div>
   </div>
   <div class="booking-process">
     <div class="booking-info">
       <div class="plan">
         <h2>Забронировать</h2>
-        <div class="area" appMovableArea>
+        <div class="area" [ngStyle]="style" appMovableArea>
           <div class="box" (emitPosition)="onChanged($event, i)" *ngFor="let trapped of restaurant.tables; let i = index"
             [xx]="trapped.translateX" [yy]="trapped.translateY" [ngStyle]="{
                   width: trapped.width + 'px',

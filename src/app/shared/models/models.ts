@@ -11,6 +11,7 @@ export interface UserData {
 }
 
 export interface Restaurants {
+  id: string;
   name: string;
   addres: string;
   number: number;
