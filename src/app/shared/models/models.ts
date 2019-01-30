@@ -24,6 +24,7 @@ export interface Restaurants {
   avatar: File;
   src?: string;
   tables: Tables[];
+  area?: Area;
 }
 export interface Tables {
   id?: string;
@@ -70,4 +71,11 @@ export interface BookingTable {
   comments: string;
   tableId: string;
   userId?: string;
+}
+
+export interface Area {
+  top: number;
+  left: number;
+  width: number;
+  height: number;
 }

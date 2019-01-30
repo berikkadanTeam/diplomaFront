@@ -73,14 +73,13 @@
       <div class="area" [ngStyle]="style" mwlResizable [validateResize]="validate" [resizeEdges]="{bottom: true, right: true, top: true, left: true}"
         [enableGhostResize]="true" [resizeSnapGrid]="{left: 50, right: 50}" (resizeEnd)="onResizeEnd($event)"
         appMovableArea>
-        <div class="box" (emitPosition)="onChanged($event, i)" appMovable *ngFor="let table of restaurant.tables; let i = index"
+        <div class="box" (emitPosition)="onChanged($event, i)" *ngFor="let table of restaurant.tables; let i = index"
           [xx]="table.translateX" [yy]="table.translateY" [ngStyle]="{
             width: table.width + 'px',
             height: table.height + 'px'
-          }">
+          }" appMovable>
           <div>Стол для {{ table.countPerson }}</div>
           <div>#{{ table.numberOfTable }}</div>
-
         </div>
       </div>
       <div>

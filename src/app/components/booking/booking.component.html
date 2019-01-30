@@ -21,16 +21,16 @@
     <div class="booking-info">
       <div class="plan">
         <h2>Забронировать</h2>
-        <div class="area" appMovableArea >
-          <div class="box" (emitPosition)="onChanged($event, i)" appMovable *ngFor="let trapped of restaurant.tables; let i = index"
+        <div class="area" appMovableArea>
+          <div class="box" (emitPosition)="onChanged($event, i)" *ngFor="let trapped of restaurant.tables; let i = index"
             [xx]="trapped.translateX" [yy]="trapped.translateY" [ngStyle]="{
                   width: trapped.width + 'px',
                   height: trapped.height + 'px'
                 }"
-            (click)="selectTable(trapped)" [ngClass]="trapped.isSelected === true || trapped.reservTable === true? 'reserved':'' ">
+            (click)="selectTable(trapped)" [ngClass]="trapped.isSelected === true || trapped.reservTable === true? 'reserved':''"
+            appMovable>
             <div>Стол для {{ trapped.countPerson }}</div>
             <div>#{{ trapped.numberOfTable }}</div>
-
           </div>
         </div>
       </div>

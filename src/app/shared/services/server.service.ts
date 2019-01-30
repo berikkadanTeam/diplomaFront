@@ -70,6 +70,7 @@ export class ServerService extends BaseService {
     formData.append('WorkDay', workDay);
     formData.append('FileToUpload', restaurant.avatar, restaurant.avatar.name);
     formData.append('tables', JSON.stringify(restaurant.tables));
+    formData.append('area', JSON.stringify(restaurant.area));
 
     return this.post(this.api + uri, formData);
   }

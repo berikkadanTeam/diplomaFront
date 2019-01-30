@@ -122,5 +122,11 @@ export class AddRestaurantComponent implements OnInit {
       width: `${event.rectangle.width}px`,
       height: `${event.rectangle.height}px`
     };
+    this.restaurant.area = {
+      left: event.rectangle.left,
+      top: event.rectangle.top,
+      width: event.rectangle.width,
+      height: event.rectangle.height
+    };
   }
 }
