@@ -3,11 +3,13 @@ import _date = moment.unitOfTime._date;
 import { Time } from '@angular/common';
 
 export interface UserData {
-  username: string;
-  password: string;
+  id?: string;
+  username?: string;
+  password?: string;
   firstName?: string;
   lastName?: string;
   location?: string;
+  roles?: [];
 }
 
 export interface Restaurants {
@@ -38,11 +40,12 @@ export interface Tables {
   numberOfTable?: number;
   reservTable?: boolean;
   isSelected?: boolean;
+  name?: string;
 }
 export interface WorkDay {
-  DayName: string;
-  StartTime: string;
-  EndTime: string;
+  dayName: string;
+  startTime: string;
+  endTime: string;
 }
 
 export class Cities {

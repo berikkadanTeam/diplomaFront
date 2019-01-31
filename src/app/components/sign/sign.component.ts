@@ -10,6 +10,7 @@ import { UserData } from 'src/app/shared/models/models';
 })
 export class SignComponent implements OnInit {
   public user: UserData = {
+    id: '',
     username: '',
     password: '',
     firstName: '',
@@ -29,7 +30,9 @@ export class SignComponent implements OnInit {
       if (res) {
         localStorage.setItem('token', res.auth_token);
         this.service.getUserInfo(res.id).then(r => {
-          localStorage.setItem('user', JSON.stringify(r));
+          this.user = r;
+          this.user.id = res.id;
+          localStorage.setItem('user', JSON.stringify(this.user));
            return this.router.navigate(['']);
         });
       }

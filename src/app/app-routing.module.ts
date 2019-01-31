@@ -17,7 +17,7 @@ const routes: Routes = [
         path: 'restaurant/:id', children: [
           {path: 'booking', component: BookingComponent},
           { path: 'delivery', component: DeliveryComponent},
-          { path: 'restaurantArea', component: RestaurantAreaComponent},
+          { path: 'restaurantArea/:userId', component: RestaurantAreaComponent},
         ]
       },
     ]

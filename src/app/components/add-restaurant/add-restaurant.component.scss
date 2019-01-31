@@ -1,16 +1,15 @@
-
-.add{
+.add {
   .add-res {
     margin-left: 150px;
     .form-control {
       width: 250px;
       margin-bottom: 10px;
-  
+
       .name {
         margin-bottom: 10px;
       }
     }
-  
+
     .form-file {
       width: 250px;
       margin-bottom: 10px;
@@ -21,25 +20,42 @@
     }
   }
   .plan {
-    .area {
-      border: 1px solid #48aae6;
-      height: 700px;
-      width: 700px;
-      .box {
-        background: #48aae6;
-        display: inline-block;
-        color: white;
-        text-align: center;
-        position: absolute;
-        &.dragging {
-          background: coral;
+    .plan-area {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      .area {
+        border: 1px solid #48aae6;
+        height: 700px;
+        width: 700px;
+        margin-bottom: 50px;
+        .box {
+          background: #48aae6;
+          display: inline-block;
+          color: white;
+          text-align: center;
+          position: absolute;
+          &.dragging {
+            background: coral;
+          }
+        }
+      }
+    }
+    .tools {
+      display: flex;
+      flex-direction: column;
+      .tool-type {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        margin-bottom: 15px;
+        .tool-direction{
+          width: 200px;
         }
       }
     }
   }
 }
-
-
 
 @media only screen and (max-width: 375px) {
   .add-res {

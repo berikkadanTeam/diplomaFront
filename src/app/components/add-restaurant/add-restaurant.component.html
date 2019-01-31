@@ -59,17 +59,14 @@
     </div>
     <div class="form-control-time" *ngFor="let workDays of restaurant.workDay">
       <div>
-        <div>{{workDays.DayName}}</div>
+        <div>{{workDays.dayName}}</div>
       </div>
-      <input type="time" [(ngModel)]="workDays.StartTime">
-      <input type="time" [(ngModel)]="workDays.EndTime">
-    </div>
-    <div>
-      <button class="btn-b" (click)="setRestaurant()">Добавить</button>
+      <input type="time" [(ngModel)]="workDays.startTime">
+      <input type="time" [(ngModel)]="workDays.endTime">
     </div>
   </div>
   <div class="plan">
-    <div class="plan">
+    <div class="plan-area">
       <div class="area" [ngStyle]="style" mwlResizable [validateResize]="validate" [resizeEdges]="{bottom: true, right: true, top: true, left: true}"
         [enableGhostResize]="true" [resizeSnapGrid]="{left: 50, right: 50}" (resizeEnd)="onResizeEnd($event)"
         appMovableArea>
@@ -78,18 +75,21 @@
             width: table.width + 'px',
             height: table.height + 'px'
           }" appMovable>
-          <div>Стол для {{ table.countPerson }}</div>
+          <div>{{ table.name }}</div>
           <div>#{{ table.numberOfTable }}</div>
         </div>
       </div>
-      <div>
-        <div *ngFor="let add of addObjects">
-          <div>{{ add.name }}</div>
-          <div *ngFor="let object of add.objects">
-            <button (click)="addObject(object)">{{ object.name }}</button>
-          </div>
+    </div>
+    <div class="tools">
+      <div class="tool-type" *ngFor="let add of addObjects">
+        <div class="tool-direction">{{ add.name }}</div>
+        <div *ngFor="let object of add.objects">
+          <button class="btn-b" (click)="addObject(object)">{{ object.name }}</button>
         </div>
       </div>
+    </div>
+    <div>
+      <button class="btn-b" (click)="setRestaurant()">Добавить</button>
     </div>
   </div>
 

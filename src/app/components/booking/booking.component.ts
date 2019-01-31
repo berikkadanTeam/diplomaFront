@@ -1,6 +1,6 @@
 import { ServerService } from 'src/app/shared/services/server.service';
 import { Component, OnInit } from '@angular/core';
-import { Positions, Restaurants, BookingTable, Tables } from 'src/app/shared/models/models';
+import { Positions, Restaurants, BookingTable, Tables, UserData } from 'src/app/shared/models/models';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -9,7 +9,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./booking.component.scss']
 })
 export class BookingComponent implements OnInit {
-
+  user: UserData = null;
   images = [
     {path: 'https://wallpaperbrowse.com/media/images/soap-bubble-1958650_960_720.jpg', isShow: true},
     {path: 'https://wallpaperbrowse.com/media/images/img_fjords.jpg', isShow: false},
@@ -18,12 +18,11 @@ export class BookingComponent implements OnInit {
   ];
   restaurant: Restaurants;
   restaurantId: string;
-  bookingTable: BookingTable;
-  selectedTable: string;
-  public style: object = {};
   constructor(private route: ActivatedRoute, private server: ServerService) { }
 
   ngOnInit() {
+    const user = localStorage.getItem('user');
+    this.user = JSON.parse(user);
     this.route.params.subscribe(params => {
       this.restaurantId = params.id;
     });
@@ -43,23 +42,10 @@ export class BookingComponent implements OnInit {
       avatar: null,
       tables: []
     };
-    this.bookingTable = {
-      id: '',
-      date: '',
-      time: '',
-      comments: '',
-      tableId: '',
-      userId: null
-    };
+
     this.server.getRestaurantTables(this.restaurantId).then(res => {
       this.restaurant = res;
-      this.style = {
-        left: `${this.restaurant.area.left}px`,
-        top: `${this.restaurant.area.top}px`,
-        width: `${this.restaurant.area.width}px`,
-        height: `${this.restaurant.area.height}px`
-      };
-      console.log(res);
+      console.log(this.restaurant);
     });
   }
 
@@ -84,27 +70,6 @@ export class BookingComponent implements OnInit {
       this.images[index - 1].isShow = true;
     }
   }
-  onChanged(increased, index) {
 
-  }
-
-  acceptBooking() {
-    this.bookingTable.tableId = this.selectedTable;
-    this.server.setBookingTable(this.bookingTable).then(r => {
-      alert(r.status);
-    });
-    console.log(this.bookingTable);
-  }
-  selectTable(table: Tables) {
-    this.restaurant.tables.map(r => {
-      if (r !== table) {
-        r.isSelected = false;
-      }
-    });
-    table.isSelected = !table.isSelected;
-
-    this.selectedTable = table.id;
-
-  }
 
 }

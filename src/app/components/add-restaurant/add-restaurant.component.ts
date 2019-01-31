@@ -40,40 +40,60 @@ export class AddRestaurantComponent implements OnInit {
       description: '',
       cityId: 0,
       workDay: [
-        {DayName: 'Понедельник', StartTime: '00:00', EndTime: '00:00'},
-        {DayName: 'Вторник', StartTime: '00:00', EndTime: '00:00'},
-        {DayName: 'Среда', StartTime: '00:00', EndTime: '00:00'},
-        {DayName: 'Четверг', StartTime: '00:00', EndTime: '00:00'},
-        {DayName: 'Пятница', StartTime: '00:00', EndTime: '00:00'},
-        {DayName: 'Суббота', StartTime: '00:00', EndTime: '00:00'},
-        {DayName: 'Воскресенье', StartTime: '00:00', EndTime: '00:00'},
+        {dayName: 'Понедельник', startTime: '00:00', endTime: '00:00'},
+        {dayName: 'Вторник', startTime: '00:00', endTime: '00:00'},
+        {dayName: 'Среда', startTime: '00:00', endTime: '00:00'},
+        {dayName: 'Четверг', startTime: '00:00', endTime: '00:00'},
+        {dayName: 'Пятница', startTime: '00:00', endTime: '00:00'},
+        {dayName: 'Суббота', startTime: '00:00', endTime: '00:00'},
+        {dayName: 'Воскресенье', startTime: '00:00', endTime: '00:00'},
       ],
       avatar: null,
       tables: []
     };
     this.addObjects = [
       {name: 'Горизонтальные', objects: [
+        { name: 'Вход',
+          width: 50,
+          height: 20,
+          countPerson: 0,
+          numberOfTable: null},
         {  name: 'Стол для 2',
-          width: 100,
+          width: 40,
           height: 40,
           countPerson: 2,
           numberOfTable: 1},
           {  name: 'Стол для 4',
-          width: 100,
+          width: 80,
           height: 40,
           countPerson: 4,
-          numberOfTable: 2}
+          numberOfTable: 2},
+          {  name: 'Стол для 6',
+          width: 120,
+          height: 40,
+          countPerson: 6,
+          numberOfTable: 3}
       ]},
       {name: 'Вертикальные', objects: [
+        { name: 'Вход',
+          width: 20,
+          height: 50,
+          countPerson: 0,
+          numberOfTable: null},
         {  name: 'Стол для 2',
           width: 40,
-          height: 100,
+          height: 40,
           countPerson: 2,
           numberOfTable: 1},
           {  name: 'Стол для 4',
           width: 40,
-          height: 100,
+          height: 80,
           countPerson: 4,
+          numberOfTable: 2},
+          {  name: 'Стол для 6',
+          width: 40,
+          height: 120,
+          countPerson: 6,
           numberOfTable: 2},
       ]}
     ];
@@ -88,13 +108,13 @@ export class AddRestaurantComponent implements OnInit {
     });
   }
   onChanged(increased, index) {
-    console.log(increased);
     this.restaurant.tables[index].translateX = increased.x;
     this.restaurant.tables[index].translateY = increased.y;
   }
 
   addObject(object) {
     this.restaurant.tables.push( {
+      name: object.name,
       countPerson: object.countPerson,
       translateX: 0,
       translateY: 0,

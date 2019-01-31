@@ -19,10 +19,8 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.service.getRestaurants().then(res => {
       this.restaurants = res;
-      console.log( this.restaurants);
     });
     this.route.params.subscribe(params => {
-      console.log(params);
     });
   }
 

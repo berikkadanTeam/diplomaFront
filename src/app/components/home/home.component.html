@@ -14,7 +14,7 @@
     <div class="restaurants">
       <div class="restaurant" *ngFor="let restaurant of restaurants">
         <div class="image">
-          <img class="bg" [src]="'http://5.23.55.101/' + '/Files/' + restaurant.fileName" alt="" >
+          <img class="bg" [src]="'http://berikkadan.kz/' + '/Files/' + restaurant.fileName" alt="">
         </div>
         <div class="item">
           <h4>Название ресторана: {{restaurant.name}}</h4>
@@ -33,7 +33,7 @@
           </div>
         </div>
         <div class="block-btn">
-          <button class="btn-b" [routerLink]="['/restaurant', restaurant.id, 'booking']" >Забронировать</button>
+          <button class="btn-b" [routerLink]="['/restaurant', restaurant.id, 'booking']">Забронировать</button>
           <button class="btn-b" [routerLink]="['/delivery']">Доставка</button>
         </div>
       </div>
