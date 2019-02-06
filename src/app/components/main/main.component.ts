@@ -13,5 +13,9 @@ export class MainComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit() {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      return this.router.navigate(['']);
+    }
   }
 }

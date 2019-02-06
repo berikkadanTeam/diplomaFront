@@ -1,80 +1,111 @@
 .booking-process {
-    .booking-info {
-      display: flex;
-      flex-direction: column;
-      .book {
-        width: 50%;
+  display: flex;
+  flex-direction: column;
 
-        .book-in {
-          padding: 50px;
+  .booking-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 50px;
 
-          h2 {
-            margin-bottom: 30px;
-          }
+    .plan {
 
-          .form-control {
-            width: 250px;
-            margin-bottom: 30px;
-
-            .name {
-              margin-bottom: 20px;
-            }
-          }
-
-          .form-file {
-            width: 250px;
-            margin-bottom: 30px;
-
-            .name {
-              margin-bottom: 20px;
-            }
-          }
-
-          .form-control-time {
-            margin-bottom: 30px;
-
-            .name {
-              margin-bottom: 20px;
-            }
-          }
-
-          .form-textarea {
-            margin-bottom: 30px;
-
-            .name {
-              margin-bottom: 20px;
-            }
-          }
-        }
+      // width: 50%;
+      h1 {
+        margin-top: 30px;
+        margin-bottom: 30px;
       }
 
-      .plan {
-        // width: 50%;
+      .area {
+        border: 1px solid #48aae6;
+        height: 700px;
+        width: 700px;
 
-        .area {
-          border: 1px solid #48aae6;
-          height: 700px;
-          width: 700px;
-          .box {
-            background: #48aae6;
-            display: inline-block;
-            color: white;
-            text-align: center;
-            position: absolute;
+        .box {
+          background: #48aae6;
+          display: inline-block;
+          color: white;
+          text-align: center;
+          position: absolute;
 
-            &.dragging {
-              background: coral;
-            }
-          }
-          .reserved{
-            background:red;
+          &.dragging {
+            background: coral;
           }
         }
-      }
-    }
 
-    .accept-btn {
-      display: flex;
-      justify-content: center;
+        .reserved {
+          background: red;
+        }
+      }
     }
   }
+
+  .book {
+    display: flex;
+
+    .booking {
+      width: 50%;
+      display: flex;
+      justify-content: center;
+
+      .book-in {
+        display: flex;
+        flex-direction: column;
+
+        .form-textarea {
+          margin-bottom: 30px;
+
+          .name {
+            margin-bottom: 20px;
+            font-weight: 600;
+          }
+        }
+
+        .form-radio {
+          .name {
+            margin-bottom: 20px;
+            font-weight: 600;
+          }
+        }
+
+        .form-control-time {
+          margin-bottom: 30px;
+
+          .name {
+            margin-bottom: 20px;
+            font-weight: 600;
+          }
+        }
+
+      }
+    }
+
+    .book-full-info {
+      width: 50%;
+      display: flex;
+      justify-content: center;
+
+      .info-in {
+        display: flex;
+        flex-direction: column;
+        h1{
+          margin-bottom: 50px;
+        }
+        .item{
+          margin-bottom: 20px;
+          .title{
+            font-weight: 600;
+          }
+
+        }
+
+      }
+    }
+  }
+
+  .accept-btn {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 50px;
+  }
+}

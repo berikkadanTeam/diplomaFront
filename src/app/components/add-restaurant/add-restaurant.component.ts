@@ -1,4 +1,4 @@
-import { Restaurants, Positions } from './../../shared/models/models';
+import { Restaurants, Positions, DishType } from './../../shared/models/models';
 import { Component, OnInit } from '@angular/core';
 import { ServerService } from 'src/app/shared/services/server.service';
 import { Cities, Countries } from 'src/app/shared/models/models';
@@ -16,6 +16,8 @@ export class AddRestaurantComponent implements OnInit {
   countries: Countries [] = [];
   restaurant: Restaurants = null;
   addObjects;
+
+  dishType: DishType [] = [];
   public style: object = {};
   constructor(private service: ServerService,
     private router: Router) { }
@@ -27,7 +29,9 @@ export class AddRestaurantComponent implements OnInit {
     this.service.getCountries().then(res => {
       this.countries = res;
     });
-
+    this.service.getDishType().then(r => {
+      this.dishType = r;
+    });
     this.restaurant = {
       id: '',
       name: '',
@@ -58,6 +62,21 @@ export class AddRestaurantComponent implements OnInit {
           height: 20,
           countPerson: 0,
           numberOfTable: null},
+        { name: 'Проход',
+          width: 50,
+          height: 20,
+          countPerson: 0,
+          numberOfTable: null},
+          { name: 'Стена',
+          width: 100,
+          height: 5,
+          countPerson: 0,
+          numberOfTable: null},
+        { name: 'Бар',
+          width: 100,
+          height: 20,
+          countPerson: 0,
+          numberOfTable: null},
         {  name: 'Стол для 2',
           width: 40,
           height: 40,
@@ -78,6 +97,21 @@ export class AddRestaurantComponent implements OnInit {
         { name: 'Вход',
           width: 20,
           height: 50,
+          countPerson: 0,
+          numberOfTable: null},
+        { name: 'Проход',
+          width: 20,
+          height: 50,
+          countPerson: 0,
+          numberOfTable: null},
+          { name: 'Стена',
+          width: 5,
+          height: 100,
+          countPerson: 0,
+          numberOfTable: null},
+        { name: 'Бар',
+          width: 20,
+          height: 100,
           countPerson: 0,
           numberOfTable: null},
         {  name: 'Стол для 2',

@@ -9,15 +9,21 @@
     <a class="li" [routerLink]="['/booking']">Забронировать</a>
     <a class="li" [routerLink]="['/delivery']">Доставка</a>
   </div> -->
-  <div class="sign-btns">
+  <div class="sign-btns" >
     <button class="btn-b li" [routerLink]="['/sign']" *ngIf="user === null">
       Войти/Регистрация
     </button>
     <button class="btn-b li" [routerLink]="['/add-restaurant']" *ngIf="user !== null">
       Добавить ресторан
     </button>
-    <div  class="li" *ngIf="user !== null">
+    <button class="btn-b li" [routerLink]="['/add-personal']" *ngIf="user !== null">
+      Добавить персонал
+    </button>
+    <div  class="li" *ngIf="user !== null" [routerLink]="['/user-info']">
       {{user.firstName}}
+    </div>
+    <div  class="li" *ngIf="user !== null">
+      0 тг.
     </div>
     <a class="logout li" (click)="logout()" *ngIf="user !== null">
       Выйти

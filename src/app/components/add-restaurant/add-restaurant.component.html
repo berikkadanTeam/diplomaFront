@@ -74,8 +74,9 @@
           [xx]="table.translateX" [yy]="table.translateY" [ngStyle]="{
             width: table.width + 'px',
             height: table.height + 'px'
-          }" appMovable>
-          <div>{{ table.name }}</div>
+          }"
+          appMovable>
+          <div class="name">{{ table.name }}</div>
           <div>#{{ table.numberOfTable }}</div>
         </div>
       </div>
@@ -88,7 +89,24 @@
         </div>
       </div>
     </div>
-    <div>
+    <div class="menu">
+      <div class="dishes">
+        <div class="dish-row">
+          <div class="form-control">
+            <div class="name">Название ресторана</div>
+            <input type="text" [(ngModel)]="restaurant.name" />
+          </div>
+          <div class="form-control">
+            <select name="">
+              <option *ngFor="let type of dishType" value="type.id">
+                {{ type.title }}
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="add-btn">
       <button class="btn-b" (click)="setRestaurant()">Добавить</button>
     </div>
   </div>

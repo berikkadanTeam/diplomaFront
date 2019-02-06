@@ -1,77 +1,308 @@
 .booking {
-  margin-top: 50px;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  margin-top: -55px;
 
   .restaurant {
     display: flex;
-    justify-content: space-around;
-    margin-bottom: 100px;
 
     .slide {
-      width: 50%;
+      width: 65%;
 
       .restaurantImg {
+        width: 100%;
         display: flex;
         align-items: center;
         justify-content: center;
 
+        img {
+          width: 80%;
+          background: no-repeat center;
+          background-size: cover;
+          height: 70vh;
+        }
+
         .slideBtn {
+          color: white;
           background: none;
           border: none;
           background-color: black;
           opacity: 0.6;
-          color: white;
           border-radius: 20px;
           height: 25px;
           width: 25px;
           cursor: pointer;
           margin: 10px;
         }
+
+        .back::after {
+          content: "<";
+        }
+
+        .right::after {
+          content: ">";
+        }
       }
     }
 
     .info {
-      width: 50%;
+      display: flex;
+      align-items: center;
+      width: 35%;
+
+      .in {
+        padding-right: 150px;
+
+        h1 {
+          font-size: 55px;
+          margin-bottom: 50px;
+        }
+        .desciprion {
+          margin-bottom: 40px;
+        }
+        .work-time {
+          margin-bottom: 40px;
+        }
+        .info-in {
+          color: #738598;
+          margin-bottom: 15px;
+
+          .title {
+            color: #3c415e;
+          }
+          .work {
+            display: flex;
+
+            .title {
+              width: 120px;
+            }
+          }
+        }
+      }
     }
   }
-
-
 }
 
-
-@media only screen and (max-width: 1024px) {
+@media only screen and (max-width: 1023px) {
   .booking {
+    margin-top: 0;
+    align-items: start;
 
     .restaurant {
+      display: flex;
       flex-direction: column;
 
       .slide {
         width: 100%;
+        position: relative;
+        height: 200px;
 
         .restaurantImg {
+          width: 100%;
+          display: flex;
+          align-items: center;
+          position: absolute;
+          height: 100%;
+          justify-content: space-between;
 
+          img {
+            background: no-repeat center;
+            background-size: cover;
+            height: 100%;
+            width: 100%;
+            position: absolute;
+          }
 
-          .slideBtn {}
+          .slideBtn {
+            z-index: 5;
+            margin: 0;
+            height: 100%;
+            background: none;
+            width: 50%;
+          }
+
+          .back::after {
+            content: "";
+          }
+
+          .right::after {
+            content: "";
+          }
         }
       }
 
       .info {
         width: 100%;
-      }
-    }
 
-    .booking-process {
-      .booking-info {
-        flex-direction: column;
+        .in {
+          padding: 25px;
 
-        .book {
-          width: 100%;
-        }
+          h1 {
+            font-size: 20px;
+            margin-bottom: 15px;
+          }
 
-        .plan {
-          width: 100%;
+          .reserve-btn {
+            .btn-b {
+              width: 100%;
+            }
+          }
         }
       }
     }
   }
 }
 
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  .booking {
+    .restaurant {
+      .slide {
+        height: 400px;
+
+        .restaurantImg {
+          img {
+          }
+
+          .slideBtn {
+          }
+
+          .back::after {
+          }
+
+          .right::after {
+          }
+        }
+      }
+
+      .info {
+        .in {
+          h1 {
+          }
+
+          .reserve-btn {
+            .btn-b {
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// .booking {
+//   height: 100vh;
+//   display: flex;
+//   align-items: center;
+//   margin-top: -55px;
+
+//   .restaurant {
+//     display: flex;
+//     width: 100%;
+
+//     .slide {
+//       width: 50%;
+
+//       .restaurantImg {
+//         display: flex;
+//         align-items: center;
+//         justify-content: center;
+//         width: 100%;
+
+//         img {
+//           width: 80%;
+//           background: no-repeat center;
+//           background-size: cover;
+//           height: 50vh;
+//         }
+
+//         .slideBtn {
+//           background: none;
+//           border: none;
+//           background-color: black;
+//           opacity: 0.6;
+//           color: white;
+//           border-radius: 20px;
+//           height: 25px;
+//           width: 25px;
+//           cursor: pointer;
+//           margin: 10px;
+//         }
+//       }
+//     }
+
+//     .info {
+//       width: 50%;
+//       color: #738598;
+//       display: flex;
+
+//       .in {
+//         display: flex;
+//         flex-direction: column;
+//         justify-content: center;
+//         padding-right: 140px;
+
+//         h1 {
+//           margin-bottom: 20px;
+//           color: #3c415e;
+//           font-size: 50px;
+//         }
+
+//         .info-in {
+//           margin-bottom: 10px;
+//         }
+
+//         .title {
+//           color: #3c415e;
+//         }
+
+//         .work-time {
+//           .work {
+//             margin-bottom: 5px;
+//           }
+//         }
+
+//         .delivery {
+//           margin-bottom: 50px;
+//         }
+//       }
+//     }
+//   }
+
+// }
+
+// @media only screen and (max-width: 1024px) {
+//   .booking {
+//     margin-top: 0;
+//     .restaurant {
+//       flex-direction: column;
+
+//       .slide {
+//         width: 100%;
+
+//         .restaurantImg {
+
+//           .slideBtn {}
+//         }
+//       }
+
+//       .info {
+//         width: 100%;
+//       }
+//     }
+
+//     .booking-process {
+//       .booking-info {
+//         flex-direction: column;
+
+//         .book {
+//           width: 100%;
+//         }
+
+//         .plan {
+//           width: 100%;
+//         }
+//       }
+//     }
+//   }
+// }

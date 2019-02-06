@@ -1,16 +1,15 @@
 <div class="booking-process">
   <div class="booking-info">
     <div class="plan">
-      <h2>Забронировать</h2>
+      <h1>Забронировать</h1>
       <div class="area" [ngStyle]="style" appMovableArea>
         <div class="box" (emitPosition)="onChanged($event, i)" *ngFor="let trapped of restaurant.tables; let i = index"
-           [ngStyle]="{
+          [ngStyle]="{
                 width: trapped.width + 'px',
                 height: trapped.height + 'px',
-                transform:  'translateX('+trapped.translateX+'px)' + ' ' + 'translateY('+trapped.translateY+'px)'                
+                transform:  'translateX('+trapped.translateX+'px)' + ' ' + 'translateY('+trapped.translateY+'px)'
               }"
-          (click)="selectTable(trapped)" [ngClass]="trapped.isSelected === true || trapped.reservTable === true? 'reserved':''"
-          >
+          (click)="selectTable(trapped)" [ngClass]="trapped.isSelected === true || trapped.reservTable === true? 'reserved':''">
           <div>Стол для {{ trapped.countPerson }}</div>
           <div>#{{ trapped.numberOfTable }}</div>
         </div>
@@ -18,35 +17,40 @@
     </div>
   </div>
   <div class="book">
-    <div class="book-in">
-
-      <!-- <div class="form-control">
-          <div class="name">Номер</div>
-          <input type="number"  [(ngModel)]="" />
-        </div> -->
-      <!-- <div class="form-control">
-          <div class="name">Количество человек</div>
-          <input type="number" [(ngModel)]="bookingTa"/>
-        </div> -->
-      <div class="form-control-time">
-        <div class="name">Выберите день и время</div>
-        <input type="date" name="calendar" [(ngModel)]="bookingTable.date" /> <input type="time" [(ngModel)]="bookingTable.time" />
-      </div>
-      <div class="form-textarea">
-        <div class="name">Пожелания</div>
-        <textarea name="" id="" cols="45" rows="10" [(ngModel)]="bookingTable.comments"></textarea>
-      </div>
-      <div class="">
-        <div class="name">Предзаказ</div>
-        <div class="radio">
-          <input id="radio-1" name="selector" type="radio" [value]="true" />
-          <label for="radio-1" class="radio-label">Открыть меню</label>
+    <div class="booking">
+      <div class="book-in">
+        <div class="form-control-time">
+          <div class="name">Выберите день и время</div>
+          <input type="date" name="calendar" [(ngModel)]="bookingTable.date" /> <input type="time" [(ngModel)]="bookingTable.time" />
         </div>
-
-        <div class="radio">
-          <input id="radio-2" name="selector" type="radio" [value]="false" />
-          <label for="radio-2" class="radio-label">Не открытвать</label>
+        <div class="form-textarea">
+          <div class="name">Пожелания</div>
+          <textarea name="" id="" cols="45" rows="10" [(ngModel)]="bookingTable.comments"></textarea>
         </div>
+        <div class="form-radio">
+          <div class="name">Предзаказ</div>
+          <div class="radio">
+            <input id="radio-1" name="selector" type="radio" [value]="true" />
+            <label for="radio-1" class="radio-label">Открыть меню</label>
+          </div>
+
+          <div class="radio">
+            <input id="radio-2" name="selector" type="radio" [value]="false" />
+            <label for="radio-2" class="radio-label">Не открытвать</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="book-full-info">
+      <div class="info-in">
+        <h1>{{user.firstName}} {{user.lastName}}</h1>
+        <div class="item"><span class="title">Почта: </span> {{user.userName}}</div>
+        <div class="item"><span class="title">Номер: </span> +7 747 899 53 10</div>
+        <div class="item"><span class="title">День: </span> {{bookingTable.date}}</div>
+        <div class="item"><span class="title">Время: </span> {{bookingTable.time}}</div>
+        <div class="item"><span class="title">Пожелания: </span> {{bookingTable.comments}}</div>
+        <div class="item"><span class="title">Место: </span> {{bookedTale}}</div>
+
       </div>
     </div>
   </div>

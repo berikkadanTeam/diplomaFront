@@ -14,6 +14,8 @@ export class RestaurantAreaComponent implements OnInit {
   public style: object = {};
   restaurantId: string;
   selectedTable: string;
+  user;
+  bookedTale: string;
   constructor(private route: ActivatedRoute, private server: ServerService) { }
 
   ngOnInit() {
@@ -53,6 +55,8 @@ export class RestaurantAreaComponent implements OnInit {
         height: `${this.restaurant.area.height}px`
       };
     });
+    const user = localStorage.getItem('user');
+    this.user = JSON.parse(user);
   }
 
   onChanged(increased, index) {
@@ -66,6 +70,7 @@ export class RestaurantAreaComponent implements OnInit {
     });
   }
   selectTable(table: Tables) {
+    this.bookedTale = table.name;
     this.restaurant.tables.map(r => {
       if (r !== table) {
         r.isSelected = false;

@@ -6,11 +6,12 @@
   border-bottom: 1px solid #66757f;
   padding: 5px 0;
 
-  .logo{
-    img{
+  .logo {
+    img {
       cursor: pointer;
     }
   }
+
   .menu {
     a {
       padding: 0 20px;
@@ -28,5 +29,24 @@
     padding-right: 10px;
     padding-left: 10px;
 
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .header {
+
+    .logo {
+      img {}
+    }
+
+    .menu {
+      a {}
+    }
+
+    .sign-btns {
+      display: none;
+    }
+
+    .li {}
   }
 }

@@ -81,12 +81,12 @@ export class ServerService extends BaseService {
   }
 
   getRestaurantTables(id: string) {
-    const url =  `Restaurants/GetRestaurant?restarauntId=${id}`;
+    const url =  `Booking/GetRestaurant?restarauntId=${id}`;
     return this.get(this.api + url, {});
   }
 
   setBookingTable(table: BookingTable) {
-    const uri = 'Restaurants/Booking';
+    const uri = 'Booking/BookingTable';
     const formData: FormData = new FormData();
     formData.append('date', table.date);
     formData.append('time', table.time);
@@ -95,5 +95,9 @@ export class ServerService extends BaseService {
     formData.append('userId', table.userId);
 
     return this.post(this.api + uri, formData);
+  }
+  getDishType() {
+    const url =  'Booking/GetDishType';
+    return this.get(this.api + url, {});
   }
 }

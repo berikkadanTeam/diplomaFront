@@ -2,30 +2,37 @@
   <div class="restaurant">
     <div class="slide">
       <div class="restaurantImg" *ngFor="let image of images; let i = index">
-        <button class="slideBtn" *ngIf="image.isShow === true" (click)="prev(i)">
-          < </button> <img *ngIf="image.isShow === true" src="{{ image.path }}" alt="" width="600px" height="400px" />
-          <button class="slideBtn" *ngIf="image.isShow === true" (click)="next(i + 1)">
-            >
+        <button class="slideBtn back" *ngIf="image.isShow === true" (click)="prev(i)">
+          </button> <img *ngIf="image.isShow === true" src="{{ image.path }}" alt="" />
+          <button class="slideBtn right" *ngIf="image.isShow === true" (click)="next(i + 1)">
+
           </button>
       </div>
     </div>
     <div class="info">
-      <h1>Ресторан "{{restaurant.name}}"</h1>
-      <div>
-        Описание: {{restaurant.description}}
+      <div class="in">
+        <h1>Ресторан «{{restaurant.name}}»</h1>
+        <div class="address info-in"><span class="title">Адрес:</span> {{restaurant.addres}}</div>
+        <div class="kithcen info-in"><span class="title">Кухня:</span> {{restaurant.kitchen}}</div>
+        <div class="desciprion info-in">
+          <span class="title">Описание: </span> {{restaurant.description}}
+        </div>
+        <div class="work-time info-in">
+          <div class="work"  *ngFor="let day of restaurant.workDay">
+            <div class="title">{{day.dayName}}: </div>
+            <div> {{day.startTime}}</div>
+            <div> - </div>
+            <div>{{day.endTime}}</div>
+          </div>
+        </div>
+        <div class="delivery info-in"><span class="title">Доставка: </span>
+          <span *ngIf="restaurant.delivery === true"> Есть, <a href="">заказать на дом</a></span>
+          <span *ngIf="restaurant.delivery === false"> Нет</span>
+        </div>
+        <div class="reserve-btn">
+          <button class="btn-b" [routerLink]="['/restaurant', restaurant.id, 'restaurantArea', user.id]">Зарезервировать</button>
+        </div>
       </div>
-      <div>Адрес: {{restaurant.addres}}</div>
-      <div>Кухня:{{restaurant.kitchen}}</div>
-      <div *ngFor="let day of restaurant.workDay">
-        <div>{{day.dayName}}</div>
-        <div>{{day.startTime}}</div>
-        <div>{{day.endTime}}</div>
-      </div>
-      <div>Доставка:
-        <div *ngIf="restaurant.delivery === true">Есть, <a href="">заказать на дом</a></div>
-        <div *ngIf="restaurant.delivery === false">Нет</div>
-      </div>
-      <button class="btn-b" [routerLink]="['/restaurant', restaurant.id, 'restaurantArea', user.id]">Зарезервировать</button>
     </div>
   </div>
 </div>

@@ -35,8 +35,12 @@
           color: white;
           text-align: center;
           position: absolute;
+          font-size: 12px;
           &.dragging {
             background: coral;
+          }
+          .name {
+            word-wrap: break-word;
           }
         }
       }
@@ -44,15 +48,19 @@
     .tools {
       display: flex;
       flex-direction: column;
+      margin-bottom: 50px;
       .tool-type {
         display: flex;
         align-items: center;
         justify-content: space-around;
         margin-bottom: 15px;
-        .tool-direction{
+        .tool-direction {
           width: 200px;
         }
       }
+    }
+    .add-btn{
+      text-align: center;
     }
   }
 }

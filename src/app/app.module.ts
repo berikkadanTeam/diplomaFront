@@ -21,6 +21,8 @@ import { DraggableModule } from './shared/directives/draggable/draggable.module'
 import { FooterComponent } from './components/footer/footer.component';
 import { ResizableModule } from 'angular-resizable-element';
 import { RestaurantAreaComponent } from './components/restaurant-area/restaurant-area.component';
+import { AddPersonalComponent } from './components/add-personal/add-personal.component';
+import { UserInfoComponent } from './components/user-info/user-info.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +37,8 @@ import { RestaurantAreaComponent } from './components/restaurant-area/restaurant
     BookingComponent,
     FooterComponent,
     RestaurantAreaComponent,
+    AddPersonalComponent,
+    UserInfoComponent,
   ],
   imports: [
     BrowserModule,

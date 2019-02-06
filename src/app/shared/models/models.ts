@@ -28,6 +28,7 @@ export interface Restaurants {
   src?: string;
   tables: Tables[];
   area?: Area;
+  menu?: Menu[];
 }
 export interface Tables {
   id?: string;
@@ -46,6 +47,19 @@ export interface WorkDay {
   dayName: string;
   startTime: string;
   endTime: string;
+}
+
+export interface Menu {
+  id?: string;
+  nameOfDish: string;
+  typeId: number;
+  composition: string;
+  price: number;
+}
+
+export interface DishType {
+  id: number;
+  title: string;
 }
 
 export class Cities {
