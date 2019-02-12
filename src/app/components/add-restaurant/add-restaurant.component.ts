@@ -1,4 +1,4 @@
-import { Restaurants, Positions, DishType } from './../../shared/models/models';
+import { Restaurants, Positions, DishType, Menu } from './../../shared/models/models';
 import { Component, OnInit } from '@angular/core';
 import { ServerService } from 'src/app/shared/services/server.service';
 import { Cities, Countries } from 'src/app/shared/models/models';
@@ -18,6 +18,8 @@ export class AddRestaurantComponent implements OnInit {
   addObjects;
 
   dishType: DishType [] = [];
+  addingDish: Menu;
+  menu: Menu [] = [];
   public style: object = {};
   constructor(private service: ServerService,
     private router: Router) { }
@@ -53,8 +55,24 @@ export class AddRestaurantComponent implements OnInit {
         {dayName: 'Воскресенье', startTime: '00:00', endTime: '00:00'},
       ],
       avatar: null,
-      tables: []
+      tables: [],
+      menu: [],
+      area: {
+        left: 369,
+        top: -427,
+        width: 802,
+        height: 702,
+      }
     };
+
+
+    this.addingDish = {
+        id: '',
+        nameOfDish: '',
+        composition:  '',
+        typeId: 1,
+        price: 0
+      };
     this.addObjects = [
       {name: 'Горизонтальные', objects: [
         { name: 'Вход',
@@ -183,5 +201,18 @@ export class AddRestaurantComponent implements OnInit {
       width: event.rectangle.width,
       height: event.rectangle.height
     };
+  }
+
+  addDish() {
+
+    this.restaurant.menu.push(
+      {
+        nameOfDish: this.addingDish.nameOfDish,
+        composition:  this.addingDish.composition,
+        typeId: this.addingDish.typeId,
+        price: this.addingDish.price
+      }
+    );
+    console.log(this.restaurant);
   }
 }

@@ -1,6 +1,7 @@
 .add {
   .add-res {
     margin-left: 150px;
+
     .form-control {
       width: 250px;
       margin-bottom: 10px;
@@ -14,21 +15,25 @@
       width: 250px;
       margin-bottom: 10px;
     }
+
     h1 {
       margin-top: 20px;
       margin-bottom: 30px;
     }
   }
+
   .plan {
     .plan-area {
       display: flex;
       flex-direction: column;
       align-items: center;
+
       .area {
         border: 1px solid #48aae6;
         height: 700px;
         width: 700px;
         margin-bottom: 50px;
+
         .box {
           background: #48aae6;
           display: inline-block;
@@ -36,30 +41,47 @@
           text-align: center;
           position: absolute;
           font-size: 12px;
+
           &.dragging {
             background: coral;
           }
+
           .name {
             word-wrap: break-word;
           }
         }
       }
     }
+
     .tools {
       display: flex;
       flex-direction: column;
       margin-bottom: 50px;
+
       .tool-type {
         display: flex;
         align-items: center;
         justify-content: space-around;
         margin-bottom: 15px;
+
         .tool-direction {
           width: 200px;
         }
       }
     }
-    .add-btn{
+
+    .menu {
+      margin-bottom: 50px;
+
+      .dishes {
+        .dish-row {
+          display: flex;
+          justify-content: space-around;
+        }
+      }
+    }
+
+    .add-btn {
       text-align: center;
     }
   }

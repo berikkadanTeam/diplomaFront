@@ -9,6 +9,7 @@ import { MainComponent } from './components/main/main.component';
 import { SignComponent } from './components/sign/sign.component';
 import { RestaurantAreaComponent } from './components/restaurant-area/restaurant-area.component';
 import { UserInfoComponent } from './components/user-info/user-info.component';
+import { WebviewBookingComponent } from './components/webview-booking/webview-booking.component';
 
 const routes: Routes = [
   {
@@ -17,6 +18,7 @@ const routes: Routes = [
       { path: 'add-restaurant', component: AddRestaurantComponent },
       { path: 'add-personal', component: AddPersonalComponent },
       { path: 'user-info', component: UserInfoComponent },
+      { path: 'restaurantid/:id', component: WebviewBookingComponent},
       {
         path: 'restaurant/:id', children: [
           {path: 'booking', component: BookingComponent},

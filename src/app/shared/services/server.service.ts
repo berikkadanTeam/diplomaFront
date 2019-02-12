@@ -17,7 +17,6 @@ export class ServerService extends BaseService {
   constructor(http: HttpClient) {
     super(http);
   }
-
   getToken(name: string, password: string): any {
     const body = new HttpParams()
       .set('userName', name)
@@ -55,7 +54,7 @@ export class ServerService extends BaseService {
 
   // tslint:disable-next-line:max-line-length
   setRestaurant(restaurant: Restaurants) {
-    const uri = 'Restaurants/SetRestaurant';
+    const uri = 'Booking/SetRestaurant';
     const workDay = JSON.stringify(restaurant.workDay);
     const formData: FormData = new FormData();
     formData.append('Name', restaurant.name);
@@ -71,6 +70,8 @@ export class ServerService extends BaseService {
     formData.append('FileToUpload', restaurant.avatar, restaurant.avatar.name);
     formData.append('tables', JSON.stringify(restaurant.tables));
     formData.append('area', JSON.stringify(restaurant.area));
+    formData.append('menu', JSON.stringify(restaurant.menu));
+
 
     return this.post(this.api + uri, formData);
   }
@@ -98,6 +99,10 @@ export class ServerService extends BaseService {
   }
   getDishType() {
     const url =  'Booking/GetDishType';
+    return this.get(this.api + url, {});
+  }
+  getRestaurantForWebView(id) {
+    const url =  `Restaurants/GetRestaurant?restarauntId=${id}`;
     return this.get(this.api + url, {});
   }
 }

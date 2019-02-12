@@ -23,6 +23,7 @@ import { ResizableModule } from 'angular-resizable-element';
 import { RestaurantAreaComponent } from './components/restaurant-area/restaurant-area.component';
 import { AddPersonalComponent } from './components/add-personal/add-personal.component';
 import { UserInfoComponent } from './components/user-info/user-info.component';
+import { WebviewBookingComponent } from './components/webview-booking/webview-booking.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { UserInfoComponent } from './components/user-info/user-info.component';
     RestaurantAreaComponent,
     AddPersonalComponent,
     UserInfoComponent,
+    WebviewBookingComponent,
   ],
   imports: [
     BrowserModule,

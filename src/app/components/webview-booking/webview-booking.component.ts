@@ -1,15 +1,19 @@
+import { showToast } from 'lodash';
 import { Component, OnInit } from '@angular/core';
 import { ServerService } from 'src/app/shared/services/server.service';
 import { ActivatedRoute } from '@angular/router';
 import { Restaurants, BookingTable, Tables } from 'src/app/shared/models/models';
 
+declare var Android: any;
 @Component({
-  selector: 'app-restaurant-area',
-  templateUrl: './restaurant-area.component.html',
-  styleUrls: ['./restaurant-area.component.scss']
+  selector: 'app-webview-booking',
+  templateUrl: './webview-booking.component.html',
+  styleUrls: ['./webview-booking.component.scss']
 })
-export class RestaurantAreaComponent implements OnInit {
-  constructor(private route: ActivatedRoute, private server: ServerService) { }
+export class WebviewBookingComponent implements OnInit {
+
+
+constructor(private route: ActivatedRoute, private server: ServerService) { }
   restaurant: Restaurants;
   bookingTable: BookingTable;
   public style: object = {};
@@ -17,13 +21,13 @@ export class RestaurantAreaComponent implements OnInit {
   selectedTable: string;
   user;
   bookedTale: string;
-  AndroidInterface: WebAppInterface;
+
 
   ngOnInit() {
+    localStorage.setItem('token', 'null');
     this.route.params.subscribe(params => {
       this.restaurantId = params.id;
     });
-
     this.restaurant = {
       id: '',
       name: '',
@@ -47,7 +51,7 @@ export class RestaurantAreaComponent implements OnInit {
       tableId: '',
       userId: null
     };
-    this.server.getRestaurantTables(this.restaurantId).then(res => {
+    this.server.getRestaurantForWebView(this.restaurantId).then(res => {
       this.restaurant = res;
       this.style = {
         left: `${this.restaurant.area.left}px`,
@@ -59,18 +63,12 @@ export class RestaurantAreaComponent implements OnInit {
     const user = localStorage.getItem('user');
     this.user = JSON.parse(user);
   }
-
   onChanged(increased, index) {
 
   }
 
-  acceptBooking() {
-    this.bookingTable.tableId = this.selectedTable;
-    this.server.setBookingTable(this.bookingTable).then(r => {
-      alert(r.status);
-    });
-  }
   selectTable(table: Tables) {
+    Android.showToast(table.id);
     this.bookedTale = table.name;
     this.restaurant.tables.map(r => {
       if (r !== table) {
@@ -81,11 +79,8 @@ export class RestaurantAreaComponent implements OnInit {
 
     this.selectedTable = table.id;
 
-    this.AndroidInterface.showToast(table.id);
-
   }
-
-}
-interface WebAppInterface {
-  showToast(toast: string): any;
+  alertClick() {
+    alert(((window as any).Android == null).toString());
+  }
 }

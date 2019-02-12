@@ -1,0 +1,26 @@
+<div class="plan">
+      <h1>Забронировать</h1>
+      <div class="area" [ngStyle]="style" appMovableArea>
+        <div id ="button" class="box" (emitPosition)="onChanged($event, i)" *ngFor="let trapped of restaurant.tables; let i = index"
+          [ngStyle]="{
+                width: trapped.width + 'px',
+                height: trapped.height + 'px',
+                transform:  'translateX('+trapped.translateX+'px)' + ' ' + 'translateY('+trapped.translateY+'px)'
+              }"
+          (click)="selectTable(trapped)" [ngClass]="trapped.isSelected === true || trapped.reservTable === true? 'reserved':''">
+          <div>Стол для {{ trapped.countPerson }}</div>
+          <div>#{{ trapped.numberOfTable }}</div>
+        </div>
+      </div>
+
+</div>
+
+<button (click)="alertClick()">Click</button>
+
+<!-- <script>
+  function myFunction() {
+    Android.showToast("hell");
+
+  }
+  // var globalVar = "hello TS";
+</script> -->

@@ -93,18 +93,48 @@
       <div class="dishes">
         <div class="dish-row">
           <div class="form-control">
-            <div class="name">Название ресторана</div>
-            <input type="text" [(ngModel)]="restaurant.name" />
+            <div class="name">Название блюда</div>
+            <input type="text" [(ngModel)]="addingDish.nameOfDish" />
+          </div>
+          <div class="form-textarea">
+            <div class="name">Описание</div>
+            <textarea name="" id="" cols="45" rows="10" [(ngModel)]="addingDish.composition"></textarea>
           </div>
           <div class="form-control">
-            <select name="">
-              <option *ngFor="let type of dishType" value="type.id">
+            <div class="name">Цена</div>
+            <input type="number" [(ngModel)]="addingDish.price" />
+          </div>
+          <div class="form-control">
+            <select name="" [(ngModel)]="addingDish.typeId">
+              <option *ngFor="let type of dishType" [ngValue]="type.Id" [selected]="type.Id">
                 {{ type.title }}
               </option>
             </select>
           </div>
+          <div class="add-btn">
+            <button class="btn-b" (click)="addDish()">Добавить</button>
+          </div>
+        </div>
+        <div>
+
         </div>
       </div>
+    </div>
+    <div class="show-menu">
+      <table>
+        <thead>
+          <tr>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let menu of restaurant.menu">
+            <td>{{menu.nameOfDish}}</td>
+            <td>{{menu.composition}}</td>
+            <td>{{menu.price}}</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
     <div class="add-btn">
       <button class="btn-b" (click)="setRestaurant()">Добавить</button>
