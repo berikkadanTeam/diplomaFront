@@ -24,6 +24,11 @@ import { RestaurantAreaComponent } from './components/restaurant-area/restaurant
 import { AddPersonalComponent } from './components/add-personal/add-personal.component';
 import { UserInfoComponent } from './components/user-info/user-info.component';
 import { WebviewBookingComponent } from './components/webview-booking/webview-booking.component';
+import {NgxPaginationModule} from 'ngx-pagination';
+import { UserRestaurantComponent } from './components/user-restaurant/user-restaurant.component';
+import { TabDirective } from './shared/directives/tab.directive';
+import { UserMenuRestaurantComponent } from './components/user-menu-restaurant/user-menu-restaurant.component';
+import { BookedTablesComponent } from './components/booked-tables/booked-tables.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +46,10 @@ import { WebviewBookingComponent } from './components/webview-booking/webview-bo
     AddPersonalComponent,
     UserInfoComponent,
     WebviewBookingComponent,
+    UserRestaurantComponent,
+    TabDirective,
+    UserMenuRestaurantComponent,
+    BookedTablesComponent,
   ],
   imports: [
     BrowserModule,
@@ -52,7 +61,8 @@ import { WebviewBookingComponent } from './components/webview-booking/webview-bo
     Ng2SearchPipeModule,
     HttpClientModule,
     DraggableModule,
-    ResizableModule
+    ResizableModule,
+    NgxPaginationModule
   ],
   providers: [
     ServerService,
@@ -61,6 +71,11 @@ import { WebviewBookingComponent } from './components/webview-booking/webview-bo
       useClass: AuthInterceptor,
       multi: true
     }
+  ],
+  entryComponents: [
+    UserRestaurantComponent,
+    UserMenuRestaurantComponent,
+    BookedTablesComponent,
   ],
   bootstrap: [AppComponent]
 })

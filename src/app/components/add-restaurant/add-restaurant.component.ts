@@ -1,4 +1,4 @@
-import { Restaurants, Positions, DishType, Menu } from './../../shared/models/models';
+import { Restaurants, Positions, DishType, Menu, UserData } from './../../shared/models/models';
 import { Component, OnInit } from '@angular/core';
 import { ServerService } from 'src/app/shared/services/server.service';
 import { Cities, Countries } from 'src/app/shared/models/models';
@@ -21,10 +21,15 @@ export class AddRestaurantComponent implements OnInit {
   addingDish: Menu;
   menu: Menu [] = [];
   public style: object = {};
+
+  user: UserData = null;
   constructor(private service: ServerService,
     private router: Router) { }
 
   ngOnInit() {
+
+    const user = localStorage.getItem('user');
+    this.user = JSON.parse(user);
     this.service.getCity().then(res => {
       this.cities = res;
     });
@@ -155,7 +160,7 @@ export class AddRestaurantComponent implements OnInit {
     this.restaurant.avatar = event.item(0);
   }
   setRestaurant() {
-    this.service.setRestaurant(this.restaurant).then(r => {
+    this.service.setRestaurant(this.restaurant, this.user.id).then(r => {
       return this.router.navigate(['']);
     });
   }

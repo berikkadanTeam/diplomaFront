@@ -1,0 +1,47 @@
+.restaurant {
+  height: 100%;
+  overflow: scroll;
+  color: #738598;
+
+  .main-info {
+    display: flex;
+    margin-top: 10px;
+    margin-bottom: 50px;
+    .image {
+      width: 50%;
+      text-align: center;
+
+      img {
+        width: 80%;
+      }
+    }
+
+    .info {
+      width: 50%;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+    }
+  }
+
+  .work-day {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    .work-time {
+      width: 50%;
+      .day {
+        display: flex;
+
+        .day-name {
+          width: 40%;
+        }
+
+        .start-time {
+          margin-right: 10px;
+        }
+      }
+    }
+  }
+}

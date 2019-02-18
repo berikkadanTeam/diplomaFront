@@ -11,7 +11,7 @@ import { UserData } from 'src/app/shared/models/models';
 export class SignComponent implements OnInit {
   public user: UserData = {
     id: '',
-    username: '',
+    userName: '',
     password: '',
     firstName: '',
     lastName: '',
@@ -26,7 +26,7 @@ export class SignComponent implements OnInit {
   ngOnInit() {
   }
   auth() {
-    this.service.getToken(this.user.username, this.user.password).then(res => {
+    this.service.getToken(this.user.userName, this.user.password).then(res => {
       if (res) {
         localStorage.setItem('token', res.auth_token);
         this.service.getUserInfo(res.id).then(r => {

@@ -1,0 +1,67 @@
+.menu {
+  .dishes {
+    margin-bottom: 50px;
+    .dish {
+      .dish-type-title {
+        display: flex;
+        background: #dfe2e2;
+        margin-bottom: 2px;
+        cursor: pointer;
+        border-radius: 25px 0 0 25px;
+
+        .plus {
+          padding: 10px 15px;
+          background: #48aae6;
+          color: #ffffff;
+          border-radius: 25px;
+        }
+
+        .dish-title {
+          text-align: center;
+          padding: 10px;
+          font-weight: 600;
+        }
+      }
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      thead {
+        tr {
+          th {
+            padding: 0 50px;
+          }
+        }
+      }
+
+      tbody {
+        tr {
+          td {
+            padding: 0 50px;
+            text-align: center;
+            border-bottom: 1px solid #3c415e;
+            .dish-img {
+              height: 150px;
+              width: 150px;
+              border-radius: 150px;
+              background: no-repeat center;
+              background-size: cover;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .adding-menu {
+    margin-bottom: 50px;
+
+    .adding-dishes {
+      .dish-row {
+        display: flex;
+        justify-content: space-around;
+      }
+    }
+  }
+}

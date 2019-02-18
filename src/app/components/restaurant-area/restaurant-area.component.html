@@ -54,7 +54,66 @@
       </div>
     </div>
   </div>
-
+  <div class="menu">
+    <h1>Меню</h1>
+    <div class="menu-in">
+      <div class="left">
+        <div class="dish-types">
+          <div class="type" *ngFor="let type of dishType" (click)="dishForType(type.Id)">
+            <div>{{type.title}}</div>
+          </div>
+        </div>
+      </div>
+      <div class="right">
+        <div class="dishes-list">
+          <table>
+            <thead>
+              <tr>
+                <th></th>
+                <th>Название</th>
+                <th>Состав</th>
+                <th>Количество</th>
+                <th>Стоимость</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let dish of menu">
+                <td *ngIf="dish.fileName !== null">
+                  <img class="dish-img" [src]="'https://localhost:5001/' + '/Files/menu/' + dish.fileName">
+                </td>
+                <td *ngIf="dish.fileName === null">
+                  <img class="dish-img" [src]="'https://www.imglegacyhotel.com/wp-content/themes/img/assets/images/social_insta.png'">
+                </td>
+                <td>
+                  {{dish.nameOfDish}}
+                </td>
+                <td>
+                  {{dish.composition}}
+                </td>
+                <td>
+                  <select name="">
+                    <option>
+                      1
+                    </option>
+                    <option>
+                      2
+                    </option>
+                  </select>
+                </td>
+                <td>
+                  {{dish.price}}
+                </td>
+                <td>
+                  <input type="checkbox">
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <div class="accept-btn">
     <button class="btn-b" (click)="acceptBooking()">Подтвердить</button>

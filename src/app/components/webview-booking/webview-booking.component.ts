@@ -66,7 +66,7 @@ constructor(private route: ActivatedRoute, private server: ServerService) { }
   onChanged(increased, index) {
 
   }
-
+  webkit;
   selectTable(table: Tables) {
     Android.showToast(table.id);
     this.bookedTale = table.name;

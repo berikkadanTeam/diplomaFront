@@ -42,6 +42,7 @@
 
   .book {
     display: flex;
+    margin-bottom: 100px;
 
     .booking {
       width: 50%;
@@ -88,17 +89,83 @@
       .info-in {
         display: flex;
         flex-direction: column;
-        h1{
+
+        h1 {
           margin-bottom: 50px;
         }
-        .item{
+
+        .item {
           margin-bottom: 20px;
-          .title{
+
+          .title {
             font-weight: 600;
           }
 
         }
 
+      }
+    }
+  }
+
+  .menu {
+    h1 {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .menu-in {
+      display: flex;
+
+      .left {
+        width: 15%;
+        display: flex;
+        justify-content: center;
+
+        .dish-types {
+
+          .type {
+            display: flex;
+            padding: 5px 15px;
+            background: #48aae6;
+            color: #fff;
+            border-radius: 10px;
+            margin-bottom: 10px;
+          }
+        }
+      }
+
+      .right {
+        width: 85%;
+        display: flex;
+        justify-content: center;
+
+        .dishes-list {
+          table {
+            thead {
+              tr {
+                th {
+                  padding: 0 50px;
+                }
+              }
+            }
+
+            tbody {
+              tr {
+                td {
+                  padding: 0 50px;
+                  text-align: center;
+                  .dish-img {
+                    height: 150px;
+                    width: 150px;
+                    border-radius: 150px;
+                    background: no-repeat center;
+                    background-size: cover;
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     }
   }

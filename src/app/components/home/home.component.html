@@ -12,9 +12,9 @@
       </h3>
     </div>
     <div class="restaurants">
-      <div class="restaurant" *ngFor="let restaurant of restaurants">
+      <div class="restaurant" *ngFor="let restaurant of restaurants | paginate: { itemsPerPage: 3, currentPage: p}">
         <div class="image">
-          <img class="bg" [src]="'http://berikkadan.kz/' + '/Files/' + restaurant.fileName" alt="">
+          <img class="bg" [src]="'https://localhost:5001/' + '/Files/' + restaurant.fileName" alt="">
         </div>
         <div class="item">
           <h4>Название ресторана: {{restaurant.name}}</h4>
@@ -37,14 +37,19 @@
           <button class="btn-b" [routerLink]="['/delivery']">Доставка</button>
         </div>
       </div>
+      <pagination-controls class="my-pagination" previousLabel="" nextLabel="" (pageChange)="p = $event"></pagination-controls>
     </div>
   </div>
   <div class="main-right">
     <div class="news-header">
       <h3>Акции и новости</h3>
     </div>
-    <div>
-      <h4></h4>
+    <div class="news-info">
+      <div class="new-title">"Американский бизнес ланч"</div>
+      <h3>В ресторане: "У Афанасича"</h3>
+      <div class="new-desc">
+        Бизнес ланч подаем и накрываем в форме фуршета
+      </div>
     </div>
   </div>
 </div>

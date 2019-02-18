@@ -1,0 +1,44 @@
+.user {
+  height: 100vh;
+  display: flex;
+
+  .user-tabs {
+    width: 25%;
+    height: 100%;
+    background: #738598;
+    color: #ffffff;
+
+    &:after {}
+
+    .user-info {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      border-bottom: 1px solid #dfe2e2;
+      padding: 20px;
+      margin-bottom: 20px;
+      .user-img {
+        height: 150px;
+        width: 150px;
+        border-radius: 150px;
+        background: no-repeat center;
+        background-size: cover;
+
+      }
+    }
+
+    .btns {
+      .tab-btn{
+        margin-bottom: 10px;
+        border-radius: 0;
+      }
+    }
+  }
+
+  .tabs {
+    width: 75%;
+    height: 100%;
+    // background: #dfe2e2;
+
+  }
+}

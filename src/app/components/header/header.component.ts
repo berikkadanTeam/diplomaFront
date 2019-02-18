@@ -1,3 +1,4 @@
+import { UserData } from 'src/app/shared/models/models';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -8,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
 
-  user;
+  user: UserData;
   constructor(
     private router: Router,
   ) { }

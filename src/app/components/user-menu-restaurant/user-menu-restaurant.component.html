@@ -1,0 +1,71 @@
+<div class="menu">
+  <div class="dishes">
+    <div class="dish" *ngFor="let type of dishType">
+      <div class="dish-type-title" (click)="showTypeDishes(type)">
+        <div class="plus" *ngIf="type.showDishes !== true">+</div>
+        <div class="plus" *ngIf="type.showDishes === true">-</div>
+        <div class="dish-title">{{type.title}}</div>
+      </div>
+      <table *ngIf="type.showDishes">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Название</th>
+            <th>Состав</th>
+            <th>Стоимость</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let dish of  type.menu">
+            <td *ngIf="dish.fileName == null">
+              <input class="foo" type="file" id="file" (change)="uploadDishFile($event.target.files, dish)">
+            </td>
+            <td *ngIf="dish.fileName != null">
+              <img class="dish-img" [src]="'https://localhost:5001/' + '/Files/menu/' + dish.fileName">
+            </td>
+            <td>
+              {{dish.nameOfDish}}
+            </td>
+            <td>
+              {{dish.composition}}
+            </td>
+            <td>
+              {{dish.price}}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="adding-menu">
+    <div class="adding-dishes">
+      <div class="dish-row">
+        <div class="form-control">
+          <div class="name">Название блюда</div>
+          <input type="text" [(ngModel)]="addingDish.nameOfDish" />
+        </div>
+        <div class="form-textarea">
+          <div class="name">Описание</div>
+          <textarea name="" id="" cols="45" rows="10" [(ngModel)]="addingDish.composition"></textarea>
+        </div>
+        <div class="form-control">
+          <div class="name">Цена</div>
+          <input type="number" [(ngModel)]="addingDish.price" />
+        </div>
+        <div class="form-control">
+          <select name="" [(ngModel)]="addingDish.typeId">
+            <option *ngFor="let type of dishType" [ngValue]="type.Id" [selected]="type.Id">
+              {{ type.title }}
+            </option>
+          </select>
+        </div>
+        <div class="add-btn">
+          <button class="btn-b" (click)="addDish()">Добавить</button>
+        </div>
+      </div>
+      <div>
+
+      </div>
+    </div>
+  </div>
+</div>

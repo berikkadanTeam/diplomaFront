@@ -1,3 +1,23 @@
-<p>
-  user-info works!
-</p>
+<div class="user">
+  <div class="user-tabs">
+    <div class="user-info">
+      <div class="user-img" [ngStyle]="{'background-image': 'url(https://pp.userapi.com/c837438/v837438391/5ad42/fFK1ZNfbS_A.jpg)'}"></div>
+      <div>
+        <h2>
+          {{user.firstName}} {{user.lastName}}
+        </h2>
+        <div>
+          {{user.roles[0]}}
+        </div>
+      </div>
+    </div>
+    <div class="btns">
+      <div class="btn-b tab-btn" *ngFor="let tab of tabs"  (click)="setTab(tab)">
+        {{tab.title}}
+      </div>
+    </div>
+  </div>
+  <div class="tabs">
+    <ng-template appTab></ng-template>
+  </div>
+</div>
