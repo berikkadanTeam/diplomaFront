@@ -1,3 +1,59 @@
-<p>
-  booked-tables works!
-</p>
+<div class="reservs">
+  <div class="reserv-info">
+    <div class="reserv" *ngFor="let table of bookedTable">
+      <div class="reserv-title" (click)="showFullInfo(table)">
+        <div class="plus">+</div>
+        <div class="title">
+          <span>{{table.firstName}} </span>
+          <span> {{table.lastName}}</span>
+        </div>
+      </div>
+      <div class="reserv-full" *ngIf="table.showFullInfo">
+        <div class="info">
+          <div class="date">
+            Дата: {{getDate(table.date)}}
+          </div>
+          <div class="comment">
+            Комментарий: {{table.comments}}
+          </div>
+          <div class="time">
+            Время: {{table.time}}
+          </div>
+          <div class="count-person">
+            Количество персон: {{table.countPerson}}
+          </div>
+        </div>
+        <div *ngIf="table.menu.length === 0">
+           По меню заказов не было
+        </div>
+        <table *ngIf="table.menu.length > 0">
+          <thead>
+            <tr>
+              <th></th>
+              <th>Название</th>
+              <th>Состав</th>
+              <th>Стоимость</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let dish of  table.menu">
+              <td *ngIf="dish.fileName != null">
+                <img class="dish-img" [src]="'https://localhost:5001/' + '/Files/menu/' + dish.fileName">
+              </td>
+              <td>
+                {{dish.nameOfDish}}
+              </td>
+              <td>
+                {{dish.composition}}
+              </td>
+              <td>
+                {{dish.price}}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+</div>

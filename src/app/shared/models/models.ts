@@ -98,9 +98,21 @@ export interface BookingTable {
 	time: any;
 	comments: string;
 	tableId: string;
-	userId?: string;
+  userId?: string;
 }
+export interface BookedTable {
+  id?: string;
+	date: any;
+	time: any;
+	comments: string;
+  tableId: string;
+  lastName: string;
+  firstName: string;
+  countPerson: number;
+  showFullInfo: boolean;
+  menu?: Menu[];
 
+}
 export interface Area {
 	top: number;
 	left: number;
