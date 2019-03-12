@@ -8,9 +8,10 @@ export interface UserData {
 	password?: string;
 	firstName?: string;
 	lastName?: string;
-  location?: string;
-  restaurantId?: string;
-	roles?: [];
+	location?: string;
+	restaurantId?: string;
+  roles?: [];
+  userRole?: string;
 }
 
 export interface Restaurants {
@@ -29,9 +30,10 @@ export interface Restaurants {
 	src?: string;
 	tables: Tables[];
 	area?: Area;
-  menu?: Menu[];
-  city?: string;
+	menu?: Menu[];
+	city?: string;
   fileName?: string;
+  images?: Images[];
 }
 export interface Tables {
 	id?: string;
@@ -58,18 +60,20 @@ export interface Menu {
 	typeId?: number;
 	composition: string;
 	price: number;
-  title?: string;
-  restaurantId?: string;
+	title?: string;
+	restaurantId?: string;
 	fileId?: string;
 	fileName?: string;
-	filePath?: string;
+  filePath?: string;
+  checked?: boolean;
+  dishCount?: number;
 }
 
 export interface DishType {
 	Id: number;
 	title: string;
-  showDishes?: boolean;
-  menu?: Menu[];
+	showDishes?: boolean;
+	menu?: Menu[];
 }
 
 export class Cities {
@@ -99,19 +103,20 @@ export interface BookingTable {
 	comments: string;
 	tableId: string;
   userId?: string;
+  menu?: Menu[];
 }
 export interface BookedTable {
-  id?: string;
+	id?: string;
 	date: any;
 	time: any;
 	comments: string;
-  tableId: string;
-  lastName: string;
-  firstName: string;
-  countPerson: number;
-  showFullInfo: boolean;
+	tableId: string;
+	lastName: string;
+	firstName: string;
+	countPerson: number;
+	showFullInfo: boolean;
   menu?: Menu[];
-
+  reservConfirmed?: boolean;
 }
 export interface Area {
 	top: number;
@@ -127,4 +132,17 @@ export interface ITab {
 	icon?: string;
 	active?: boolean;
 	percent?: number;
+}
+
+export interface Role {
+	concurrencyStamp: string;
+	id: number;
+	name: string;
+	normalizedName: string;
+}
+
+export interface Images {
+  id: string;
+  name: string;
+  isShow?: boolean;
 }

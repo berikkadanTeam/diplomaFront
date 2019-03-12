@@ -29,6 +29,7 @@ import { UserRestaurantComponent } from './components/user-restaurant/user-resta
 import { TabDirective } from './shared/directives/tab.directive';
 import { UserMenuRestaurantComponent } from './components/user-menu-restaurant/user-menu-restaurant.component';
 import { BookedTablesComponent } from './components/booked-tables/booked-tables.component';
+import { WebviewIosComponent } from './webview-ios/webview-ios.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { BookedTablesComponent } from './components/booked-tables/booked-tables.
     TabDirective,
     UserMenuRestaurantComponent,
     BookedTablesComponent,
+    WebviewIosComponent,
   ],
   imports: [
     BrowserModule,

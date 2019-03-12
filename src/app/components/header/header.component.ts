@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 export class HeaderComponent implements OnInit {
 
   user: UserData;
+  currentRole: boolean = false;
   constructor(
     private router: Router,
   ) { }
@@ -17,6 +18,10 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
     const user = localStorage.getItem('user');
     this.user = JSON.parse(user);
+    if (this.user.roles.some(e => e === "Admin")) {
+      this.currentRole = true;
+      }
+
   }
 
   logout() {

@@ -1,9 +1,9 @@
 <div class="booking">
   <div class="restaurant">
     <div class="slide">
-      <div class="restaurantImg" *ngFor="let image of images; let i = index">
+      <div class="restaurantImg" *ngFor="let image of restaurant.images; let i = index">
         <button class="slideBtn back" *ngIf="image.isShow === true" (click)="prev(i)">
-          </button> <img *ngIf="image.isShow === true" src="{{ image.path }}" alt="" />
+          </button> <img *ngIf="image.isShow === true" [src]="api + 'restinfo/RestaurantsImages?filename=' + image.name" alt="" />
           <button class="slideBtn right" *ngIf="image.isShow === true" (click)="next(i + 1)">
 
           </button>
@@ -30,7 +30,7 @@
           <span *ngIf="restaurant.delivery === false"> Нет</span>
         </div>
         <div class="reserve-btn">
-          <button class="btn-b" [routerLink]="['/restaurant', restaurant.id, 'restaurantArea', user.id]">Зарезервировать</button>
+          <button class="btn-b" [routerLink]="['/restaurant', restaurant.id, 'restaurantArea']">Зарезервировать</button>
         </div>
       </div>
     </div>

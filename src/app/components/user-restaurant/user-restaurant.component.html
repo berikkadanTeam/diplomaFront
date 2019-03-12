@@ -1,7 +1,7 @@
 <div class="restaurant">
   <div class="main-info">
     <div class="image">
-      <img class="bg" [src]="'https://localhost:5001/' + '/Files/' + restaurant.fileName" alt="">
+      <img class="bg" [src]="api + 'booking/RestaurantsAvatar?filename=' + restaurant.fileName"  alt="">
     </div>
     <div class="info">
       <h1>{{restaurant.name}}</h1>
@@ -32,6 +32,11 @@
         <div class="start-time">{{day.startTime}}</div>
         <div>{{day.endTime}}</div>
       </div>
+    </div>
+  </div>
+  <div>
+    <div>
+      <input type="file" (change)="uploadFiles($event.target.files)" multiple />
     </div>
   </div>
 </div>

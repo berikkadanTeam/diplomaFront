@@ -80,7 +80,7 @@ constructor(private route: ActivatedRoute, private server: ServerService) { }
     this.selectedTable = table.id;
 
   }
-  alertClick() {
-    alert(((window as any).Android == null).toString());
-  }
+  // alertClick() {
+  //   alert(((window as any).Android == null).toString());
+  // }
 }

@@ -1,12 +1,23 @@
 <div class="reservs">
   <div class="reserv-info">
-    <div class="reserv" *ngFor="let table of bookedTable">
+    <div class="reserv" *ngFor="let table of bookedTable; let i = index">
       <div class="reserv-title" (click)="showFullInfo(table)">
         <div class="plus">+</div>
         <div class="title">
           <span>{{table.firstName}} </span>
           <span> {{table.lastName}}</span>
         </div>
+        <div>
+          <div class="accept-reserve" *ngIf="table.reservConfirmed === null || table.reservConfirmed === false" (click)="acceptReserve(table)">
+            Подтвердить бронь
+          </div>
+          <div class="accept-reserve" *ngIf="table.reservConfirmed === true">
+            Бронь подтверждена
+          </div>
+        </div>
+        <div class="delete-reserve" (click)="deleteReserve(table, i )">
+          Удалить бронь
+      </div>
       </div>
       <div class="reserv-full" *ngIf="table.showFullInfo">
         <div class="info">
@@ -32,19 +43,23 @@
               <th></th>
               <th>Название</th>
               <th>Состав</th>
+              <th>Количество</th>
               <th>Стоимость</th>
             </tr>
           </thead>
           <tbody>
             <tr *ngFor="let dish of  table.menu">
               <td *ngIf="dish.fileName != null">
-                <img class="dish-img" [src]="'https://localhost:5001/' + '/Files/menu/' + dish.fileName">
+                <img class="dish-img" [src]="api + 'restinfo/RestaurantsMenu?filename=' + dish.fileName">
               </td>
               <td>
                 {{dish.nameOfDish}}
               </td>
               <td>
                 {{dish.composition}}
+              </td>
+              <td>
+                {{dish.dishCount}}
               </td>
               <td>
                 {{dish.price}}

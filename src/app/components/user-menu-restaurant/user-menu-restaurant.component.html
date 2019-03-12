@@ -21,7 +21,7 @@
               <input class="foo" type="file" id="file" (change)="uploadDishFile($event.target.files, dish)">
             </td>
             <td *ngIf="dish.fileName != null">
-              <img class="dish-img" [src]="'https://localhost:5001/' + '/Files/menu/' + dish.fileName">
+              <img class="dish-img" [src]="api + 'restinfo/RestaurantsMenu?filename=' + dish.fileName">
             </td>
             <td>
               {{dish.nameOfDish}}

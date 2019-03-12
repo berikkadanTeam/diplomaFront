@@ -22,6 +22,20 @@
           padding: 10px;
           font-weight: 600;
         }
+
+        .accept-reserve {
+          padding: 10px;
+          background: #48aae6;
+          margin-left: 50px;
+          color: #ffffff;
+        }
+        .delete-reserve{
+          padding: 10px;
+          background: #48aae6;
+          margin-left: 50px;
+          color: #ffffff;
+          z-index: 2;
+        }
       }
 
       .reserv-full {

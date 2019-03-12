@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ServerService } from 'src/app/shared/services/server.service';
 import { ActivatedRoute } from '@angular/router';
 import { Restaurants, BookingTable, Tables, DishType, UserData, Menu } from 'src/app/shared/models/models';
+import { environment } from 'src/environments/environment';
 
 @Component({
 	selector: 'app-restaurant-area',
@@ -11,7 +12,7 @@ import { Restaurants, BookingTable, Tables, DishType, UserData, Menu } from 'src
 export class RestaurantAreaComponent implements OnInit {
 	constructor(private route: ActivatedRoute, private service: ServerService) {}
 	restaurant: Restaurants;
-	bookingTable: BookingTable;
+	bookedTable: BookingTable;
 	public style: object = {};
 	restaurantId: string;
 	selectedTable: string;
@@ -19,6 +20,10 @@ export class RestaurantAreaComponent implements OnInit {
 	bookedTale: string;
 	dishType: DishType[] = [];
 	menu: Menu[] = [];
+  preOrderMenu: Menu[] = [];
+  dishCountEx;
+  api = environment.apiUrl;
+
 	ngOnInit() {
 		this.route.params.subscribe((params) => {
 			this.restaurantId = params.id;
@@ -42,7 +47,7 @@ export class RestaurantAreaComponent implements OnInit {
 			avatar: null,
 			tables: []
 		};
-		this.bookingTable = {
+		this.bookedTable = {
 			id: '',
 			date: '',
 			time: '',
@@ -61,15 +66,26 @@ export class RestaurantAreaComponent implements OnInit {
 			};
 		});
 		const user = localStorage.getItem('user');
-		this.user = JSON.parse(user);
+    this.user = JSON.parse(user);
+
+    this.dishCountEx = [
+      {number: 1},
+      {number: 2},
+      {number: 3},
+      {number: 4},
+      {number: 5},
+      {number: 6},
+      {number: 7},
+      {number: 8}
+    ];
 	}
 
 	onChanged(increased, index) {}
 
 	acceptBooking() {
-		this.bookingTable.userId = this.user.id;
-		this.bookingTable.tableId = this.selectedTable;
-		this.service.setBookingTable(this.bookingTable).then((r) => {
+		this.bookedTable.userId = this.user.id;
+		this.bookedTable.tableId = this.selectedTable;
+		this.service.setBookingTable(this.bookedTable).then((r) => {
 			alert(r.status);
 		});
 	}
@@ -83,12 +99,21 @@ export class RestaurantAreaComponent implements OnInit {
 		table.isSelected = !table.isSelected;
 
 		this.selectedTable = table.id;
-
 	}
 	dishForType(dishId: number) {
 		this.menu = this.restaurant.menu.filter((r) => r.typeId === dishId);
 	}
-}
-interface WebAppInterface {
-	showToast(toast: string): any;
+
+	checkDish(dish: Menu) {
+		if (dish.checked === true) {
+			this.preOrderMenu.push(dish);
+		} else {
+			for (let i = 0; i < this.preOrderMenu.length; i++) {
+				if (this.preOrderMenu[i].id === dish.id) {
+					this.preOrderMenu.splice(i, 1);
+				}
+			}
+    }
+    this.bookedTable.menu = this.preOrderMenu;
+	}
 }

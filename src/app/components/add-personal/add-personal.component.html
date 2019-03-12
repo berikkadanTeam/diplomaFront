@@ -1,3 +1,36 @@
-<p>
-  add-personal works!
-</p>
+<div class="sign-up">
+  <!-- <div class="right">
+    <div class="signin-bg"></div>
+  </div> -->
+  <div class="left">
+    <div class="title">
+      <h1>Зарегистрируйте персонал ресторана в Bookme</h1>
+      <div class="innner">Введите данные персонала</div>
+    </div>
+    <div class="form-group">
+      <input type="text" placeholder="Введите email" [(ngModel)]="user.userName" />
+    </div>
+    <div class="form-group">
+      <input type="password" placeholder="Введите пароль" [(ngModel)]="user.password" />
+    </div>
+    <div class="form-group">
+      <input type="text" placeholder="Введите имя" [(ngModel)]="user.firstName" />
+    </div>
+    <div class="form-group">
+      <input type="text" placeholder="Введите фамилию" [(ngModel)]="user.lastName" />
+    </div>
+    <div class="form-group">
+      <input type="text" placeholder="Место расположения" [(ngModel)]="user.location" />
+    </div>
+    <div class="form-control">
+      <select name="" [(ngModel)]="user.userRole">
+        <option *ngFor="let role of roles" [ngValue]="role.normalizedName">
+          {{ role.concurrencyStamp }}
+        </option>
+      </select>
+    </div>
+    <div class="form-group">
+      <button class="btn" (click)="signUp()">Зарегистрироваться</button>
+    </div>
+  </div>
+</div>

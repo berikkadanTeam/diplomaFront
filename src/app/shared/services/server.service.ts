@@ -1,4 +1,4 @@
-import { BookingTable, Menu } from './../models/models';
+import { BookingTable, Menu, BookedTable } from './../models/models';
 import { UserData, Restaurants, Tables } from 'src/app/shared/models/models';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
@@ -33,7 +33,10 @@ export class ServerService extends BaseService {
 			.set('password', user.password)
 			.set('firstName', user.firstName)
 			.set('lastName', user.lastName)
-			.set('location', user.location);
+			.set('location', user.location)
+			.set('UserRole', user.userRole)
+			.set('restaurantId', user.restaurantId);
+
 		const uri = 'accounts';
 		return this.http
 			.post(this.api + uri, body.toString(), {
@@ -92,14 +95,8 @@ export class ServerService extends BaseService {
 
 	setBookingTable(table: BookingTable) {
 		const uri = 'Booking/BookingTable';
-		const formData: FormData = new FormData();
-		formData.append('date', table.date);
-		formData.append('time', table.time);
-		formData.append('comments', table.comments);
-		formData.append('tableId', table.tableId);
-		formData.append('userId', table.userId);
 
-		return this.post(this.api + uri, formData);
+		return this.post(this.api + uri, table);
 	}
 	getDishType() {
 		const url = 'Restinfo/GetDishType';
@@ -136,4 +133,30 @@ export class ServerService extends BaseService {
 		const url = `Booking/GetBookedTables?restarauntId=${restarauntId}`;
 		return this.get(this.api + url, {});
 	}
+
+	getRoles() {
+		let url = 'users/GetRoles';
+		return this.get(this.api + url, {});
+	}
+
+	acceptReserve(reserve: BookedTable) {
+		const url = `Booking/ConfirmationReserv?reserveId=${reserve.id}&reservConfirmed=${reserve.reservConfirmed}`;
+		return this.post(this.api + url, {});
+  }
+
+  deleteBookedTable(reserve: BookedTable) {
+    const url = `Booking/DeleteReserve?reserveId=${reserve.id}`;
+		return this.delet(this.api + url, {});
+  }
+
+  uploadFiles(restaurantId: string, file) {
+    let url = 'Restinfo/SetRestaurantImages';
+		const formData: FormData = new FormData();
+		formData.append('restarauntId', restaurantId);
+    for(let i = 0; i < file.length; i++) {
+      formData.append('restImages', file[i], file[i].name);
+    }
+
+		return this.post(this.api + url, formData);
+  }
 }

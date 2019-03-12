@@ -1,3 +1,4 @@
+import { WebviewIosComponent } from './webview-ios/webview-ios.component';
 import { AddPersonalComponent } from './components/add-personal/add-personal.component';
 import { DeliveryComponent } from './components/delivery/delivery.component';
 import { BookingComponent } from './components/booking/booking.component';
@@ -19,11 +20,12 @@ const routes: Routes = [
       { path: 'add-personal', component: AddPersonalComponent },
       { path: 'user-info', component: UserInfoComponent },
       { path: 'restaurantid/:id', component: WebviewBookingComponent},
+      { path: 'iOSRestaurant/:id', component: WebviewIosComponent},
       {
         path: 'restaurant/:id', children: [
           {path: 'booking', component: BookingComponent},
           { path: 'delivery', component: DeliveryComponent},
-          { path: 'restaurantArea/:userId', component: RestaurantAreaComponent},
+          { path: 'restaurantArea', component: RestaurantAreaComponent},
         ]
       },
     ]

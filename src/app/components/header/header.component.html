@@ -13,13 +13,13 @@
     <button class="btn-b li" [routerLink]="['/sign']" *ngIf="user === null">
       Войти/Регистрация
     </button>
-    <button class="btn-b li" [routerLink]="['/add-restaurant']" *ngIf="user !== null">
+    <button class="btn-b li" [routerLink]="['/add-restaurant']" *ngIf="currentRole === true">
       Добавить ресторан
     </button>
-    <button class="btn-b li" [routerLink]="['/add-personal']" *ngIf="user !== null">
+    <button class="btn-b li" [routerLink]="['/add-personal']" *ngIf="currentRole === true">
       Добавить персонал
     </button>
-    <div  class="li" *ngIf="user !== null" [routerLink]="['/user-info']">
+    <div  class="li" *ngIf="user !== null" [routerLink]="currentRole === true?['/user-info']:['/']">
       {{user.firstName}}
     </div>
     <div  class="li" *ngIf="user !== null">

@@ -3,6 +3,7 @@ import { BookedTable } from './../../shared/models/models';
 import { ServerService } from 'src/app/shared/services/server.service';
 import { Component, OnInit } from '@angular/core';
 import { UserData } from 'src/app/shared/models/models';
+import { environment } from 'src/environments/environment';
 
 @Component({
 	selector: 'app-booked-tables',
@@ -11,7 +12,9 @@ import { UserData } from 'src/app/shared/models/models';
 })
 export class BookedTablesComponent implements OnInit {
 	user: UserData;
-	bookedTable: BookedTable[] = [];
+  bookedTable: BookedTable[] = [];
+  api = environment.apiUrl;
+
 	constructor(private server: ServerService, private eventService: EventService) {}
 
 	ngOnInit() {
@@ -21,17 +24,16 @@ export class BookedTablesComponent implements OnInit {
 		this.server.getBookedTable(this.user.restaurantId).then((r) => {
 			this.bookedTable = r;
 		});
-  }
+	}
 
-  showFullInfo(table: BookedTable) {
-    this.bookedTable.map(r => {
-      if(r.id != table.id) {
-        r.showFullInfo = false;
-      }
-    })
-    table.showFullInfo = !table.showFullInfo;
-
-  }
+	showFullInfo(table: BookedTable) {
+		this.bookedTable.map((r) => {
+			if (r.id != table.id) {
+				r.showFullInfo = false;
+			}
+		});
+		table.showFullInfo = !table.showFullInfo;
+	}
 
 	getDate(reservDate: string) {
 		let date = new Date(reservDate);
@@ -41,4 +43,15 @@ export class BookedTablesComponent implements OnInit {
 	getMonthName(date: Date) {
 		return this.eventService.getMonthName(date.getMonth() + 1, true, true);
 	}
+
+	acceptReserve(table: BookedTable) {
+		table.reservConfirmed = true;
+		this.server.acceptReserve(table);
+  }
+
+  deleteReserve(table: BookedTable, i ) {
+		this.server.deleteBookedTable(table).then(() => {
+      this.bookedTable.splice(i, 1);
+    });
+  }
 }

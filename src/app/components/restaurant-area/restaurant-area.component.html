@@ -21,11 +21,11 @@
       <div class="book-in">
         <div class="form-control-time">
           <div class="name">Выберите день и время</div>
-          <input type="date" name="calendar" [(ngModel)]="bookingTable.date" /> <input type="time" [(ngModel)]="bookingTable.time" />
+          <input type="date" name="calendar" [(ngModel)]="bookedTable.date" /> <input type="time" [(ngModel)]="bookedTable.time" />
         </div>
         <div class="form-textarea">
           <div class="name">Пожелания</div>
-          <textarea name="" id="" cols="45" rows="10" [(ngModel)]="bookingTable.comments"></textarea>
+          <textarea name="" id="" cols="45" rows="10" [(ngModel)]="bookedTable.comments"></textarea>
         </div>
         <div class="form-radio">
           <div class="name">Предзаказ</div>
@@ -46,9 +46,9 @@
         <h1>{{user.firstName}} {{user.lastName}}</h1>
         <div class="item"><span class="title">Почта: </span> {{user.userName}}</div>
         <div class="item"><span class="title">Номер: </span> +7 747 899 53 10</div>
-        <div class="item"><span class="title">День: </span> {{bookingTable.date}}</div>
-        <div class="item"><span class="title">Время: </span> {{bookingTable.time}}</div>
-        <div class="item"><span class="title">Пожелания: </span> {{bookingTable.comments}}</div>
+        <div class="item"><span class="title">День: </span> {{bookedTable.date}}</div>
+        <div class="item"><span class="title">Время: </span> {{bookedTable.time}}</div>
+        <div class="item"><span class="title">Пожелания: </span> {{bookedTable.comments}}</div>
         <div class="item"><span class="title">Место: </span> {{bookedTale}}</div>
 
       </div>
@@ -80,7 +80,7 @@
             <tbody>
               <tr *ngFor="let dish of menu">
                 <td *ngIf="dish.fileName !== null">
-                  <img class="dish-img" [src]="'https://localhost:5001/' + '/Files/menu/' + dish.fileName">
+                  <img class="dish-img" [src]="api + 'restinfo/RestaurantsMenu?filename=' + dish.fileName">
                 </td>
                 <td *ngIf="dish.fileName === null">
                   <img class="dish-img" [src]="'https://www.imglegacyhotel.com/wp-content/themes/img/assets/images/social_insta.png'">
@@ -92,12 +92,9 @@
                   {{dish.composition}}
                 </td>
                 <td>
-                  <select name="">
-                    <option>
-                      1
-                    </option>
-                    <option>
-                      2
+                  <select [(ngModel)]="dish.dishCount">
+                    <option *ngFor="let count of dishCountEx" [ngValue]="count.number">
+                      {{count.number}}
                     </option>
                   </select>
                 </td>
@@ -105,7 +102,7 @@
                   {{dish.price}}
                 </td>
                 <td>
-                  <input type="checkbox">
+                  <input type="checkbox" [(ngModel)]="dish.checked" (ngModelChange) = "dish.checked = $event"  (change)="checkDish(dish)">
                 </td>
               </tr>
             </tbody>

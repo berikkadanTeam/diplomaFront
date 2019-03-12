@@ -1,6 +1,7 @@
 import { ServerService } from 'src/app/shared/services/server.service';
 import { Component, OnInit } from '@angular/core';
 import { UserData, Restaurants } from 'src/app/shared/models/models';
+import { environment } from 'src/environments/environment';
 
 @Component({
 	selector: 'app-user-restaurant',
@@ -10,6 +11,8 @@ import { UserData, Restaurants } from 'src/app/shared/models/models';
 export class UserRestaurantComponent implements OnInit {
 	user: UserData;
   restaurant: Restaurants;
+  api = environment.apiUrl;
+
 	constructor(private server: ServerService) {}
 
 	ngOnInit() {
@@ -28,10 +31,19 @@ export class UserRestaurantComponent implements OnInit {
       cityId: 0,
       workDay: [],
       avatar: null,
-      tables: []
+      tables: [],
     };
 		this.server.getUserRestaurant(this.user.id).then((r) => {
 			this.restaurant = r;
     });
-	}
+  }
+
+  uploadFiles(files) {
+    console.log(this.restaurant.id);
+    console.log(files);
+
+    this.server.uploadFiles(this.restaurant.id, files).then(r => {
+      alert("files added")
+    })
+  }
 }

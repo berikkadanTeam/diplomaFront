@@ -4,8 +4,9 @@
 
 // export const environment = {
 //   production: false,
-//   apiUrl: 'http://berikkadan.kz/api/',
+//   apiUrl: 'http://5.23.55.101/api/',
 // };
+
 
 export const environment = {
   production: false,

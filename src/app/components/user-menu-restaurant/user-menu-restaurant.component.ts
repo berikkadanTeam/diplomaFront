@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserData, Menu, DishType } from 'src/app/shared/models/models';
 import { ServerService } from 'src/app/shared/services/server.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
 	selector: 'app-user-menu-restaurant',
@@ -10,7 +11,9 @@ import { ServerService } from 'src/app/shared/services/server.service';
 export class UserMenuRestaurantComponent implements OnInit {
 	user: UserData;
 	addingDish: Menu;
-	dishType: DishType[] = [];
+  dishType: DishType[] = [];
+  api = environment.apiUrl;
+
 	constructor(private server: ServerService) {}
 
 	ngOnInit() {
