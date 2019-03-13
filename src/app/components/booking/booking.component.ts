@@ -38,7 +38,7 @@ export class BookingComponent implements OnInit {
 			cityId: 0,
 			workDay: [],
 			avatar: null,
-			tables: []
+      tables: [],
 		};
 
 		this.server.getRestaurantTables(this.restaurantId).then((res) => {

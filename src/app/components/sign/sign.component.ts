@@ -16,6 +16,7 @@ export class SignComponent implements OnInit {
     firstName: '',
     lastName: '',
     location: '',
+    userRole: 'CommonUser'
   };
 
   signInUp = false;
