@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ServerService } from 'src/app/shared/services/server.service';
 import { Router } from '@angular/router';
 import { UserData } from 'src/app/shared/models/models';
-
+import * as signalR from '@aspnet/signalr';
 @Component({
   selector: 'app-sign',
   templateUrl: './sign.component.html',
@@ -30,12 +30,36 @@ export class SignComponent implements OnInit {
     this.service.getToken(this.user.userName, this.user.password).then(res => {
       if (res) {
         localStorage.setItem('token', res.auth_token);
+
         this.service.getUserInfo(res.id).then(r => {
           this.user = r;
           this.user.id = res.id;
           localStorage.setItem('user', JSON.stringify(this.user));
            return this.router.navigate(['']);
         });
+
+        var connection = new signalR.HubConnectionBuilder()
+        .withUrl('https://localhost:5001/chat', {
+          skipNegotiation: true,
+          transport: signalR.HttpTransportType.WebSockets,
+          accessTokenFactory: () => res.auth_token
+        })
+        .build();
+      connection.on('ListenToOrder', function(username, message) {
+        // Html encode display name and message.
+        var encodedName = username;
+        var encodedMsg = message;
+        console.log(message)
+      });
+      connection
+        .start()
+        .then(function() {
+          console.log('connection started');
+        })
+        .catch((error) => {
+          console.error(error.message);
+        });
+
       }
     },
     (err => {
