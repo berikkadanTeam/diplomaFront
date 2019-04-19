@@ -12,8 +12,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class HomeComponent implements OnInit {
 
   restaurants: Restaurants [] = [];
-  p: number = 1;
+  page: number = 1;
   api = environment.apiUrl;
+
   constructor(private service: ServerService, private route: ActivatedRoute,   private router: Router) { }
 
   ngOnInit() {

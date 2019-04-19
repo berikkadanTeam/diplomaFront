@@ -1,6 +1,6 @@
 <div class="reservs">
   <div class="reserv-info">
-    <div class="reserv" *ngFor="let table of bookedTable; let i = index">
+    <div class="reserv" *ngFor="let table of bookedTable; let i= index">
       <div class="reserv-title" (click)="showFullInfo(table)">
         <div class="plus">+</div>
         <div class="title">
@@ -8,16 +8,26 @@
           <span> {{table.lastName}}</span>
         </div>
         <div>
-          <div class="accept-reserve" *ngIf="table.reservConfirmed === null || table.reservConfirmed === false" (click)="acceptReserve(table)">
+          <div class="accept-reserve" *ngIf="table.reserveStatus === 3"
+            (click)="acceptReserve(table)">
             Подтвердить бронь
           </div>
-          <div class="accept-reserve" *ngIf="table.reservConfirmed === true">
+          <div class="accept-reserve" *ngIf="table.reserveStatus === 1">
             Бронь подтверждена
           </div>
         </div>
-        <div class="delete-reserve" (click)="deleteReserve(table, i )">
+        <div class="delete-reserve" (click)="deleteReserve(table, i)">
           Удалить бронь
-      </div>
+        </div>
+
+        <div class="delete-reserve" *ngIf="table.reserveStatus === 3"
+          (click)="rejectReserve(table)">
+          Отклонить бронь
+        </div>
+
+        <div class="delete-reserve" *ngIf="table.reserveStatus === 2">
+          Бронь отклонена
+        </div>
       </div>
       <div class="reserv-full" *ngIf="table.showFullInfo">
         <div class="info">
@@ -31,13 +41,13 @@
             Время: {{table.time}}
           </div>
           <div class="count-person">
-            Количество персон: {{table.countPerson}}
+            Количество персон: {{table.numberOfGuests}}
           </div>
         </div>
         <div *ngIf="table.menu.length === 0">
-           По меню заказов не было
+          По меню заказов не было
         </div>
-        <table *ngIf="table.menu.length > 0">
+        <table *ngIf="table.menu.length> 0">
           <thead>
             <tr>
               <th></th>
@@ -48,9 +58,10 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let dish of  table.menu">
+            <tr *ngFor="let dish of table.menu">
               <td *ngIf="dish.fileName != null">
-                <img class="dish-img" [src]="api + 'restinfo/RestaurantsMenu?filename=' + dish.fileName">
+                <img class="dish-img" [src]="api +
+                  'restinfo/RestaurantsMenu?filename=' + dish.fileName">
               </td>
               <td>
                 {{dish.nameOfDish}}

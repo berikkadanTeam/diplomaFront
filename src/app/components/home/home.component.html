@@ -12,13 +12,14 @@
       </h3>
     </div>
     <div class="restaurants">
-      <div class="restaurant" *ngFor="let restaurant of restaurants | paginate: { itemsPerPage: 3, currentPage: p}">
+      <div class="restaurant" *ngFor="let restaurant of restaurants | paginate:
+        { itemsPerPage: 3, currentPage: p}">
         <div class="image">
-          <img class="bg" [src]="api + 'booking/RestaurantsAvatar?filename=' + restaurant.fileName" alt="">
+          <img class="bg" [src]="api + 'booking/RestaurantsAvatar?filename=' +
+            restaurant.fileName" alt="">
         </div>
         <div class="item">
           <h4>Название ресторана: {{restaurant.name}}</h4>
-          <!-- <a href="http://localhost:4200/#/iOSRestaurant/0f45bb63-68f4-4831-ab57-5a00f430f93a">ios</a> -->
           <div class="description">Описание: {{restaurant.description}}</div>
           <div class="item-address">Адрес: {{restaurant.addres}}</div>
         </div>
@@ -38,7 +39,8 @@
           <button class="btn-b" [routerLink]="['/delivery']">Доставка</button>
         </div>
       </div>
-      <pagination-controls class="my-pagination" previousLabel="" nextLabel="" (pageChange)="p = $event"></pagination-controls>
+      <pagination-controls class="my-pagination" previousLabel="" nextLabel=""
+        (pageChange)="p= $event"></pagination-controls>
     </div>
   </div>
   <div class="main-right">

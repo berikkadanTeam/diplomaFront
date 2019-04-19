@@ -11,26 +11,30 @@
     </div>
     <div class="form-textarea">
       <div class="name">Описание</div>
-      <textarea name="" id="" cols="45" rows="10" [(ngModel)]="restaurant.description"></textarea>
+      <textarea name="" id="" cols="45" rows="10"
+        [(ngModel)]="restaurant.description"></textarea>
     </div>
 
     <div class="form-control">
       <div class="name">Номер</div>
-      <input type="number" [(ngModel)]="restaurant.number" placeholder="-" />
+      <input type="text" [(ngModel)]="restaurant.number" placeholder="-" />
     </div>
     <div class="form-textarea">
       <div class="name">Кухня</div>
-      <textarea name="" id="" cols="45" rows="10" [(ngModel)]="restaurant.kitchen"></textarea>
+      <textarea name="" id="" cols="45" rows="10"
+        [(ngModel)]="restaurant.kitchen"></textarea>
     </div>
     <div class="delivery">
       <div class="name">Доставка</div>
       <div class="radio">
-        <input id="radio-1" name="selector" [(ngModel)]="restaurant.delivery" type="radio" [value]="true">
+        <input id="radio-1" name="selector" [(ngModel)]="restaurant.delivery"
+          type="radio" [value]="true">
         <label for="radio-1" class="radio-label">Есть</label>
       </div>
 
       <div class="radio">
-        <input id="radio-2" name="selector" [(ngModel)]="restaurant.delivery" type="radio" [value]="false">
+        <input id="radio-2" name="selector" [(ngModel)]="restaurant.delivery"
+          type="radio" [value]="false">
         <label for="radio-2" class="radio-label">Нет</label>
       </div>
     </div>
@@ -49,13 +53,15 @@
         </option>
       </select>
       <select name="" [(ngModel)]="restaurant.cityId">
-        <option *ngFor="let city of cities" [ngValue]="city.Id" [selected]="city.Id">
+        <option *ngFor="let city of cities" [ngValue]="city.id"
+          [selected]="city.id">
           {{ city.cityTitle }}
         </option>
       </select>
     </div>
     <div class="form-file">
-      <input class="foo" type="file" id="file" (change)="uploadAvatar($event.target.files)">
+      <input class="foo" type="file" id="file"
+        (change)="uploadAvatar($event.target.files)">
     </div>
     <div class="form-control-time" *ngFor="let workDays of restaurant.workDay">
       <div>
@@ -67,13 +73,17 @@
   </div>
   <div class="plan">
     <div class="plan-area">
-      <div class="area" [ngStyle]="style" mwlResizable [validateResize]="validate" [resizeEdges]="{bottom: true, right: true, top: true, left: true}"
-        [enableGhostResize]="true" [resizeSnapGrid]="{left: 50, right: 50}" (resizeEnd)="onResizeEnd($event)"
+      <div class="area" [ngStyle]="style" mwlResizable
+        [validateResize]="validate" [resizeEdges]="{bottom: true, right: true,
+        top: true, left: true}"
+        [enableGhostResize]="true" [resizeSnapGrid]="{left: 50, right: 50}"
+        (resizeEnd)="onResizeEnd($event)"
         appMovableArea>
-        <div class="box" (emitPosition)="onChanged($event, i)" *ngFor="let table of restaurant.tables; let i = index"
+        <div class="box" (emitPosition)="onChanged($event, i)" *ngFor="let table
+          of restaurant.tables; let i= index"
           [xx]="table.translateX" [yy]="table.translateY" [ngStyle]="{
-            width: table.width + 'px',
-            height: table.height + 'px'
+          width: table.width + 'px',
+          height: table.height + 'px'
           }"
           appMovable>
           <div class="name">{{ table.name }}</div>
@@ -98,7 +108,8 @@
           </div>
           <div class="form-textarea">
             <div class="name">Описание</div>
-            <textarea name="" id="" cols="45" rows="10" [(ngModel)]="addingDish.composition"></textarea>
+            <textarea name="" id="" cols="45" rows="10"
+              [(ngModel)]="addingDish.composition"></textarea>
           </div>
           <div class="form-control">
             <div class="name">Цена</div>
@@ -106,7 +117,8 @@
           </div>
           <div class="form-control">
             <select name="" [(ngModel)]="addingDish.typeId">
-              <option *ngFor="let type of dishType" [ngValue]="type.Id" [selected]="type.Id">
+              <option *ngFor="let type of dishType"
+                [ngValue]="type.id">
                 {{ type.title }}
               </option>
             </select>

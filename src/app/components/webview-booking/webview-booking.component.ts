@@ -32,7 +32,7 @@ constructor(private route: ActivatedRoute, private server: ServerService) { }
       id: '',
       name: '',
       addres: '',
-      number: 0,
+      number: '',
       kitchen: '',
       delivery: true,
       avgCheck: 0,

@@ -16,7 +16,8 @@ export class SignComponent implements OnInit {
     firstName: '',
     lastName: '',
     location: '',
-    userRole: 'CommonUser'
+    userRole: 'CommonUser',
+    restaurantId: null
   };
 
   signInUp = false;
@@ -35,36 +36,13 @@ export class SignComponent implements OnInit {
           this.user = r;
           this.user.id = res.id;
           localStorage.setItem('user', JSON.stringify(this.user));
-           return this.router.navigate(['']);
+          return this.router.navigate(['']);
         });
-
-        var connection = new signalR.HubConnectionBuilder()
-        .withUrl('https://localhost:5001/chat', {
-          skipNegotiation: true,
-          transport: signalR.HttpTransportType.WebSockets,
-          accessTokenFactory: () => res.auth_token
-        })
-        .build();
-      connection.on('ListenToOrder', function(username, message) {
-        // Html encode display name and message.
-        var encodedName = username;
-        var encodedMsg = message;
-        console.log(message)
-      });
-      connection
-        .start()
-        .then(function() {
-          console.log('connection started');
-        })
-        .catch((error) => {
-          console.error(error.message);
-        });
-
       }
     },
-    (err => {
-      this.error = err.error.err[0];
-    }));
+      (err => {
+        this.error = err.error.err[0];
+      }));
   }
 
   sign() {
@@ -79,8 +57,8 @@ export class SignComponent implements OnInit {
     this.service.signUp(this.user).then(r => {
       this.signInUp = false;
     },
-    (err => {
-      console.log(err);
-    }));
+      (err => {
+        console.log(err);
+      }));
   }
 }

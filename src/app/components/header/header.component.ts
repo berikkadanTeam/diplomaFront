@@ -17,10 +17,13 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     const user = localStorage.getItem('user');
+    const token = localStorage.getItem('token');
     this.user = JSON.parse(user);
-    if (this.user.roles.some(e => e === "Admin")) {
-      this.currentRole = true;
-      }
+    if(this.user && token != 'null') {
+      if (this.user.roles.some(e => e === "Admin")) {
+        this.currentRole = true;
+        }
+    }
 
   }
 

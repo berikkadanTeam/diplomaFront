@@ -12,14 +12,14 @@ import { ResizeEvent } from 'angular-resizable-element';
 })
 export class AddRestaurantComponent implements OnInit {
 
-  cities: Cities [] = [];
-  countries: Countries [] = [];
+  cities: Cities[] = [];
+  countries: Countries[] = [];
   restaurant: Restaurants = null;
   addObjects;
 
-  dishType: DishType [] = [];
+  dishType: DishType[] = [];
   addingDish: Menu;
-  menu: Menu [] = [];
+  menu: Menu[] = [];
   public style: object = {};
 
   user: UserData = null;
@@ -43,7 +43,7 @@ export class AddRestaurantComponent implements OnInit {
       id: '',
       name: '',
       addres: '',
-      number: 0,
+      number: '',
       kitchen: '',
       delivery: true,
       avgCheck: 0,
@@ -51,13 +51,13 @@ export class AddRestaurantComponent implements OnInit {
       description: '',
       cityId: 0,
       workDay: [
-        {dayName: 'Понедельник', startTime: '00:00', endTime: '00:00'},
-        {dayName: 'Вторник', startTime: '00:00', endTime: '00:00'},
-        {dayName: 'Среда', startTime: '00:00', endTime: '00:00'},
-        {dayName: 'Четверг', startTime: '00:00', endTime: '00:00'},
-        {dayName: 'Пятница', startTime: '00:00', endTime: '00:00'},
-        {dayName: 'Суббота', startTime: '00:00', endTime: '00:00'},
-        {dayName: 'Воскресенье', startTime: '00:00', endTime: '00:00'},
+        { dayName: 'Понедельник', startTime: '00:00', endTime: '00:00' },
+        { dayName: 'Вторник', startTime: '00:00', endTime: '00:00' },
+        { dayName: 'Среда', startTime: '00:00', endTime: '00:00' },
+        { dayName: 'Четверг', startTime: '00:00', endTime: '00:00' },
+        { dayName: 'Пятница', startTime: '00:00', endTime: '00:00' },
+        { dayName: 'Суббота', startTime: '00:00', endTime: '00:00' },
+        { dayName: 'Воскресенье', startTime: '00:00', endTime: '00:00' },
       ],
       avatar: null,
       tables: [],
@@ -72,87 +72,119 @@ export class AddRestaurantComponent implements OnInit {
 
 
     this.addingDish = {
-        id: '',
-        nameOfDish: '',
-        composition:  '',
-        typeId: 1,
-        price: 0
-      };
+      id: '',
+      nameOfDish: '',
+      composition: '',
+      typeId: 1,
+      price: 0
+    };
     this.addObjects = [
-      {name: 'Горизонтальные', objects: [
-        { name: 'Вход',
-          width: 50,
-          height: 20,
-          countPerson: 0,
-          numberOfTable: null},
-        { name: 'Проход',
-          width: 50,
-          height: 20,
-          countPerson: 0,
-          numberOfTable: null},
-          { name: 'Стена',
-          width: 100,
-          height: 5,
-          countPerson: 0,
-          numberOfTable: null},
-        { name: 'Бар',
-          width: 100,
-          height: 20,
-          countPerson: 0,
-          numberOfTable: null},
-        {  name: 'Стол для 2',
-          width: 40,
-          height: 40,
-          countPerson: 2,
-          numberOfTable: 1},
-          {  name: 'Стол для 4',
-          width: 80,
-          height: 40,
-          countPerson: 4,
-          numberOfTable: 2},
-          {  name: 'Стол для 6',
-          width: 120,
-          height: 40,
-          countPerson: 6,
-          numberOfTable: 3}
-      ]},
-      {name: 'Вертикальные', objects: [
-        { name: 'Вход',
-          width: 20,
-          height: 50,
-          countPerson: 0,
-          numberOfTable: null},
-        { name: 'Проход',
-          width: 20,
-          height: 50,
-          countPerson: 0,
-          numberOfTable: null},
-          { name: 'Стена',
-          width: 5,
-          height: 100,
-          countPerson: 0,
-          numberOfTable: null},
-        { name: 'Бар',
-          width: 20,
-          height: 100,
-          countPerson: 0,
-          numberOfTable: null},
-        {  name: 'Стол для 2',
-          width: 40,
-          height: 40,
-          countPerson: 2,
-          numberOfTable: 1},
-          {  name: 'Стол для 4',
-          width: 40,
-          height: 80,
-          countPerson: 4,
-          numberOfTable: 2},
-          {  name: 'Стол для 6',
-          width: 40,
-          height: 120,
-          countPerson: 6,
-          numberOfTable: 2},
-      ]}
+      {
+        name: 'Горизонтальные', objects: [
+          {
+            name: 'Вход',
+            width: 50,
+            height: 20,
+            countPerson: 0,
+            numberOfTable: null
+          },
+          {
+            name: 'Проход',
+            width: 50,
+            height: 20,
+            countPerson: 0,
+            numberOfTable: null
+          },
+          {
+            name: 'Стена',
+            width: 100,
+            height: 5,
+            countPerson: 0,
+            numberOfTable: null
+          },
+          {
+            name: 'Бар',
+            width: 100,
+            height: 20,
+            countPerson: 0,
+            numberOfTable: null
+          },
+          {
+            name: 'Стол для 2',
+            width: 40,
+            height: 40,
+            countPerson: 2,
+            numberOfTable: 1
+          },
+          {
+            name: 'Стол для 4',
+            width: 80,
+            height: 40,
+            countPerson: 4,
+            numberOfTable: 2
+          },
+          {
+            name: 'Стол для 6',
+            width: 120,
+            height: 40,
+            countPerson: 6,
+            numberOfTable: 3
+          }
+        ]
+      },
+      {
+        name: 'Вертикальные', objects: [
+          {
+            name: 'Вход',
+            width: 20,
+            height: 50,
+            countPerson: 0,
+            numberOfTable: null
+          },
+          {
+            name: 'Проход',
+            width: 20,
+            height: 50,
+            countPerson: 0,
+            numberOfTable: null
+          },
+          {
+            name: 'Стена',
+            width: 5,
+            height: 100,
+            countPerson: 0,
+            numberOfTable: null
+          },
+          {
+            name: 'Бар',
+            width: 20,
+            height: 100,
+            countPerson: 0,
+            numberOfTable: null
+          },
+          {
+            name: 'Стол для 2',
+            width: 40,
+            height: 40,
+            countPerson: 2,
+            numberOfTable: 1
+          },
+          {
+            name: 'Стол для 4',
+            width: 40,
+            height: 80,
+            countPerson: 4,
+            numberOfTable: 2
+          },
+          {
+            name: 'Стол для 6',
+            width: 40,
+            height: 120,
+            countPerson: 6,
+            numberOfTable: 2
+          },
+        ]
+      }
     ];
   }
   uploadAvatar(event: FileList) {
@@ -170,7 +202,7 @@ export class AddRestaurantComponent implements OnInit {
   }
 
   addObject(object) {
-    this.restaurant.tables.push( {
+    this.restaurant.tables.push({
       name: object.name,
       countPerson: object.countPerson,
       translateX: 0,
@@ -213,11 +245,11 @@ export class AddRestaurantComponent implements OnInit {
     this.restaurant.menu.push(
       {
         nameOfDish: this.addingDish.nameOfDish,
-        composition:  this.addingDish.composition,
+        composition: this.addingDish.composition,
         typeId: this.addingDish.typeId,
         price: this.addingDish.price
       }
     );
-    console.log(this.restaurant);
+
   }
 }

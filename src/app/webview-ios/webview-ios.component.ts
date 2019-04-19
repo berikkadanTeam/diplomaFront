@@ -31,7 +31,7 @@ export class WebviewIosComponent implements OnInit {
         id: '',
         name: '',
         addres: '',
-        number: 0,
+        number: '',
         kitchen: '',
         delivery: true,
         avgCheck: 0,

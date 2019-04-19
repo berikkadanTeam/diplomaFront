@@ -12,7 +12,7 @@ export class AddPersonalComponent implements OnInit {
   public user: UserData;
   userAdmin: UserData;
 
-  roles: Role [] = [];
+  roles: Role[] = [];
 
   constructor(private service: ServerService, private router: Router) { }
 
@@ -39,8 +39,8 @@ export class AddPersonalComponent implements OnInit {
       return this.router.navigate(['']);
 
     },
-    (err => {
-      console.log(err);
-    }));
+      (err => {
+        console.log(err);
+      }));
   }
 }

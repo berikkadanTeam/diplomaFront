@@ -11,6 +11,8 @@
 export const environment = {
   production: false,
   apiUrl: 'https://localhost:5001/api/',
+  apiUrlR: 'https://localhost:5001/'
+
 };
 
 // export const environment = {

@@ -37,7 +37,7 @@ export class UserInfoComponent implements OnInit {
   private dynamicComponentRef: ComponentRef<any>;
   @ViewChild(TabDirective) tabDirective: TabDirective;
 
-  constructor(private event: EventService,private componentFactoryResolver: ComponentFactoryResolver) { }
+  constructor(private event: EventService, private componentFactoryResolver: ComponentFactoryResolver) { }
 
   ngOnInit() {
     const user = localStorage.getItem('user');

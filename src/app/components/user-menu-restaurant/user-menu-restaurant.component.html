@@ -16,12 +16,14 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let dish of  type.menu">
+          <tr *ngFor="let dish of type.menu">
             <td *ngIf="dish.fileName == null">
-              <input class="foo" type="file" id="file" (change)="uploadDishFile($event.target.files, dish)">
+              <input class="foo" type="file" id="file"
+                (change)="uploadDishFile($event.target.files, dish)">
             </td>
             <td *ngIf="dish.fileName != null">
-              <img class="dish-img" [src]="api + 'restinfo/RestaurantsMenu?filename=' + dish.fileName">
+              <img class="dish-img" [src]="api +
+                'restinfo/RestaurantsMenu?filename=' + dish.fileName">
             </td>
             <td>
               {{dish.nameOfDish}}
@@ -46,7 +48,8 @@
         </div>
         <div class="form-textarea">
           <div class="name">Описание</div>
-          <textarea name="" id="" cols="45" rows="10" [(ngModel)]="addingDish.composition"></textarea>
+          <textarea name="" id="" cols="45" rows="10"
+            [(ngModel)]="addingDish.composition"></textarea>
         </div>
         <div class="form-control">
           <div class="name">Цена</div>
@@ -54,7 +57,8 @@
         </div>
         <div class="form-control">
           <select name="" [(ngModel)]="addingDish.typeId">
-            <option *ngFor="let type of dishType" [ngValue]="type.Id" [selected]="type.Id">
+            <option *ngFor="let type of dishType" [ngValue]="type.id"
+              [selected]="type.id">
               {{ type.title }}
             </option>
           </select>

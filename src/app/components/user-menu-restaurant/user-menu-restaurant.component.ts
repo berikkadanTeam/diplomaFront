@@ -19,13 +19,13 @@ export class UserMenuRestaurantComponent implements OnInit {
 	ngOnInit() {
 		const user = localStorage.getItem('user');
 		this.user = JSON.parse(user);
-		this.server.getDishType().then((r) => {
+    this.server.getDishType().then(r => {
 			this.dishType = r;
 			this.dishType[0].showDishes = true;
-			this.server.getUserRestaurantMenu(this.user.id).then((r) => {
-				this.dishType.map((dish) => {
-					dish.menu = r.filter((res) => res.typeId === dish.Id);
-				});
+			this.server.getUserRestaurantMenu(this.user.id).then(r1 => {
+				this.dishType.map(dish => {
+					dish.menu = r1.filter(res => res.typeId === dish.id);
+        });
 			});
     });
     this.addingDish = {
@@ -47,9 +47,8 @@ export class UserMenuRestaurantComponent implements OnInit {
 	addDish() {
     this.server.setDishMenu(this.addingDish).then(r => {
       this.addingDish.id = r;
-      console.log(this.addingDish)
       this.dishType.map((dish) => {
-        if(dish.Id === this.addingDish.typeId) {
+        if(dish.id === this.addingDish.typeId) {
           dish.menu.push(this.addingDish);
           this.addingDish = {
             id: '',
@@ -65,7 +64,7 @@ export class UserMenuRestaurantComponent implements OnInit {
   }
   showTypeDishes(type: DishType) {
     this.dishType.map(r => {
-      if(r.Id != type.Id) {
+      if(r.id != type.id) {
         r.showDishes = false;
       }
     })
