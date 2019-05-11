@@ -31,12 +31,12 @@ export class MainComponent implements OnInit {
         .build();
       this.connection.start().then(() => {
       }).catch((err) => console.log(err));
-      this.connection.on('ListenToOrder', function (username, message) {
+      this.connection.on('ListenToAccept', function (username, messageOrder) {
         // Html encode display name and message.
         var encodedName = username;
-        var encodedMsg = message;
+        var encodedMsg = messageOrder;
         console.log(username);
-        console.log(message);
+        console.log(messageOrder);
       });
     }
   }

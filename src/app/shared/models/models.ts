@@ -12,6 +12,7 @@ export interface UserData {
   restaurantId?: string;
   roles?: [];
   userRole?: string;
+  virtualMoney?: string;
 }
 
 export interface UserDataEx {
@@ -159,4 +160,17 @@ export interface Images {
   id: string;
   name: string;
   isShow?: boolean;
+}
+
+
+export interface Promotion {
+  id: string;
+  title: string;
+  fileName: string;
+  description: string;
+  fromDate: Date;
+  toDate: Date;
+  restaurantId: string;
+  restaurantName: string;
+
 }

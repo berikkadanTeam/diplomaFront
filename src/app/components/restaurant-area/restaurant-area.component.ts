@@ -83,9 +83,16 @@ export class RestaurantAreaComponent implements OnInit {
   onChanged(increased, index) { }
 
   acceptBooking() {
+
+
     this.bookedTable.userId = this.user.id;
     this.bookedTable.tableId = this.selectedTable;
     this.service.setBookingTable(this.bookedTable).then((r) => {
+      this.service.getUserInfo(this.user.id).then(r => {
+        this.user = r;
+        localStorage.removeItem('user');
+        localStorage.setItem('user', JSON.stringify(this.user));
+      });
       alert(r.status);
     });
   }

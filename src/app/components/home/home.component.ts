@@ -1,3 +1,4 @@
+import { Promotion } from './../../shared/models/models';
 import { Component, OnInit } from '@angular/core';
 import { ServerService } from 'src/app/shared/services/server.service';
 import { Restaurants } from 'src/app/shared/models/models';
@@ -11,18 +12,24 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
-  restaurants: Restaurants [] = [];
+  restaurants: Restaurants[] = [];
   page: number = 1;
   api = environment.apiUrl;
 
-  constructor(private service: ServerService, private route: ActivatedRoute,   private router: Router) { }
+  promotions: Promotion[] = [];
+
+  constructor(private service: ServerService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
     this.service.getRestaurants().then(res => {
       this.restaurants = res;
     });
-    this.route.params.subscribe(params => {
+
+    this.service.getPromotions().then(res => {
+      this.promotions = res;
+      console.log(this.promotions)
     });
+
   }
 
   booking(restaurant: Restaurants) {

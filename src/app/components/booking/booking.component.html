@@ -1,37 +1,51 @@
 <div class="booking">
   <div class="restaurant">
     <div class="slide">
-      <div class="restaurantImg" *ngFor="let image of restaurant.images; let i = index">
-        <button class="slideBtn back" *ngIf="image.isShow === true" (click)="prev(i)">
-          </button> <img *ngIf="image.isShow === true" [src]="api + 'restinfo/RestaurantsImages?filename=' + image.name" alt="" />
-          <button class="slideBtn right" *ngIf="image.isShow === true" (click)="next(i + 1)">
+      <div class="restaurantImg" *ngFor="let image of restaurant.images; let i=
+        index">
+        <button class="slideBtn back" *ngIf="image.isShow === true"
+          (click)="prev(i)">
+        </button> <img *ngIf="image.isShow === true" [src]="api +
+          'restinfo/RestaurantsImages?filename=' + image.name" alt="" />
+        <button class="slideBtn right" *ngIf="image.isShow === true"
+          (click)="next(i + 1)">
 
-          </button>
+        </button>
       </div>
     </div>
-    <div class="info">
-      <div class="in">
-        <h1>Ресторан «{{restaurant.name}}»</h1>
-        <div class="address info-in"><span class="title">Адрес:</span> {{restaurant.addres}}</div>
-        <div class="kithcen info-in"><span class="title">Кухня:</span> {{restaurant.kitchen}}</div>
-        <div class="desciprion info-in">
-          <span class="title">Описание: </span> {{restaurant.description}}
-        </div>
-        <div class="work-time info-in">
-          <div class="work"  *ngFor="let day of restaurant.workDay">
-            <div class="title">{{day.dayName}}: </div>
-            <div> {{day.startTime}}</div>
-            <div> - </div>
-            <div>{{day.endTime}}</div>
+  </div>
+  <div class="info">
+    <div class="in">
+      <h1>Ресторан «{{restaurant.name}}»</h1>
+      <div class="full-info">
+        <div class="full-info-left">
+          <div class="address info-in"><span class="title">Адрес:</span>
+            {{restaurant.addres}}</div>
+          <div class="kithcen info-in"><span class="title">Кухня:</span>
+            {{restaurant.kitchen}}</div>
+          <div class="desciprion info-in">
+            <span class="title">Описание: </span> {{restaurant.description}}
           </div>
         </div>
-        <div class="delivery info-in"><span class="title">Доставка: </span>
-          <span *ngIf="restaurant.delivery === true"> Есть, <a href="">заказать на дом</a></span>
-          <span *ngIf="restaurant.delivery === false"> Нет</span>
+        <div class="full-info-right">
+          <div class="work-time info-in">
+            <div class="work" *ngFor="let day of restaurant.workDay">
+              <div class="title">{{day.dayName}}: </div>
+              <div> {{day.startTime}}</div>
+              <div> - </div>
+              <div>{{day.endTime}}</div>
+            </div>
+          </div>
+          <!-- <div class="delivery info-in"><span class="title">Доставка: </span>
+            <span *ngIf="restaurant.delivery === true"> Есть, <a href="">заказать
+                на дом</a></span>
+            <span *ngIf="restaurant.delivery === false"> Нет</span>
+          </div> -->
         </div>
-        <div class="reserve-btn">
-          <button class="btn-b" [routerLink]="['/restaurant', restaurant.id, 'restaurantArea']">Зарезервировать</button>
-        </div>
+      </div>
+      <div class="reserve-btn">
+        <button class="btn-b" [routerLink]="['/restaurant', restaurant.id,
+          'restaurantArea']">Зарезервировать</button>
       </div>
     </div>
   </div>

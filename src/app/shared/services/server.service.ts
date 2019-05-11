@@ -173,4 +173,14 @@ export class ServerService extends BaseService {
 
     return this.post(this.api + url, formData);
   }
+
+  getPromotions() {
+    let url = 'Restinfo/GetPromotion';
+    return this.get(this.api + url, {});
+  }
+
+  confirEmail(id: string) {
+    let url = `users/ConfirmEmail?id=${id}`;
+    return this.put(this.api + url, {});
+  }
 }

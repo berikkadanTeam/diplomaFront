@@ -102,19 +102,21 @@
     .news-header {
       border-bottom: 1px solid #66757f;
       padding: 25px;
-
     }
-    .news-info{
+    .news-info {
       padding: 10px;
-      .new-title{
+      .new-title {
         margin-bottom: 5px;
       }
-      h3{
+      h3 {
         margin-bottom: 5px;
       }
+      img {
+        height: 200px;
+        width: 100%;
+      }
 
-      .new-desc{
-
+      .new-desc {
       }
     }
   }

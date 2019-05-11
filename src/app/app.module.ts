@@ -30,6 +30,7 @@ import { TabDirective } from './shared/directives/tab.directive';
 import { UserMenuRestaurantComponent } from './components/user-menu-restaurant/user-menu-restaurant.component';
 import { BookedTablesComponent } from './components/booked-tables/booked-tables.component';
 import { WebviewIosComponent } from './webview-ios/webview-ios.component';
+import { ConfirmEmailComponent } from './components/confirm-email/confirm-email.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { WebviewIosComponent } from './webview-ios/webview-ios.component';
     UserMenuRestaurantComponent,
     BookedTablesComponent,
     WebviewIosComponent,
+    ConfirmEmailComponent,
   ],
   imports: [
     BrowserModule,
