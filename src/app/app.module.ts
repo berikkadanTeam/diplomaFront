@@ -31,6 +31,8 @@ import { UserMenuRestaurantComponent } from './components/user-menu-restaurant/u
 import { BookedTablesComponent } from './components/booked-tables/booked-tables.component';
 import { WebviewIosComponent } from './webview-ios/webview-ios.component';
 import { ConfirmEmailComponent } from './components/confirm-email/confirm-email.component';
+import { AddPromotionComponent } from './components/add-promotion/add-promotion.component';
+import { AddMoneyComponent } from './components/add-money/add-money.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +56,8 @@ import { ConfirmEmailComponent } from './components/confirm-email/confirm-email.
     BookedTablesComponent,
     WebviewIosComponent,
     ConfirmEmailComponent,
+    AddPromotionComponent,
+    AddMoneyComponent,
   ],
   imports: [
     BrowserModule,

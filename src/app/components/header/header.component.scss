@@ -44,7 +44,11 @@
     }
 
     .sign-btns {
-      display: none;
+
+      // display: none;
+      .name {
+        display: none;
+      }
     }
 
     .li {}

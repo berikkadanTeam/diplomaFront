@@ -8,8 +8,7 @@
           <span> {{table.lastName}}</span>
         </div>
         <div>
-          <div class="accept-reserve" *ngIf="table.reserveStatus === 3"
-            (click)="acceptReserve(table)">
+          <div class="accept-reserve" *ngIf="table.reserveStatus === 3" (click)="acceptReserve(table)">
             Подтвердить бронь
           </div>
           <div class="accept-reserve" *ngIf="table.reserveStatus === 1">
@@ -20,8 +19,7 @@
           Удалить бронь
         </div>
 
-        <div class="delete-reserve" *ngIf="table.reserveStatus === 3"
-          (click)="rejectReserve(table)">
+        <div class="delete-reserve" *ngIf="table.reserveStatus === 3" (click)="rejectReserve(table)">
           Отклонить бронь
         </div>
 
@@ -42,6 +40,9 @@
           </div>
           <div class="count-person">
             Количество персон: {{table.numberOfGuests}}
+          </div>
+          <div class="count-person">
+            Номер: {{table.phoneNumber}}
           </div>
         </div>
         <div *ngIf="table.menu.length === 0">

@@ -1,3 +1,5 @@
+import { AddMoneyComponent } from './components/add-money/add-money.component';
+import { AddPromotionComponent } from './components/add-promotion/add-promotion.component';
 import { ConfirmEmailComponent } from './components/confirm-email/confirm-email.component';
 import { WebviewIosComponent } from './webview-ios/webview-ios.component';
 import { AddPersonalComponent } from './components/add-personal/add-personal.component';
@@ -14,35 +16,40 @@ import { UserInfoComponent } from './components/user-info/user-info.component';
 import { WebviewBookingComponent } from './components/webview-booking/webview-booking.component';
 
 const routes: Routes = [
-  {
-    path: '', component: MainComponent, children: [
-      { path: '', component: HomeComponent },
-      { path: 'add-restaurant', component: AddRestaurantComponent },
-      { path: 'add-personal', component: AddPersonalComponent },
-      { path: 'user-info', component: UserInfoComponent },
-      { path: 'restaurantid/:id', component: WebviewBookingComponent },
-      { path: 'iOSRestaurant/:id', component: WebviewIosComponent },
-      {
-        path: 'restaurant/:id', children: [
-          { path: 'booking', component: BookingComponent },
-          { path: 'delivery', component: DeliveryComponent },
-          { path: 'restaurantArea', component: RestaurantAreaComponent },
-        ]
-      },
-    ]
-  },
-  {
-    path: 'sign', component: SignComponent
-  },
-  {
-    path: 'confirm/:id', component: ConfirmEmailComponent
-  },
+	{
+		path: '',
+		component: MainComponent,
+		children: [
+			{ path: '', component: HomeComponent },
+			{ path: 'add-restaurant', component: AddRestaurantComponent },
+			{ path: 'add-personal', component: AddPersonalComponent },
+			{ path: 'user-info', component: UserInfoComponent },
+			{ path: 'restaurantid/:id', component: WebviewBookingComponent },
+			{ path: 'iOSRestaurant/:id', component: WebviewIosComponent },
+			{ path: 'add-promotion', component: AddPromotionComponent },
+			{ path: 'add-money', component: AddMoneyComponent },
+			{
+				path: 'restaurant/:id',
+				children: [
+					{ path: 'booking', component: BookingComponent },
+					{ path: 'delivery', component: DeliveryComponent },
+					{ path: 'restaurantArea', component: RestaurantAreaComponent }
+				]
+			}
+		]
+	},
+	{
+		path: 'sign',
+		component: SignComponent
+	},
+	{
+		path: 'confirm/:id',
+		component: ConfirmEmailComponent
+	}
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { useHash: true })],
-  exports: [RouterModule]
+	imports: [ RouterModule.forRoot(routes, { useHash: true }) ],
+	exports: [ RouterModule ]
 })
-export class AppRoutingModule { }
-
-
+export class AppRoutingModule {}

@@ -1,0 +1,28 @@
+<div class="promotion">
+  <div class="add">
+    <h1>Добавить акцию</h1>
+    <div class="form-control">
+      <div class="name">Название акцию</div>
+      <input type="text" [(ngModel)]="addedPromotion.title" />
+    </div>
+    <div class="form-textarea">
+      <div class="name">Описание</div>
+      <textarea name="" id="" cols="45" rows="10" [(ngModel)]="addedPromotion.description"></textarea>
+    </div>
+    <div class="form-control-time">
+      <div class="name">Выберите начало акции</div>
+      <input type="date" name="calendar" [(ngModel)]="addedPromotion.fromDate" />
+    </div>
+    <div class="form-control-time">
+      <div class="name">Выберите конец акции</div>
+      <input type="date" name="calendar" [(ngModel)]="addedPromotion.toDate" />
+    </div>
+    <div class="form-file">
+      <input class="foo" type="file" id="file" (change)="uploadAvatar($event.target.files)">
+    </div>
+
+    <div class="add-btn">
+      <button class="btn-b" (click)="setPromotion()">Добавить</button>
+    </div>
+  </div>
+</div>

@@ -1,4 +1,4 @@
-import { Promotion } from './../../shared/models/models';
+import { Promotion, UserData } from './../../shared/models/models';
 import { Component, OnInit } from '@angular/core';
 import { ServerService } from 'src/app/shared/services/server.service';
 import { Restaurants } from 'src/app/shared/models/models';
@@ -18,6 +18,10 @@ export class HomeComponent implements OnInit {
 
   promotions: Promotion[] = [];
 
+  user: UserData;
+
+  currentRole: boolean;
+
   constructor(private service: ServerService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
@@ -27,8 +31,14 @@ export class HomeComponent implements OnInit {
 
     this.service.getPromotions().then(res => {
       this.promotions = res;
-      console.log(this.promotions)
     });
+
+    const user = localStorage.getItem('user');
+    this.user = JSON.parse(user);
+
+    if (this.user.roles.some(e => e === "Admin")) {
+      this.currentRole = true;
+      }
 
   }
 

@@ -17,11 +17,14 @@ export class SignComponent implements OnInit {
     lastName: '',
     location: '',
     userRole: 'CommonUser',
-    restaurantId: null
+    restaurantId: null,
+    phoneNumber: ''
   };
 
   signInUp = false;
   error = '';
+
+  status: string;
   constructor(private service: ServerService,
     private router: Router) { }
 
@@ -29,6 +32,9 @@ export class SignComponent implements OnInit {
   }
   auth() {
     this.service.getToken(this.user.userName, this.user.password).then(res => {
+
+      console.log(res)
+
       if (res) {
         localStorage.setItem('token', res.auth_token);
 
@@ -41,6 +47,7 @@ export class SignComponent implements OnInit {
       }
     },
       (err => {
+        alert(err.error.status);
         this.error = err.error.err[0];
       }));
   }
@@ -55,6 +62,7 @@ export class SignComponent implements OnInit {
 
   signUp() {
     this.service.signUp(this.user).then(r => {
+      alert(r.status);
       this.signInUp = false;
     },
       (err => {

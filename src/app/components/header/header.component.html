@@ -2,8 +2,7 @@
 </div>
 <div class="header">
   <div class="logo">
-    <img src="/assets/logo.png" [routerLink]="['']" alt="" height="40px"
-      width="40px">
+    <img src="/assets/logo.png" [routerLink]="['']" alt="" height="40px" width="40px">
   </div>
   <!-- <div class="menu">
     <a class="li" class="" [routerLink]="['']">Главная</a>
@@ -14,26 +13,24 @@
     <button class="btn-b li" [routerLink]="['/sign']" *ngIf="user === null">
       Войти/Регистрация
     </button>
-    <button class="btn-b li" [routerLink]="['/add-restaurant']"
-      *ngIf="currentRole === true">
+    <button class="btn-b li" [routerLink]="['/add-restaurant']" *ngIf="currentRole === true">
       Добавить ресторан
     </button>
-    <button class="btn-b li"
-      *ngIf="currentRole === true">
+    <button class="btn-b li" *ngIf="currentRole === true" [routerLink]="['/add-promotion']">
       Добавить акции
     </button>
     <button class="btn-b li" [routerLink]="['/add-personal']" *ngIf="currentRole
       === true">
       Добавить персонал
     </button>
-    <button class="btn-b li">
+    <button class="btn-b li" [routerLink]="['/add-money']" *ngIf="user !== null && currentRole !== true">
       Пополнить счёт
     </button>
-    <div class="li" *ngIf="user !== null" [routerLink]="currentRole ===
+    <div class="li name" *ngIf="user !== null" [routerLink]="currentRole ===
       true?['/user-info']:['/']">
       {{user.firstName}}
     </div>
-    <div class="li" *ngIf="user !== null">
+    <div class="li" *ngIf="user !== null && currentRole !== true">
       {{user.virtualMoney}} тг.
     </div>
     <a class="logout li" (click)="logout()" *ngIf="user !== null">

@@ -36,6 +36,8 @@
         align-items: center;
         margin-bottom: 50px;
         width: 100%;
+        padding-bottom: 40px;
+        border-bottom: 1px solid black;
 
         .image {
           margin-right: 30px;
@@ -50,6 +52,14 @@
         .item {
           margin-right: 60px;
           width: 60%;
+
+          h4 {
+            margin-bottom: 20px;
+          }
+
+          .description {
+            text-align: justify;
+          }
         }
 
         .item-1 {
@@ -72,16 +82,19 @@
           }
         }
       }
+
       .my-pagination /deep/ .ngx-pagination {
         .current {
           border-radius: 15px;
           padding: 0.2975rem 0.675rem;
         }
+
         .pagination-previous {
           // &:before {
           //   content: "";
           // }
         }
+
         .pagination-next {
           a {
             // &:after {
@@ -103,21 +116,31 @@
       border-bottom: 1px solid #66757f;
       padding: 25px;
     }
+
     .news-info {
       padding: 10px;
+      padding-bottom: 25px;
+      border-bottom: 1px solid black;
+
       .new-title {
-        margin-bottom: 5px;
-      }
-      h3 {
-        margin-bottom: 5px;
-      }
-      img {
-        height: 200px;
-        width: 100%;
+        margin-bottom: 15px;
       }
 
-      .new-desc {
+      h4 {
+        margin-bottom: 10px;
       }
+
+      img {
+        height: 170px;
+        width: 100%;
+        margin-bottom: 10px;
+      }
+
+      .new-desc {}
+    }
+
+    .pagination {
+      margin-top: 10px;
     }
   }
 }
@@ -182,6 +205,7 @@
     &-right {
       width: 100%;
       margin-right: 0;
+      margin-top: 10px;
     }
   }
 }
@@ -223,15 +247,13 @@
             justify-content: center;
             width: 100%;
 
-            .info {
-            }
+            .info {}
           }
 
           .block-btn {
             width: 100%;
 
-            .btn-b {
-            }
+            .btn-b {}
           }
         }
       }
@@ -239,6 +261,8 @@
 
     &-right {
       width: 100%;
+      margin-right: 0;
+      margin-top: 10px;
     }
   }
 }
