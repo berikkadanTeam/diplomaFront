@@ -13,7 +13,7 @@ declare var Android: any;
 export class WebviewBookingComponent implements OnInit {
 
 
-constructor(private route: ActivatedRoute, private server: ServerService) { }
+  constructor(private route: ActivatedRoute, private server: ServerService) { }
   restaurant: Restaurants;
   bookingTable: BookingTable;
   public style: object = {};
@@ -54,10 +54,10 @@ constructor(private route: ActivatedRoute, private server: ServerService) { }
     this.server.getRestaurantForWebView(this.restaurantId).then(res => {
       this.restaurant = res;
       this.style = {
-        left: `${this.restaurant.area.left}px`,
-        top: `${this.restaurant.area.top}px`,
-        width: `${this.restaurant.area.width}px`,
-        height: `${this.restaurant.area.height}px`
+        left: `${this.restaurant.area.leftArea}px`,
+        top: `${this.restaurant.area.topArea}px`,
+        width: `${this.restaurant.area.widthArea}px`,
+        height: `${this.restaurant.area.heightArea}px`
       };
     });
     const user = localStorage.getItem('user');

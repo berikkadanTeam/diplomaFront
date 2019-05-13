@@ -63,10 +63,10 @@ export class AddRestaurantComponent implements OnInit {
       tables: [],
       menu: [],
       area: {
-        left: 369,
-        top: -427,
-        width: 802,
-        height: 702,
+        leftArea: 369,
+        topArea: -427,
+        widthArea: 802,
+        heightArea: 702,
       }
     };
 
@@ -233,10 +233,10 @@ export class AddRestaurantComponent implements OnInit {
       height: `${event.rectangle.height}px`
     };
     this.restaurant.area = {
-      left: event.rectangle.left,
-      top: event.rectangle.top,
-      width: event.rectangle.width,
-      height: event.rectangle.height
+      leftArea: event.rectangle.left,
+      topArea: event.rectangle.top,
+      widthArea: event.rectangle.width,
+      heightArea: event.rectangle.height
     };
   }
 

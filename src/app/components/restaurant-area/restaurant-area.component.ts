@@ -59,10 +59,10 @@ export class RestaurantAreaComponent implements OnInit {
       this.restaurant = res;
       this.menu = this.restaurant.menu.filter((r) => r.typeId === 1);
       this.style = {
-        left: `${this.restaurant.area.left}px`,
-        top: `${this.restaurant.area.top}px`,
-        width: `${this.restaurant.area.width}px`,
-        height: `${this.restaurant.area.height}px`
+        left: `${this.restaurant.area.leftArea}px`,
+        top: `${this.restaurant.area.topArea}px`,
+        width: `${this.restaurant.area.widthArea}px`,
+        height: `${this.restaurant.area.heightArea}px`
       };
     });
     const user = localStorage.getItem('user');

@@ -13,7 +13,7 @@
           }"
           (click)="selectTable(trapped)" [ngClass]="trapped.isSelected === true
           || trapped.reservTable === true? 'reserved':''">
-          <div>Стол для {{ trapped.countPerson }}</div>
+          <div>{{ trapped.name }}</div>
           <div>#{{ trapped.numberOfTable }}</div>
         </div>
       </div>

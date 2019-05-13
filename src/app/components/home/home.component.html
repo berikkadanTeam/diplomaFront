@@ -36,11 +36,13 @@
           </div>
         </div>
         <div class="block-btn">
-          <button class="btn-b" (click)="booking(restaurant)" *ngIf="currentRole !== true">Забронировать</button>
+          <button class="btn-b" (click)="booking(restaurant)" *ngIf="currentRole
+            !== true">Забронировать</button>
           <!-- <button class="btn-b" [routerLink]="['/delivery']">Доставка</button> -->
         </div>
       </div>
-      <pagination-controls class="my-pagination" previousLabel="" nextLabel="" (pageChange)="page= $event">
+      <pagination-controls class="my-pagination" previousLabel="" nextLabel=""
+        (pageChange)="page= $event">
       </pagination-controls>
     </div>
   </div>
@@ -51,7 +53,7 @@
     <div class="news-info" *ngFor="let promotion of promotions | paginate:
       { itemsPerPage: 6, currentPage: page}">
       <h3 class="new-title">"{{promotion.title}}"</h3>
-      <h4>В ресторане: "{{promotion.restaurantName}}"</h4>
+      <!-- <h4>В ресторане: "{{promotion.restaurantName}}"</h4> -->
       <img [src]="api + 'booking/RestaurantsAvatar?filename=' +
         promotion.fileName" alt="">
       <div class="new-desc">
@@ -66,7 +68,8 @@
     </div>
 
     <div class="pagination">
-      <pagination-controls class="my-pagination" previousLabel="" nextLabel="" (pageChange)="page= $event">
+      <pagination-controls class="my-pagination" previousLabel="" nextLabel=""
+        (pageChange)="page= $event">
       </pagination-controls>
     </div>
   </div>

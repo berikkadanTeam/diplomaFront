@@ -19,7 +19,7 @@ export class MainComponent implements OnInit {
   ngOnInit() {
     const token = localStorage.getItem('token');
     if (!token) {
-      return this.router.navigate(['']);
+      // return this.router.navigate(['']);
     } else if (token !== 'null') {
       // this.signalR.makeOrder();
       this.connection = new signalR.HubConnectionBuilder()
